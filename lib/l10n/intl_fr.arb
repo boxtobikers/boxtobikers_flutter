@@ -1,0 +1,14 @@
+{
+  "flag": "fr",
+  "hello": "Bonjour {userName}",
+  "@hello": {
+    "description": "A message with a single parameter",
+    "placeholders": {
+      "userName": {
+        "type": "String",
+        "example": "Bob"
+      }
+    }
+  },
+  "title": "Bonjour et bienvenue !"
+}
