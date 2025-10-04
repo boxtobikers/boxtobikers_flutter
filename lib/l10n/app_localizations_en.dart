@@ -36,21 +36,21 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeItemExploreDescription =>
-      'Make a tour to discover, it\'s here!';
+      'Make a tour to discover, it\'s here !';
 
   @override
-  String get homeItemWhoAmITitle => 'Who am I?';
+  String get homeItemWhoAmITitle => 'Who am I ?';
 
   @override
   String get homeItemWhoAmIDescription =>
-      'We tell you everything... or almost!';
+      'We tell you everything... or almost !';
 
   @override
   String get homeItemSettingsTitle => 'Settings';
 
   @override
   String get homeItemSettingsDescription =>
-      'Configure cookies, notifications, ...';
+      'Configure cookies, notifications, ...';
 
   @override
   String get ridingTitle => 'My rides';

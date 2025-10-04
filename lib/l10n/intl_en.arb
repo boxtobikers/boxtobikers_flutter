@@ -22,11 +22,11 @@
 
   "@@_HOME_LIST_ITEMS": {},
   "homeItemExploreTitle": "Explore the site",
-  "homeItemExploreDescription": "Make a tour to discover, it's here!",
-  "homeItemWhoAmITitle": "Who am I?",
-  "homeItemWhoAmIDescription": "We tell you everything... or almost!",
+  "homeItemExploreDescription": "Make a tour to discover, it's here !",
+  "homeItemWhoAmITitle": "Who am I ?",
+  "homeItemWhoAmIDescription": "We tell you everything... or almost !",
   "homeItemSettingsTitle": "Settings",
-  "homeItemSettingsDescription": "Configure cookies, notifications, ...",
+  "homeItemSettingsDescription": "Configure cookies, notifications, ...",
 
   "@@_RIDING": {},
   "ridingTitle": "My rides",

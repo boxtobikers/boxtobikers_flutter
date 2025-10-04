@@ -149,19 +149,19 @@ abstract class AppLocalizations {
   /// No description provided for @homeItemExploreDescription.
   ///
   /// In en, this message translates to:
-  /// **'Make a tour to discover, it\'s here!'**
+  /// **'Make a tour to discover, it\'s here !'**
   String get homeItemExploreDescription;
 
   /// No description provided for @homeItemWhoAmITitle.
   ///
   /// In en, this message translates to:
-  /// **'Who am I?'**
+  /// **'Who am I ?'**
   String get homeItemWhoAmITitle;
 
   /// No description provided for @homeItemWhoAmIDescription.
   ///
   /// In en, this message translates to:
-  /// **'We tell you everything... or almost!'**
+  /// **'We tell you everything... or almost !'**
   String get homeItemWhoAmIDescription;
 
   /// No description provided for @homeItemSettingsTitle.
@@ -173,7 +173,7 @@ abstract class AppLocalizations {
   /// No description provided for @homeItemSettingsDescription.
   ///
   /// In en, this message translates to:
-  /// **'Configure cookies, notifications, ...'**
+  /// **'Configure cookies, notifications, ...'**
   String get homeItemSettingsDescription;
 
   /// No description provided for @ridingTitle.

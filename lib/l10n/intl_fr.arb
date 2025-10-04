@@ -5,8 +5,8 @@
   "appTitle": "BoxtoBikers",
 
   "@@_HOME": {},
-  "homeTitle": "BoxToBikers, en route ! ",
-  "homeSubTitle": "En route ! ",
+  "homeTitle": "BoxToBikers, en route !",
+  "homeSubTitle": "En route !",
   "homeCounterLabel": "Vous avez appuyé sur le bouton ce nombre de fois :",
   "homeIncrementTooltip": "Incrémenter",
   "homeLoginButton": "Se connecter",
@@ -23,11 +23,11 @@
 
   "@@_HOME_LIST_ITEMS": {},
   "homeItemExploreTitle": "Visiter le site",
-  "homeItemExploreDescription": "Envie de découvrir, c'est ici !",
-  "homeItemWhoAmITitle": "Qui sommes-nous ?",
-  "homeItemWhoAmIDescription": "On vous dit tout... ou presque !",
+  "homeItemExploreDescription": "Envie de découvrir, c'est ici !",
+  "homeItemWhoAmITitle": "Qui sommes-nous ?",
+  "homeItemWhoAmIDescription": "On vous dit tout… ou presque !",
   "homeItemSettingsTitle": "Paramètres",
-  "homeItemSettingsDescription": "Configurez vos cookies, notifications, ...",
+  "homeItemSettingsDescription": "Configurez vos cookies, notifications…",
 
   "@@_RIDING": {},
   "ridingTitle": "Mes trajets",

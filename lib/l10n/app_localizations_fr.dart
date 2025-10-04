@@ -15,7 +15,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get appTitle => 'BoxtoBikers';
 
   @override
-  String get homeTitle => 'BoxToBikers, en route ! ';
+  String get homeTitle => 'BoxToBikers, en route !';
 
   @override
   String get homeCounterLabel =>
@@ -36,20 +36,20 @@ class AppLocalizationsFr extends AppLocalizations {
   String get homeItemExploreTitle => 'Visiter le site';
 
   @override
-  String get homeItemExploreDescription => 'Envie de découvrir, c\'est ici !';
+  String get homeItemExploreDescription => 'Envie de découvrir, c\'est ici !';
 
   @override
-  String get homeItemWhoAmITitle => 'Qui sommes-nous ?';
+  String get homeItemWhoAmITitle => 'Qui sommes-nous ?';
 
   @override
-  String get homeItemWhoAmIDescription => 'On vous dit tout... ou presque !';
+  String get homeItemWhoAmIDescription => 'On vous dit tout… ou presque !';
 
   @override
   String get homeItemSettingsTitle => 'Paramètres';
 
   @override
   String get homeItemSettingsDescription =>
-      'Configurez vos cookies, notifications, ...';
+      'Configurez vos cookies, notifications…';
 
   @override
   String get ridingTitle => 'Mes trajets';

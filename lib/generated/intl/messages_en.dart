@@ -34,17 +34,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "homeIncrementTooltip":
             MessageLookupByLibrary.simpleMessage("Increment"),
         "homeItemExploreDescription": MessageLookupByLibrary.simpleMessage(
-            "Make a tour to discover, it\'s here!"),
+            "Make a tour to discover, it\'s here !"),
         "homeItemExploreTitle":
             MessageLookupByLibrary.simpleMessage("Explore the site"),
         "homeItemSettingsDescription": MessageLookupByLibrary.simpleMessage(
-            "Configure cookies, notifications, ..."),
+            "Configure cookies, notifications, ..."),
         "homeItemSettingsTitle":
             MessageLookupByLibrary.simpleMessage("Settings"),
         "homeItemWhoAmIDescription": MessageLookupByLibrary.simpleMessage(
-            "We tell you everything... or almost!"),
+            "We tell you everything... or almost !"),
         "homeItemWhoAmITitle":
-            MessageLookupByLibrary.simpleMessage("Who am I?"),
+            MessageLookupByLibrary.simpleMessage("Who am I ?"),
         "homeLoginButton": MessageLookupByLibrary.simpleMessage("Login"),
         "homeTitle": MessageLookupByLibrary.simpleMessage("Welcome to my site"),
         "ridingStartButton":

@@ -130,30 +130,30 @@ class S {
     );
   }
 
-  /// `Make a tour to discover, it's here!`
+  /// `Make a tour to discover, it's here !`
   String get homeItemExploreDescription {
     return Intl.message(
-      'Make a tour to discover, it\'s here!',
+      'Make a tour to discover, it\'s here !',
       name: 'homeItemExploreDescription',
       desc: '',
       args: [],
     );
   }
 
-  /// `Who am I?`
+  /// `Who am I ?`
   String get homeItemWhoAmITitle {
     return Intl.message(
-      'Who am I?',
+      'Who am I ?',
       name: 'homeItemWhoAmITitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `We tell you everything... or almost!`
+  /// `We tell you everything... or almost !`
   String get homeItemWhoAmIDescription {
     return Intl.message(
-      'We tell you everything... or almost!',
+      'We tell you everything... or almost !',
       name: 'homeItemWhoAmIDescription',
       desc: '',
       args: [],
@@ -170,10 +170,10 @@ class S {
     );
   }
 
-  /// `Configure cookies, notifications, ...`
+  /// `Configure cookies, notifications, ...`
   String get homeItemSettingsDescription {
     return Intl.message(
-      'Configure cookies, notifications, ...',
+      'Configure cookies, notifications, ...',
       name: 'homeItemSettingsDescription',
       desc: '',
       args: [],
