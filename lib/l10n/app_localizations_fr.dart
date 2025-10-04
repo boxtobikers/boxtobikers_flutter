@@ -18,9 +18,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String get homeTitle => 'BoxToBikers, en route ! ';
 
   @override
-  String get homeSubTitle => 'En route ! ';
-
-  @override
   String get homeCounterLabel =>
       'Vous avez appuyé sur le bouton ce nombre de fois :';
 
@@ -34,6 +31,25 @@ class AppLocalizationsFr extends AppLocalizations {
   String homeHello(String userName) {
     return 'Bonjour $userName';
   }
+
+  @override
+  String get homeItemExploreTitle => 'Visiter le site';
+
+  @override
+  String get homeItemExploreDescription => 'Envie de découvrir, c\'est ici !';
+
+  @override
+  String get homeItemWhoAmITitle => 'Qui sommes-nous ?';
+
+  @override
+  String get homeItemWhoAmIDescription => 'On vous dit tout... ou presque !';
+
+  @override
+  String get homeItemSettingsTitle => 'Paramètres';
+
+  @override
+  String get homeItemSettingsDescription =>
+      'Configurez vos cookies, notifications, ...';
 
   @override
   String get ridingTitle => 'Mes trajets';

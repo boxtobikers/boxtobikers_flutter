@@ -5,8 +5,7 @@
   "appTitle": "BoxtoBikers",
 
   "@@_HOME": {},
-  "homeTitle": "BoxToBikers, let's go ! ",
-  "homeSubTitle": "Let's go ! ",
+  "homeTitle": "Welcome to my site",
   "homeCounterLabel": "You have pushed the button this many times:",
   "homeIncrementTooltip": "Increment",
   "homeLoginButton": "Login",
@@ -20,6 +19,14 @@
       }
     }
   },
+
+  "@@_HOME_LIST_ITEMS": {},
+  "homeItemExploreTitle": "Explore the site",
+  "homeItemExploreDescription": "Make a tour to discover, it's here!",
+  "homeItemWhoAmITitle": "Who am I?",
+  "homeItemWhoAmIDescription": "We tell you everything... or almost!",
+  "homeItemSettingsTitle": "Settings",
+  "homeItemSettingsDescription": "Configure cookies, notifications, ...",
 
   "@@_RIDING": {},
   "ridingTitle": "My rides",

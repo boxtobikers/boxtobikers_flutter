@@ -70,21 +70,11 @@ class S {
     );
   }
 
-  /// `BoxToBikers, let's go ! `
+  /// `Welcome to my site`
   String get homeTitle {
     return Intl.message(
-      'BoxToBikers, let\'s go ! ',
+      'Welcome to my site',
       name: 'homeTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Let's go ! `
-  String get homeSubTitle {
-    return Intl.message(
-      'Let\'s go ! ',
-      name: 'homeSubTitle',
       desc: '',
       args: [],
     );
@@ -127,6 +117,66 @@ class S {
       name: 'homeHello',
       desc: 'A message with a single parameter',
       args: [userName],
+    );
+  }
+
+  /// `Explore the site`
+  String get homeItemExploreTitle {
+    return Intl.message(
+      'Explore the site',
+      name: 'homeItemExploreTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Make a tour to discover, it's here!`
+  String get homeItemExploreDescription {
+    return Intl.message(
+      'Make a tour to discover, it\'s here!',
+      name: 'homeItemExploreDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Who am I?`
+  String get homeItemWhoAmITitle {
+    return Intl.message(
+      'Who am I?',
+      name: 'homeItemWhoAmITitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We tell you everything... or almost!`
+  String get homeItemWhoAmIDescription {
+    return Intl.message(
+      'We tell you everything... or almost!',
+      name: 'homeItemWhoAmIDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get homeItemSettingsTitle {
+    return Intl.message(
+      'Settings',
+      name: 'homeItemSettingsTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Configure cookies, notifications, ...`
+  String get homeItemSettingsDescription {
+    return Intl.message(
+      'Configure cookies, notifications, ...',
+      name: 'homeItemSettingsDescription',
+      desc: '',
+      args: [],
     );
   }
 

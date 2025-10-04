@@ -113,14 +113,8 @@ abstract class AppLocalizations {
   /// No description provided for @homeTitle.
   ///
   /// In en, this message translates to:
-  /// **'BoxToBikers, let\'s go ! '**
+  /// **'Welcome to my site'**
   String get homeTitle;
-
-  /// No description provided for @homeSubTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Let\'s go ! '**
-  String get homeSubTitle;
 
   /// No description provided for @homeCounterLabel.
   ///
@@ -145,6 +139,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Hello {userName}'**
   String homeHello(String userName);
+
+  /// No description provided for @homeItemExploreTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore the site'**
+  String get homeItemExploreTitle;
+
+  /// No description provided for @homeItemExploreDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Make a tour to discover, it\'s here!'**
+  String get homeItemExploreDescription;
+
+  /// No description provided for @homeItemWhoAmITitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Who am I?'**
+  String get homeItemWhoAmITitle;
+
+  /// No description provided for @homeItemWhoAmIDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'We tell you everything... or almost!'**
+  String get homeItemWhoAmIDescription;
+
+  /// No description provided for @homeItemSettingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get homeItemSettingsTitle;
+
+  /// No description provided for @homeItemSettingsDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Configure cookies, notifications, ...'**
+  String get homeItemSettingsDescription;
 
   /// No description provided for @ridingTitle.
   ///
