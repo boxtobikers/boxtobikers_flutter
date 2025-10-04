@@ -8,7 +8,6 @@
 // ignore_for_file:prefer_single_quotes,comment_references, directives_ordering
 // ignore_for_file:annotate_overrides,prefer_generic_function_type_aliases
 // ignore_for_file:unused_import, file_names, avoid_escaping_inner_quotes
-// ignore_for_file:unnecessary_string_interpolations, unnecessary_string_escapes
 
 import 'package:intl/intl.dart';
 import 'package:intl/message_lookup_by_library.dart';
@@ -24,8 +23,23 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-    "flag": MessageLookupByLibrary.simpleMessage("en"),
-    "hello": m0,
-    "title": MessageLookupByLibrary.simpleMessage("Welcome to my site"),
-  };
+        "appTitle": MessageLookupByLibrary.simpleMessage("BoxtoBikers"),
+        "commonCancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "commonConfirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+        "commonSave": MessageLookupByLibrary.simpleMessage("Save"),
+        "flag": MessageLookupByLibrary.simpleMessage("en"),
+        "homeCounterLabel": MessageLookupByLibrary.simpleMessage(
+            "You have pushed the button this many times:"),
+        "homeHello": m0,
+        "homeIncrementTooltip":
+            MessageLookupByLibrary.simpleMessage("Increment"),
+        "homeLoginButton": MessageLookupByLibrary.simpleMessage("Login"),
+        "homeSubTitle": MessageLookupByLibrary.simpleMessage("Let\'s go ! "),
+        "homeTitle":
+            MessageLookupByLibrary.simpleMessage("BoxToBikers, let\'s go ! "),
+        "ridingStartButton":
+            MessageLookupByLibrary.simpleMessage("Start a ride"),
+        "ridingStopButton": MessageLookupByLibrary.simpleMessage("End ride"),
+        "ridingTitle": MessageLookupByLibrary.simpleMessage("My rides")
+      };
 }

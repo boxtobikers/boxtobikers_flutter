@@ -1,7 +1,17 @@
 {
   "flag": "en",
-  "hello": "Hello {userName}",
-  "@hello": {
+
+  "@@_APP": {},
+  "appTitle": "BoxtoBikers",
+
+  "@@_HOME": {},
+  "homeTitle": "BoxToBikers, let's go ! ",
+  "homeSubTitle": "Let's go ! ",
+  "homeCounterLabel": "You have pushed the button this many times:",
+  "homeIncrementTooltip": "Increment",
+  "homeLoginButton": "Login",
+  "homeHello": "Hello {userName}",
+  "@homeHello": {
     "description": "A message with a single parameter",
     "placeholders": {
       "userName": {
@@ -10,5 +20,14 @@
       }
     }
   },
-  "title": "Welcome to my site"
+
+  "@@_RIDING": {},
+  "ridingTitle": "My rides",
+  "ridingStartButton": "Start a ride",
+  "ridingStopButton": "End ride",
+
+  "@@_COMMON": {},
+  "commonCancel": "Cancel",
+  "commonConfirm": "Confirm",
+  "commonSave": "Save"
 }

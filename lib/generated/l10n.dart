@@ -18,10 +18,8 @@ class S {
   static S? _current;
 
   static S get current {
-    assert(
-      _current != null,
-      'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.',
-    );
+    assert(_current != null,
+        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
     return _current!;
   }
 
@@ -43,10 +41,8 @@ class S {
 
   static S of(BuildContext context) {
     final instance = S.maybeOf(context);
-    assert(
-      instance != null,
-      'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?',
-    );
+    assert(instance != null,
+        'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
     return instance!;
   }
 
@@ -56,24 +52,139 @@ class S {
 
   /// `en`
   String get flag {
-    return Intl.message('en', name: 'flag', desc: '', args: []);
+    return Intl.message(
+      'en',
+      name: 'flag',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `BoxtoBikers`
+  String get appTitle {
+    return Intl.message(
+      'BoxtoBikers',
+      name: 'appTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `BoxToBikers, let's go ! `
+  String get homeTitle {
+    return Intl.message(
+      'BoxToBikers, let\'s go ! ',
+      name: 'homeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Let's go ! `
+  String get homeSubTitle {
+    return Intl.message(
+      'Let\'s go ! ',
+      name: 'homeSubTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You have pushed the button this many times:`
+  String get homeCounterLabel {
+    return Intl.message(
+      'You have pushed the button this many times:',
+      name: 'homeCounterLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Increment`
+  String get homeIncrementTooltip {
+    return Intl.message(
+      'Increment',
+      name: 'homeIncrementTooltip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login`
+  String get homeLoginButton {
+    return Intl.message(
+      'Login',
+      name: 'homeLoginButton',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Hello {userName}`
-  String hello(String userName) {
+  String homeHello(Object userName) {
     return Intl.message(
       'Hello $userName',
-      name: 'hello',
+      name: 'homeHello',
       desc: 'A message with a single parameter',
       args: [userName],
     );
   }
 
-  /// `Welcome to my site`
-  String get title {
+  /// `My rides`
+  String get ridingTitle {
     return Intl.message(
-      'Welcome to my site',
-      name: 'title',
+      'My rides',
+      name: 'ridingTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Start a ride`
+  String get ridingStartButton {
+    return Intl.message(
+      'Start a ride',
+      name: 'ridingStartButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `End ride`
+  String get ridingStopButton {
+    return Intl.message(
+      'End ride',
+      name: 'ridingStopButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get commonCancel {
+    return Intl.message(
+      'Cancel',
+      name: 'commonCancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm`
+  String get commonConfirm {
+    return Intl.message(
+      'Confirm',
+      name: 'commonConfirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save`
+  String get commonSave {
+    return Intl.message(
+      'Save',
+      name: 'commonSave',
       desc: '',
       args: [],
     );

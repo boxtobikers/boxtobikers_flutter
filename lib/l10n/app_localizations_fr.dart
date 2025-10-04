@@ -12,10 +12,44 @@ class AppLocalizationsFr extends AppLocalizations {
   String get flag => 'fr';
 
   @override
-  String hello(String userName) {
+  String get appTitle => 'BoxtoBikers';
+
+  @override
+  String get homeTitle => 'BoxToBikers, en route ! ';
+
+  @override
+  String get homeSubTitle => 'En route ! ';
+
+  @override
+  String get homeCounterLabel =>
+      'Vous avez appuyé sur le bouton ce nombre de fois :';
+
+  @override
+  String get homeIncrementTooltip => 'Incrémenter';
+
+  @override
+  String get homeLoginButton => 'Se connecter';
+
+  @override
+  String homeHello(String userName) {
     return 'Bonjour $userName';
   }
 
   @override
-  String get title => 'Bonjour et bienvenue !';
+  String get ridingTitle => 'Mes trajets';
+
+  @override
+  String get ridingStartButton => 'Commencer un trajet';
+
+  @override
+  String get ridingStopButton => 'Terminer le trajet';
+
+  @override
+  String get commonCancel => 'Annuler';
+
+  @override
+  String get commonConfirm => 'Confirmer';
+
+  @override
+  String get commonSave => 'Enregistrer';
 }

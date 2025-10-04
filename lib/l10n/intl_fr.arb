@@ -1,8 +1,18 @@
 {
   "flag": "fr",
-  "hello": "Bonjour {userName}",
-  "@hello": {
-    "description": "A message with a single parameter",
+
+  "@@_APP": {},
+  "appTitle": "BoxtoBikers",
+
+  "@@_HOME": {},
+  "homeTitle": "BoxToBikers, en route ! ",
+  "homeSubTitle": "En route ! ",
+  "homeCounterLabel": "Vous avez appuyé sur le bouton ce nombre de fois :",
+  "homeIncrementTooltip": "Incrémenter",
+  "homeLoginButton": "Se connecter",
+  "homeHello": "Bonjour {userName}",
+  "@homeHello": {
+    "description": "Message d'accueil avec un paramètre",
     "placeholders": {
       "userName": {
         "type": "String",
@@ -10,5 +20,14 @@
       }
     }
   },
-  "title": "Bonjour et bienvenue !"
+
+  "@@_RIDING": {},
+  "ridingTitle": "Mes trajets",
+  "ridingStartButton": "Commencer un trajet",
+  "ridingStopButton": "Terminer le trajet",
+
+  "@@_COMMON": {},
+  "commonCancel": "Annuler",
+  "commonConfirm": "Confirmer",
+  "commonSave": "Enregistrer"
 }

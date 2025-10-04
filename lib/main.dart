@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      localizationsDelegates: [
+      localizationsDelegates: const [
         S.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       darkTheme: FlexThemeData.dark(scheme: FlexScheme.bigStone),
       themeMode: ThemeMode.system,
       home: Builder(
-        builder: (context) => MyHomePage(title: S.of(context).title),
+        builder: (context) => MyHomePage(title: S.of(context).homeTitle),
       ),
     );
   }

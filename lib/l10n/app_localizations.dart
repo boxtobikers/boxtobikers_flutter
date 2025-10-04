@@ -104,17 +104,83 @@ abstract class AppLocalizations {
   /// **'en'**
   String get flag;
 
+  /// No description provided for @appTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'BoxtoBikers'**
+  String get appTitle;
+
+  /// No description provided for @homeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'BoxToBikers, let\'s go ! '**
+  String get homeTitle;
+
+  /// No description provided for @homeSubTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Let\'s go ! '**
+  String get homeSubTitle;
+
+  /// No description provided for @homeCounterLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'You have pushed the button this many times:'**
+  String get homeCounterLabel;
+
+  /// No description provided for @homeIncrementTooltip.
+  ///
+  /// In en, this message translates to:
+  /// **'Increment'**
+  String get homeIncrementTooltip;
+
+  /// No description provided for @homeLoginButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get homeLoginButton;
+
   /// A message with a single parameter
   ///
   /// In en, this message translates to:
   /// **'Hello {userName}'**
-  String hello(String userName);
+  String homeHello(String userName);
 
-  /// No description provided for @title.
+  /// No description provided for @ridingTitle.
   ///
   /// In en, this message translates to:
-  /// **'Welcome to my site'**
-  String get title;
+  /// **'My rides'**
+  String get ridingTitle;
+
+  /// No description provided for @ridingStartButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Start a ride'**
+  String get ridingStartButton;
+
+  /// No description provided for @ridingStopButton.
+  ///
+  /// In en, this message translates to:
+  /// **'End ride'**
+  String get ridingStopButton;
+
+  /// No description provided for @commonCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get commonCancel;
+
+  /// No description provided for @commonConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get commonConfirm;
+
+  /// No description provided for @commonSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get commonSave;
 }
 
 class _AppLocalizationsDelegate
