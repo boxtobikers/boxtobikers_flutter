@@ -10,7 +10,7 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
-    final stackHeight = screenHeight * 0.6;
+    final stackHeight = screenHeight * 0.5;
 
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primaryContainer,
@@ -30,9 +30,37 @@ class MyHomePage extends StatelessWidget {
                         ),
                       ),
                       Positioned(
+                        bottom: 16.0,
+                        left: 0,
+                        right: 0,
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(0.0),
+                            child: FilledButton.icon(
+                              onPressed: () {
+                                // TODO: Implement login functionality
+                              },
+                              style: FilledButton.styleFrom(
+                                backgroundColor: Theme.of(context).colorScheme.primary,
+                                foregroundColor: Theme.of(context).colorScheme.onPrimary,
+                                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                              ),
+                              icon: const Icon(
+                                Icons.login,
+                                weight: 700,
+                              ),
+                              label: Text(
+                                S.of(context).homeLoginButton,
+                                style: const TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
                         top: 16,
-                        left: 16,
-                        right: 16,
+                        left: 32,
+                        right: 32,
                         child: Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Text(
@@ -59,34 +87,6 @@ class MyHomePage extends StatelessWidget {
                   child: HomeListView(),
                 ),
               ],
-            ),
-            Positioned(
-              bottom: stackHeight * 0.6 - 48,
-              left: 0,
-              right: 0,
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: FilledButton.icon(
-                    onPressed: () {
-                      // TODO: Implement login functionality
-                    },
-                    style: FilledButton.styleFrom(
-                      backgroundColor: Theme.of(context).colorScheme.primary,
-                      foregroundColor: Theme.of(context).colorScheme.onPrimary,
-                      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
-                    ),
-                    icon: const Icon(
-                      Icons.login,
-                      weight: 700,
-                    ),
-                    label: Text(
-                      S.of(context).homeLoginButton,
-                      style: const TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ),
-              ),
             ),
           ],
         ),
