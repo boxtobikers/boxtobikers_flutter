@@ -89,41 +89,41 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: CreatoDisplay
+    - family: NotoSans
       fonts:
-        - asset: fonts/CreatoDisplay-Regular.ttf
+        - asset: fonts/NotoSans-Regular.ttf
           weight: 400
-        - asset: fonts/CreatoDisplay-RegularItalic.ttf
+        - asset: fonts/NotoSans-Regular.ttf
           weight: 400
           style: italic
-        - asset: fonts/CreatoDisplay-Thin.ttf
+        - asset: fonts/NotoSans-Thin.ttf
           weight: 100
-        - asset: fonts/CreatoDisplay-ThinItalic.ttf
+        - asset: fonts/NotoSans-ThinItalic.ttf
           weight: 100
           style: italic
-        - asset: fonts/CreatoDisplay-Light.ttf
+        - asset: fonts/NotoSans-Light.ttf
           weight: 300
-        - asset: fonts/CreatoDisplay-LightItalic.ttf
+        - asset: fonts/NotoSans-LightItalic.ttf
           weight: 300
           style: italic
-        - asset: fonts/CreatoDisplay-Medium.ttf
+        - asset: fonts/NotoSans-Medium.ttf
           weight: 500
-        - asset: fonts/CreatoDisplay-MediumItalic.ttf
+        - asset: fonts/NotoSans-MediumItalic.ttf
           weight: 500
           style: italic
-        - asset: fonts/CreatoDisplay-Bold.ttf
+        - asset: fonts/NotoSans-Bold.ttf
           weight: 700
-        - asset: fonts/CreatoDisplay-BoldItalic.ttf
+        - asset: fonts/NotoSans-BoldItalic.ttf
           weight: 700
           style: italic
-        - asset: fonts/CreatoDisplay-ExtraBold.ttf
+        - asset: fonts/NotoSans-ExtraBold.ttf
           weight: 800
-        - asset: fonts/CreatoDisplay-ExtraBoldItalic.ttf
+        - asset: fonts/NotoSans-ExtraBoldItalic.ttf
           weight: 800
           style: italic
-        - asset: fonts/CreatoDisplay-Black.ttf
+        - asset: fonts/NotoSans-Black.ttf
           weight: 900
-        - asset: fonts/CreatoDisplay-BlackItalic.ttf
+        - asset: fonts/NotoSans-BlackItalic.ttf
           weight: 900
           style: italic
   #

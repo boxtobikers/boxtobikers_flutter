@@ -24,9 +24,9 @@ class MyApp extends StatelessWidget {
       supportedLocales: S.delegate.supportedLocales,
       title: 'BoxtoBikers',
       // The Big stone, light theme. Other gold
-      theme: FlexThemeData.light(scheme: FlexScheme.bigStone, fontFamily: 'CreatoDisplay'),
+      theme: FlexThemeData.light(scheme: FlexScheme.bigStone, fontFamily: 'NotoSans'),
       // The Big stone, dark theme. Other gold
-      darkTheme: FlexThemeData.dark(scheme: FlexScheme.bigStone),
+      darkTheme: FlexThemeData.dark(scheme: FlexScheme.bigStone, fontFamily: 'NotoSans'),
       themeMode: ThemeMode.system,
       home: Builder(
         builder: (context) => MyHomePage(title: S.of(context).homeTitle),
