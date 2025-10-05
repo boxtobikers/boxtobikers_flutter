@@ -37,10 +37,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Make a tour to discover, it\'s here !"),
         "homeItemExploreTitle":
             MessageLookupByLibrary.simpleMessage("Explore the site"),
-        "homeItemSettingsDescription": MessageLookupByLibrary.simpleMessage(
-            "Configure cookies, notifications, ..."),
+        "homeItemSettingsDescription":
+            MessageLookupByLibrary.simpleMessage("Cookies, notifications, ..."),
         "homeItemSettingsTitle":
-            MessageLookupByLibrary.simpleMessage("Settings"),
+            MessageLookupByLibrary.simpleMessage("Your settings"),
         "homeItemWhoAmIDescription": MessageLookupByLibrary.simpleMessage(
             "We tell you everything... or almost !"),
         "homeItemWhoAmITitle":

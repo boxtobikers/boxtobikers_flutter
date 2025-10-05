@@ -1,4 +1,3 @@
-import 'package:boxtobikers/features/settings/ui/pages/settings.dart';
 import 'package:flutter/material.dart';
 import 'home_items.dart';
 import '../../about/ui/pages/about.dart';
@@ -38,6 +37,17 @@ class HomeItemsData {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => const SettingsPage()),
+          );
+        },
+      ),
+      HomeItems(
+        icon: Icons.settings,
+        titleKey: 'homeItemSettingsTitle',
+        descriptionKey: 'homeItemSettingsDescription',
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const AboutPage()),
           );
         },
       ),

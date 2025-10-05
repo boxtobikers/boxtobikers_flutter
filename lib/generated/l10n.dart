@@ -160,20 +160,20 @@ class S {
     );
   }
 
-  /// `Settings`
+  /// `Your settings`
   String get homeItemSettingsTitle {
     return Intl.message(
-      'Settings',
+      'Your settings',
       name: 'homeItemSettingsTitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `Configure cookies, notifications, ...`
+  /// `Cookies, notifications, ...`
   String get homeItemSettingsDescription {
     return Intl.message(
-      'Configure cookies, notifications, ...',
+      'Cookies, notifications, ...',
       name: 'homeItemSettingsDescription',
       desc: '',
       args: [],

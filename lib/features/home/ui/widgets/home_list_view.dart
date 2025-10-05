@@ -61,49 +61,40 @@ class HomeListView extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(12.0),
-        hoverColor: Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
-        splashColor: Theme.of(context).colorScheme.primary.withValues(alpha: 0.2),
-        highlightColor: Theme.of(context).colorScheme.primary.withValues(alpha: 0.15),
         child: Container(
           decoration: BoxDecoration(
             border: Border.all(
-              color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.2),
+              color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.6),
               width: 1,
             ),
             borderRadius: BorderRadius.circular(12.0),
           ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 12.0),
-            child: Row(
-              children: [
-                Icon(icon, size: 28.0, color: Theme.of(context).colorScheme.primary),
-                const SizedBox(width: 16.0),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        title,
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 4.0),
-                      Text(
-                        description,
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: Theme.of(context).colorScheme.onPrimaryContainer,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Icon(
-                  Icons.chevron_right,
-                  size: 28.0,
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-              ],
+          child: ListTile(
+            leading: Icon(
+              icon,
+              size: 24.0,
+              color: Theme.of(context).colorScheme.primary,
+            ),
+            title: Text(
+              title,
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            subtitle: Text(
+              description,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: Theme.of(context).colorScheme.onPrimaryContainer,
+              ),
+            ),
+            trailing: Icon(
+              Icons.chevron_right,
+              size: 24.0,
+              color: Theme.of(context).colorScheme.primary,
+            ),
+            contentPadding: const EdgeInsets.symmetric(
+              vertical: 8.0,
+              horizontal: 16.0,
             ),
           ),
         ),

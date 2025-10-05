@@ -26,8 +26,8 @@
   "homeItemExploreDescription": "Envie de découvrir, c'est ici !",
   "homeItemWhoAmITitle": "Qui sommes-nous ?",
   "homeItemWhoAmIDescription": "On vous dit tout… ou presque !",
-  "homeItemSettingsTitle": "Paramètres",
-  "homeItemSettingsDescription": "Configurez vos cookies, notifications…",
+  "homeItemSettingsTitle": "Vos paramètres",
+  "homeItemSettingsDescription": "Vos cookies, notifications…",
 
   "@@_RIDING": {},
   "ridingTitle": "Mes trajets",

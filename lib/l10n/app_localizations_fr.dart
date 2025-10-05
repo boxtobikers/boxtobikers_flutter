@@ -45,11 +45,10 @@ class AppLocalizationsFr extends AppLocalizations {
   String get homeItemWhoAmIDescription => 'On vous dit tout… ou presque !';
 
   @override
-  String get homeItemSettingsTitle => 'Paramètres';
+  String get homeItemSettingsTitle => 'Vos paramètres';
 
   @override
-  String get homeItemSettingsDescription =>
-      'Configurez vos cookies, notifications…';
+  String get homeItemSettingsDescription => 'Vos cookies, notifications…';
 
   @override
   String get ridingTitle => 'Mes trajets';

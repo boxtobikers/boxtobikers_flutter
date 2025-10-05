@@ -167,13 +167,13 @@ abstract class AppLocalizations {
   /// No description provided for @homeItemSettingsTitle.
   ///
   /// In en, this message translates to:
-  /// **'Settings'**
+  /// **'Your settings'**
   String get homeItemSettingsTitle;
 
   /// No description provided for @homeItemSettingsDescription.
   ///
   /// In en, this message translates to:
-  /// **'Configure cookies, notifications, ...'**
+  /// **'Cookies, notifications, ...'**
   String get homeItemSettingsDescription;
 
   /// No description provided for @ridingTitle.

@@ -46,11 +46,10 @@ class AppLocalizationsEn extends AppLocalizations {
       'We tell you everything... or almost !';
 
   @override
-  String get homeItemSettingsTitle => 'Settings';
+  String get homeItemSettingsTitle => 'Your settings';
 
   @override
-  String get homeItemSettingsDescription =>
-      'Configure cookies, notifications, ...';
+  String get homeItemSettingsDescription => 'Cookies, notifications, ...';
 
   @override
   String get ridingTitle => 'My rides';
