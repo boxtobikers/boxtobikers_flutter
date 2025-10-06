@@ -2,8 +2,31 @@ import 'package:flutter/material.dart';
 import '../../../../generated/l10n.dart';
 import '../../models/home_items_data.dart';
 
-class HomeListViewWidget extends StatelessWidget {
+class HomeListViewWidget extends StatefulWidget {
   const HomeListViewWidget({super.key});
+
+  @override
+  State<HomeListViewWidget> createState() => _HomeListViewWidgetState();
+}
+
+class _HomeListViewWidgetState extends State<HomeListViewWidget> {
+  // Track the state of each item by index
+  final Map<int, Set<WidgetState>> _itemStates = {};
+
+  Set<WidgetState> _getItemStates(int index) {
+    return _itemStates.putIfAbsent(index, () => {});
+  }
+
+  void _updateItemState(int index, WidgetState state, bool value) {
+    setState(() {
+      final states = _getItemStates(index);
+      if (value) {
+        states.add(state);
+      } else {
+        states.remove(state);
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +38,112 @@ class HomeListViewWidget extends StatelessWidget {
         itemCount: listItems.length,
         itemBuilder: (context, index) {
           final item = listItems[index];
+          final states = _getItemStates(index);
+          final theme = Theme.of(context);
+          final colorScheme = theme.colorScheme;
+          final radius = BorderRadius.circular(12.0);
+
+          // Use Material 3 primary button state colors
+          final overlayColor = WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
+            if (states.contains(WidgetState.pressed)) {
+              return colorScheme.onPrimaryContainer;
+            }
+            if (states.contains(WidgetState.hovered)) {
+              return colorScheme.primaryContainer;
+            }
+            if (states.contains(WidgetState.focused)) {
+              return colorScheme.onPrimaryContainer;
+            }
+            return null;
+          });
+
+          // Use Material 3 primary container colors for background
+          final backgroundColor = WidgetStateProperty.resolveWith<Color>((Set<WidgetState> states) {
+            if (states.contains(WidgetState.pressed)) {
+              return colorScheme.primaryContainer;
+            }
+            if (states.contains(WidgetState.hovered)) {
+              return colorScheme.primaryContainer;
+            }
+            if (states.contains(WidgetState.focused)) {
+              return colorScheme.primaryContainer;
+            }
+            return colorScheme.surface;
+          }).resolve(states);
+
+          // Use Material 3 primary colors for border
+          final borderColor = WidgetStateProperty.resolveWith<Color>((Set<WidgetState> states) {
+            if (states.contains(WidgetState.pressed) ||
+                states.contains(WidgetState.focused)) {
+              return colorScheme.primary;
+            }
+            if (states.contains(WidgetState.hovered)) {
+              return colorScheme.primary;
+            }
+            return colorScheme.outlineVariant;
+          }).resolve(states);
+
+          // Text colors adapt to background
+          final isInteractive = states.contains(WidgetState.pressed) ||
+                                 states.contains(WidgetState.hovered) ||
+                                 states.contains(WidgetState.focused);
+
+          final titleColor = isInteractive ? colorScheme.onPrimaryContainer : colorScheme.onSurface;
+          final subtitleColor = isInteractive ? colorScheme.onPrimaryContainer : colorScheme.onSurfaceVariant;
+          final iconColor = isInteractive ? colorScheme.onPrimaryContainer : colorScheme.primary;
+
           return Padding(
             padding: const EdgeInsets.only(bottom: 16.0),
-            child: _HomeInteractiveItem(
-              icon: item.icon,
-              title: _getLocalizedString(context, item.titleKey),
-              description: _getLocalizedString(context, item.descriptionKey),
-              onTap: item.onTap,
+            child: Material(
+              color: Colors.transparent,
+              child: FocusableActionDetector(
+                onShowFocusHighlight: (focused) => _updateItemState(index, WidgetState.focused, focused),
+                onShowHoverHighlight: (hovered) => _updateItemState(index, WidgetState.hovered, hovered),
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 200),
+                  curve: Curves.easeOutCubic,
+                  decoration: BoxDecoration(
+                    color: backgroundColor,
+                    border: Border.all(color: borderColor, width: 1),
+                    borderRadius: radius,
+                  ),
+                  child: InkWell(
+                    onTap: item.onTap,
+                    onHighlightChanged: (pressed) => _updateItemState(index, WidgetState.pressed, pressed),
+                    borderRadius: radius,
+                    overlayColor: overlayColor,
+                    child: ListTile(
+                      leading: Icon(
+                        item.icon,
+                        size: 24.0,
+                        color: iconColor,
+                      ),
+                      title: Text(
+                        _getLocalizedString(context, item.titleKey),
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.w600,
+                          color: titleColor,
+                        ),
+                      ),
+                      subtitle: Text(
+                        _getLocalizedString(context, item.descriptionKey),
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: subtitleColor,
+                        ),
+                      ),
+                      trailing: Icon(
+                        Icons.chevron_right,
+                        size: 24.0,
+                        color: iconColor,
+                      ),
+                      contentPadding: const EdgeInsets.symmetric(
+                        vertical: 8.0,
+                        horizontal: 16.0,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ),
           );
         },
@@ -47,124 +169,5 @@ class HomeListViewWidget extends StatelessWidget {
       default:
         return key;
     }
-  }
-}
-
-// ---------------------------------------------------------------------------
-// Interactive Home Item with Material 3 state layer styling
-// ---------------------------------------------------------------------------
-class _HomeInteractiveItem extends StatefulWidget {
-  const _HomeInteractiveItem({
-    required this.icon,
-    required this.title,
-    required this.description,
-    required this.onTap,
-  });
-
-  final IconData icon;
-  final String title;
-  final String description;
-  final VoidCallback onTap;
-
-  @override
-  State<_HomeInteractiveItem> createState() => _HomeInteractiveItemState();
-}
-
-class _HomeInteractiveItemState extends State<_HomeInteractiveItem> {
-  final Set<WidgetState> _states = {};
-
-  void _updateState(WidgetState state, bool value) {
-    setState(() {
-      if (value) {
-        _states.add(state);
-      } else {
-        _states.remove(state);
-      }
-    });
-  }
-
-  bool get _isHovered => _states.contains(WidgetState.hovered);
-  bool get _isFocused => _states.contains(WidgetState.focused);
-  bool get _isPressed => _states.contains(WidgetState.pressed);
-
-  // Material 3 state layer opacity values
-  double _getStateLayerOpacity() {
-    if (_isPressed) return 0.12;  // Pressed state
-    if (_isHovered) return 0.08;  // Hover state
-    if (_isFocused) return 0.12;  // Focus state
-    return 0.0;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
-    final radius = BorderRadius.circular(12.0);
-
-    // Calculate state layer color
-    final stateLayerOpacity = _getStateLayerOpacity();
-    final backgroundColor = stateLayerOpacity > 0
-        ? Color.alphaBlend(
-            colorScheme.primary.withValues(alpha: stateLayerOpacity),
-            colorScheme.surface,
-          )
-        : colorScheme.surface;
-
-    // Border color based on state
-    final borderOpacity = _isPressed ? 0.9 : (_isHovered ? 0.8 : (_isFocused ? 0.85 : 0.6));
-    final borderColor = colorScheme.primary.withValues(alpha: borderOpacity);
-
-    return Material(
-      color: Colors.transparent,
-      child: FocusableActionDetector(
-        onShowFocusHighlight: (focused) => _updateState(WidgetState.focused, focused),
-        onShowHoverHighlight: (hovered) => _updateState(WidgetState.hovered, hovered),
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
-          curve: Curves.easeOutCubic,
-          decoration: BoxDecoration(
-            color: backgroundColor,
-            border: Border.all(color: borderColor, width: 1),
-            borderRadius: radius,
-          ),
-          child: InkWell(
-            onTap: widget.onTap,
-            onHighlightChanged: (pressed) => _updateState(WidgetState.pressed, pressed),
-            borderRadius: radius,
-            splashColor: colorScheme.primary.withValues(alpha: 0.12),
-            highlightColor: colorScheme.primary.withValues(alpha: 0.08),
-            child: ListTile(
-              leading: Icon(
-                widget.icon,
-                size: 24.0,
-                color: colorScheme.primary,
-              ),
-              title: Text(
-                widget.title,
-                style: theme.textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.w600,
-                  color: colorScheme.onSurface,
-                ),
-              ),
-              subtitle: Text(
-                widget.description,
-                style: theme.textTheme.bodyMedium?.copyWith(
-                  color: colorScheme.onSurfaceVariant,
-                ),
-              ),
-              trailing: Icon(
-                Icons.chevron_right,
-                size: 24.0,
-                color: colorScheme.primary,
-              ),
-              contentPadding: const EdgeInsets.symmetric(
-                vertical: 8.0,
-                horizontal: 16.0,
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
   }
 }

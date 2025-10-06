@@ -65,7 +65,7 @@ class HomePages extends StatelessWidget {
                           padding: const EdgeInsets.all(16.0),
                           child: Text(
                             S.of(context).homeTitle,
-                            style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                            style: Theme.of(context).textTheme.titleLarge?.copyWith(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                               shadows: [
