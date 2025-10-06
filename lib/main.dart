@@ -7,6 +7,7 @@ import 'features/home/ui/pages/home.pages.dart';
 import 'features/about/ui/pages/about.pages.dart';
 import 'features/settings/ui/pages/settings.pages.dart';
 import 'features/riding/ui/pages/riding.pages.dart';
+import 'features/shared/business/app_constants.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
-      title: 'BoxtoBikers',
+      title: AppConstants.appTitle,
       // The Big stone, light theme
       theme: FlexThemeData.light(
         scheme: FlexScheme.bigStone,

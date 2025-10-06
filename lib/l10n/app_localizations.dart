@@ -104,6 +104,30 @@ abstract class AppLocalizations {
   /// **'en'**
   String get flag;
 
+  /// No description provided for @appDrawerAboutTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get appDrawerAboutTitle;
+
+  /// No description provided for @appDrawerHomeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get appDrawerHomeTitle;
+
+  /// No description provided for @appDrawerRidingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Let\'s go !'**
+  String get appDrawerRidingTitle;
+
+  /// No description provided for @appDrawerSettingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get appDrawerSettingsTitle;
+
   /// No description provided for @appTitle.
   ///
   /// In en, this message translates to:

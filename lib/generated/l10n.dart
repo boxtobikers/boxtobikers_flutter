@@ -60,6 +60,46 @@ class S {
     );
   }
 
+  /// `About`
+  String get appDrawerAboutTitle {
+    return Intl.message(
+      'About',
+      name: 'appDrawerAboutTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Home`
+  String get appDrawerHomeTitle {
+    return Intl.message(
+      'Home',
+      name: 'appDrawerHomeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Let's go !`
+  String get appDrawerRidingTitle {
+    return Intl.message(
+      'Let\'s go !',
+      name: 'appDrawerRidingTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get appDrawerSettingsTitle {
+    return Intl.message(
+      'Settings',
+      name: 'appDrawerSettingsTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `BoxtoBikers`
   String get appTitle {
     return Intl.message(

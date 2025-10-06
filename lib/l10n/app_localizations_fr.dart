@@ -12,6 +12,18 @@ class AppLocalizationsFr extends AppLocalizations {
   String get flag => 'fr';
 
   @override
+  String get appDrawerAboutTitle => 'À propos';
+
+  @override
+  String get appDrawerHomeTitle => 'Accueil';
+
+  @override
+  String get appDrawerRidingTitle => 'En route !';
+
+  @override
+  String get appDrawerSettingsTitle => 'Vos préférences';
+
+  @override
   String get appTitle => 'BoxtoBikers';
 
   @override

@@ -2,6 +2,10 @@
   "flag": "fr",
 
   "@@_APP": {},
+  "appDrawerAboutTitle": "À propos",
+  "appDrawerHomeTitle": "Accueil",
+  "appDrawerRidingTitle": "En route !",
+  "appDrawerSettingsTitle": "Vos préférences",
   "appTitle": "BoxtoBikers",
 
   "@@_HOME": {},

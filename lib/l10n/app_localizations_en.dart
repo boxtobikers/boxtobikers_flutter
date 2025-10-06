@@ -12,6 +12,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get flag => 'en';
 
   @override
+  String get appDrawerAboutTitle => 'About';
+
+  @override
+  String get appDrawerHomeTitle => 'Home';
+
+  @override
+  String get appDrawerRidingTitle => 'Let\'s go !';
+
+  @override
+  String get appDrawerSettingsTitle => 'Settings';
+
+  @override
   String get appTitle => 'BoxtoBikers';
 
   @override
