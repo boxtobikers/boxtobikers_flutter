@@ -13,6 +13,7 @@ class _AboutPagesState extends State<AboutPages> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.primaryContainer,
       drawer: const AppNavigationDrawer(
         selectedIndex: 1, // About est à l'index 1
       ),
@@ -22,9 +23,13 @@ class _AboutPagesState extends State<AboutPages> {
             // Section supérieure avec icône Flutter et titre
             Container(
               width: double.infinity,
-              padding: const EdgeInsets.all(24.0),
+              padding: const EdgeInsets.only(top: 24.0, bottom: 24.0, right: 16.0),
               decoration: BoxDecoration(
                 color: Theme.of(context).primaryColorLight,
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(16.0),
+                  bottomRight: Radius.circular(16.0),
+                ),
                 border: Border(
                   bottom: BorderSide(
                     color: Theme.of(context).dividerColor,
@@ -34,17 +39,18 @@ class _AboutPagesState extends State<AboutPages> {
               ),
               child: Row(
                 children: [
-                  Builder(
-                    builder: (context) => IconButton(
-                      icon: const Icon(Icons.menu),
-                      onPressed: () {
-                        Scaffold.of(context).openDrawer();
-                      },
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Builder(
+                      builder: (context) => IconButton(
+                        padding: EdgeInsets.zero,
+                        constraints: const BoxConstraints(),
+                        icon: const Icon(Icons.menu),
+                        onPressed: () {
+                          Scaffold.of(context).openDrawer();
+                        },
+                      ),
                     ),
-                  ),
-                  const SizedBox(width: 16),
-                  const FlutterLogo(
-                    size: 48,
                   ),
                   const SizedBox(width: 16),
                   Text(
@@ -58,64 +64,67 @@ class _AboutPagesState extends State<AboutPages> {
             ),
             // Zone de contenu
             Expanded(
-              child: SingleChildScrollView(
+              child: ListView(
                 padding: const EdgeInsets.all(24.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'BoxToBikers',
-                      style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(16.0),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.secondaryContainer,
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Si vous êtes arrivés là,',
+                          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                                fontWeight: FontWeight.bold,
+                              ),
+                        ),
+                        const SizedBox(height: 16),
+                        Text(
+                          "Vous voulez savoir ce que l'on fait, pourquoi on le fait, ou tout simplement nous connaître, histoire d'être rassuré.",
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          "Bon réflexe, vous êtes au bon endroit !.",
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                  Container(
+                    padding: const EdgeInsets.all(16.0),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.tertiaryContainer,
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Chez BoxToBikers, notre mission est de fournir un service sécurisé de "gardiennage" de son équipement, aux adeptes du 2 roues.',
+                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                             fontWeight: FontWeight.bold,
                           ),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          "Concrètement, pouvoir visiter, se baigner, déjeuner, ..., sans son équipement, c'est vous apporter plus de liberté.",
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          "Voici notre engagement, alors à bientôt et merci de votre confiance.",
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
+                      ],
                     ),
-                    const SizedBox(height: 16),
-                    Text(
-                      'Bienvenue dans BoxToBikers, votre compagnon de voyage à moto.',
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                    const SizedBox(height: 24),
-                    Text(
-                      'Notre mission',
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      'Nous développons une application pour vous accompagner dans vos aventures à moto, '
-                      'que ce soit pour de courts trajets urbains ou de longues escapades sur la route.',
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                    const SizedBox(height: 24),
-                    Text(
-                      'Fonctionnalités',
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      '• Suivi de vos trajets en temps réel\n'
-                      '• Statistiques de vos parcours\n'
-                      '• Partage de vos expériences\n'
-                      '• Communauté de motards passionnés',
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                    const SizedBox(height: 24),
-                    Text(
-                      'Version',
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
-                    ),
-                    const SizedBox(height: 8),
-                    Text(
-                      'Version 1.0.0',
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ],

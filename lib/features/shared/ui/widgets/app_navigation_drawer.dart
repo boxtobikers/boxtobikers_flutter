@@ -36,7 +36,7 @@ class AppNavigationDrawer extends StatelessWidget {
       onDestinationSelected: (index) => _onDestinationSelected(context, index, destList),
       children: [
         Padding(
-          padding: const EdgeInsets.fromLTRB(28, 16, 16, 10),
+          padding: const EdgeInsets.fromLTRB(32, 16, 16, 8),
           child: Text(
             drawerTitle,
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
