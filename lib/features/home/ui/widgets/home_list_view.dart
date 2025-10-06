@@ -17,8 +17,7 @@ class HomeListView extends StatelessWidget {
           final item = listItems[index];
           return Padding(
             padding: const EdgeInsets.only(bottom: 16.0),
-            child: _buildItems(
-              context,
+            child: _HomeInteractiveItem(
               icon: item.icon,
               title: _getLocalizedString(context, item.titleKey),
               description: _getLocalizedString(context, item.descriptionKey),
@@ -49,52 +48,119 @@ class HomeListView extends StatelessWidget {
         return key;
     }
   }
+}
 
-  Widget _buildItems(BuildContext context, {
-    required IconData icon,
-    required String title,
-    required String description,
-    required VoidCallback onTap,
-  }) {
+// ---------------------------------------------------------------------------
+// Interactive Home Item with Material 3 state layer styling
+// ---------------------------------------------------------------------------
+class _HomeInteractiveItem extends StatefulWidget {
+  const _HomeInteractiveItem({
+    required this.icon,
+    required this.title,
+    required this.description,
+    required this.onTap,
+  });
+
+  final IconData icon;
+  final String title;
+  final String description;
+  final VoidCallback onTap;
+
+  @override
+  State<_HomeInteractiveItem> createState() => _HomeInteractiveItemState();
+}
+
+class _HomeInteractiveItemState extends State<_HomeInteractiveItem> {
+  final Set<WidgetState> _states = {};
+
+  void _updateState(WidgetState state, bool value) {
+    setState(() {
+      if (value) {
+        _states.add(state);
+      } else {
+        _states.remove(state);
+      }
+    });
+  }
+
+  bool get _isHovered => _states.contains(WidgetState.hovered);
+  bool get _isFocused => _states.contains(WidgetState.focused);
+  bool get _isPressed => _states.contains(WidgetState.pressed);
+
+  // Material 3 state layer opacity values
+  double _getStateLayerOpacity() {
+    if (_isPressed) return 0.12;  // Pressed state
+    if (_isHovered) return 0.08;  // Hover state
+    if (_isFocused) return 0.12;  // Focus state
+    return 0.0;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final radius = BorderRadius.circular(12.0);
+
+    // Calculate state layer color
+    final stateLayerOpacity = _getStateLayerOpacity();
+    final backgroundColor = stateLayerOpacity > 0
+        ? Color.alphaBlend(
+            colorScheme.primary.withValues(alpha: stateLayerOpacity),
+            colorScheme.surface,
+          )
+        : colorScheme.surface;
+
+    // Border color based on state
+    final borderOpacity = _isPressed ? 0.9 : (_isHovered ? 0.8 : (_isFocused ? 0.85 : 0.6));
+    final borderColor = colorScheme.primary.withValues(alpha: borderOpacity);
+
     return Material(
       color: Colors.transparent,
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(12.0),
-        child: Container(
+      child: FocusableActionDetector(
+        onShowFocusHighlight: (focused) => _updateState(WidgetState.focused, focused),
+        onShowHoverHighlight: (hovered) => _updateState(WidgetState.hovered, hovered),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          curve: Curves.easeOutCubic,
           decoration: BoxDecoration(
-            border: Border.all(
-              color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.6),
-              width: 1,
-            ),
-            borderRadius: BorderRadius.circular(12.0),
+            color: backgroundColor,
+            border: Border.all(color: borderColor, width: 1),
+            borderRadius: radius,
           ),
-          child: ListTile(
-            leading: Icon(
-              icon,
-              size: 24.0,
-              color: Theme.of(context).colorScheme.primary,
-            ),
-            title: Text(
-              title,
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold,
+          child: InkWell(
+            onTap: widget.onTap,
+            onHighlightChanged: (pressed) => _updateState(WidgetState.pressed, pressed),
+            borderRadius: radius,
+            splashColor: colorScheme.primary.withValues(alpha: 0.12),
+            highlightColor: colorScheme.primary.withValues(alpha: 0.08),
+            child: ListTile(
+              leading: Icon(
+                widget.icon,
+                size: 24.0,
+                color: colorScheme.primary,
               ),
-            ),
-            subtitle: Text(
-              description,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: Theme.of(context).colorScheme.onPrimaryContainer,
+              title: Text(
+                widget.title,
+                style: theme.textTheme.titleMedium?.copyWith(
+                  fontWeight: FontWeight.w600,
+                  color: colorScheme.onSurface,
+                ),
               ),
-            ),
-            trailing: Icon(
-              Icons.chevron_right,
-              size: 24.0,
-              color: Theme.of(context).colorScheme.primary,
-            ),
-            contentPadding: const EdgeInsets.symmetric(
-              vertical: 8.0,
-              horizontal: 16.0,
+              subtitle: Text(
+                widget.description,
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  color: colorScheme.onSurfaceVariant,
+                ),
+              ),
+              trailing: Icon(
+                Icons.chevron_right,
+                size: 24.0,
+                color: colorScheme.primary,
+              ),
+              contentPadding: const EdgeInsets.symmetric(
+                vertical: 8.0,
+                horizontal: 16.0,
+              ),
             ),
           ),
         ),

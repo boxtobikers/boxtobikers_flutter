@@ -40,17 +40,6 @@ class HomeItemsData {
           );
         },
       ),
-      HomeItems(
-        icon: Icons.settings,
-        titleKey: 'homeItemSettingsTitle',
-        descriptionKey: 'homeItemSettingsDescription',
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const AboutPage()),
-          );
-        },
-      ),
     ];
   }
 }
