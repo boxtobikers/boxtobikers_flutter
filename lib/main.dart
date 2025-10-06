@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';
-import 'features/home/ui/pages/home.dart';
+import 'features/home/ui/pages/home.pages.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
       ),
       themeMode: ThemeMode.system,
       home: Builder(
-        builder: (context) => MyHomePage(title: S.of(context).homeTitle),
+        builder: (context) => HomePages(title: S.of(context).homeTitle),
       ),
     );
   }

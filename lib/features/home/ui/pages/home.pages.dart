@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../../../generated/l10n.dart';
-import '../widgets/home_list_view.dart';
+import '../widgets/home_list_view.widget.dart';
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key, required this.title});
+class HomePages extends StatelessWidget {
+  const HomePages({super.key, required this.title});
 
   final String title;
 
@@ -84,7 +84,7 @@ class MyHomePage extends StatelessWidget {
                   ),
                 ),
                 const Expanded(
-                  child: HomeListView(),
+                  child: HomeListViewWidget(),
                 ),
               ],
             ),

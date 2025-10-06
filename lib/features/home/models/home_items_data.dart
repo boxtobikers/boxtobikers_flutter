@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'home_items.dart';
-import '../../about/ui/pages/about.dart';
-import '../../riding/ui/pages/riding.dart';
-import '../../settings/ui/pages/settings.dart';
+import '../../about/ui/pages/about.pages.dart';
+import '../../riding/ui/pages/riding.pages.dart';
+import '../../settings/ui/pages/settings.pages.dart';
 
 class HomeItemsData {
   static List<HomeItems> getHomeItems(BuildContext context) {
@@ -14,7 +14,7 @@ class HomeItemsData {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const RidingPage()),
+            MaterialPageRoute(builder: (context) => const RidingPages()),
           );
         },
       ),
@@ -25,7 +25,7 @@ class HomeItemsData {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const AboutPage()),
+            MaterialPageRoute(builder: (context) => const AboutPages()),
           );
         },
       ),
@@ -36,7 +36,7 @@ class HomeItemsData {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const SettingsPage()),
+            MaterialPageRoute(builder: (context) => const SettingsPages()),
           );
         },
       ),

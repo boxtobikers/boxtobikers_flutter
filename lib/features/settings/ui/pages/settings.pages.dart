@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class SettingsPage extends StatefulWidget {
-  const SettingsPage({super.key});
+class SettingsPages extends StatefulWidget {
+  const SettingsPages({super.key});
 
   @override
-  State<StatefulWidget> createState() => _SettingsPageState();
+  State<StatefulWidget> createState() => _SettingsPagesState();
 }
 
-class _SettingsPageState extends State<SettingsPage> {
+class _SettingsPagesState extends State<SettingsPages> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

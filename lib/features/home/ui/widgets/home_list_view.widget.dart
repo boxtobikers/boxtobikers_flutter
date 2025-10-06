@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import '../../../../generated/l10n.dart';
 import '../../models/home_items_data.dart';
 
-class HomeListView extends StatelessWidget {
-  const HomeListView({super.key});
+class HomeListViewWidget extends StatelessWidget {
+  const HomeListViewWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
