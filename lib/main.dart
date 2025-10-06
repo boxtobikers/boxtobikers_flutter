@@ -4,6 +4,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'generated/l10n.dart';
 import 'features/home/ui/pages/home.pages.dart';
+import 'features/about/ui/pages/about.pages.dart';
+import 'features/settings/ui/pages/settings.pages.dart';
+import 'features/riding/ui/pages/riding.pages.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -53,6 +56,13 @@ class MyApp extends StatelessWidget {
         ),
       ),
       themeMode: ThemeMode.system,
+      initialRoute: '/home',
+      routes: {
+        '/home': (context) => HomePages(title: S.of(context).homeTitle),
+        '/about': (context) => const AboutPages(),
+        '/settings': (context) => const SettingsPages(),
+        '/riding': (context) => const RidingPages(),
+      },
       home: Builder(
         builder: (context) => HomePages(title: S.of(context).homeTitle),
       ),
