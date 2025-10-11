@@ -69,7 +69,10 @@ flutter:
     - assets/btb_android_splash.png
     - assets/btb_header_bordeaux.jpg
     - assets/btb_header_ocean.jpg
-    - assets/btb_header_paris.jpg
+    - assets/btb_header_moto.jpg
+    - assets/btb_header_moto_deux.jpg
+    - assets/btb_header_moto_trois.jpg
+    - assets/btb_moto.jpg
     - assets/btb_road.jpg
     - assets/btb_road.jpg
     - assets/btb_road.jpg
