@@ -60,10 +60,10 @@ class S {
     );
   }
 
-  /// `About`
+  /// `What about us ?`
   String get appDrawerAboutTitle {
     return Intl.message(
-      'About',
+      'What about us ?',
       name: 'appDrawerAboutTitle',
       desc: '',
       args: [],

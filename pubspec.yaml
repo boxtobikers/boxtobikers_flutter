@@ -66,15 +66,20 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/btb_splash.jpg
-    - assets/btb_splash.png
     - assets/btb_android_splash.png
+    - assets/btb_header_bordeaux.jpg
+    - assets/btb_header_ocean.jpg
+    - assets/btb_header_paris.jpg
+    - assets/btb_road.jpg
+    - assets/btb_road.jpg
     - assets/btb_road.jpg
     - assets/btb_road_free.jpg
     - assets/btb_road_trip.jpg
     - assets/btb_sea.jpg
     - assets/btb_sea_free.jpg
     - assets/btb_sea_front.jpg
+    - assets/btb_splash.jpg
+    - assets/btb_splash.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

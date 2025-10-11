@@ -12,7 +12,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get flag => 'en';
 
   @override
-  String get appDrawerAboutTitle => 'About';
+  String get appDrawerAboutTitle => 'What about us ?';
 
   @override
   String get appDrawerHomeTitle => 'Home';

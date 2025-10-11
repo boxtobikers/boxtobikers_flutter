@@ -107,7 +107,7 @@ abstract class AppLocalizations {
   /// No description provided for @appDrawerAboutTitle.
   ///
   /// In en, this message translates to:
-  /// **'About'**
+  /// **'What about us ?'**
   String get appDrawerAboutTitle;
 
   /// No description provided for @appDrawerHomeTitle.

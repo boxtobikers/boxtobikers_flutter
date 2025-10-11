@@ -128,6 +128,7 @@ class _HomeListViewWidgetState extends State<HomeListViewWidget> {
                       subtitle: Text(
                         _getLocalizedString(context, item.descriptionKey),
                         style: theme.textTheme.bodyMedium?.copyWith(
+                          fontWeight: FontWeight.w500,
                           color: subtitleColor,
                         ),
                       ),
