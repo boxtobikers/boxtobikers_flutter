@@ -56,7 +56,8 @@ class MyApp extends StatelessWidget {
           defaultRadius: 8.0,
         ),
       ),
-      themeMode: ThemeMode.system,
+      // themeMode: ThemeMode.system,
+      themeMode: ThemeMode.light,
       initialRoute: '/home',
       routes: {
         '/home': (context) => HomePages(title: S.of(context).homeTitle),

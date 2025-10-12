@@ -20,107 +20,173 @@ class _AboutPagesState extends State<AboutPages> {
         child: Column(
           children: [
             // Section supérieure avec icône Flutter et titre
-            Stack(
-              children: [
-                Container(
-                  width: double.infinity,
-                  height: MediaQuery.of(context).size.height / 3,
-                  decoration: BoxDecoration(
-                    image: const DecorationImage(
-                      image: AssetImage('assets/btb_header_paris.jpg'),
-                      fit: BoxFit.cover,
-                    ),
-                    borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(16.0),
-                      bottomRight: Radius.circular(16.0),
-                    ),
-                    border: Border(
-                      bottom: BorderSide(
-                        color: Theme.of(context).dividerColor,
-                        width: 1,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Stack(
+                children: [
+                  Container(
+                    width: double.infinity,
+                    height: MediaQuery.of(context).size.height / 3,
+                    decoration: BoxDecoration(
+                      image: const DecorationImage(
+                        image: AssetImage('assets/btb_header_moto.jpg'),
+                        fit: BoxFit.cover,
+                      ),
+                      borderRadius: const BorderRadius.only(
+                        bottomLeft: Radius.circular(16.0),
+                        bottomRight: Radius.circular(16.0),
+                      ),
+                      border: Border(
+                        bottom: BorderSide(
+                          color: Theme.of(context).dividerColor,
+                          width: 1,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                Positioned(
-                  top: 24.0,
-                  left: 8.0,
-                  child: Builder(
-                    builder: (context) => IconButton(
-                      padding: EdgeInsets.zero,
-                      constraints: const BoxConstraints(),
-                      icon: const Icon(Icons.menu),
-                      onPressed: () {
-                        Scaffold.of(context).openDrawer();
-                      },
+                  Positioned(
+                    top: 24.0,
+                    left: 8.0,
+                    child: Builder(
+                      builder: (context) => IconButton(
+                        padding: EdgeInsets.zero,
+                        constraints: const BoxConstraints(),
+                        icon: const Icon(Icons.menu),
+                        onPressed: () {
+                          Scaffold.of(context).openDrawer();
+                        },
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             const SizedBox(width: 16),
-            // Zone de contenu
+            // Titre fixe
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                'Qui sommes-nous ?',
+                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            // Zone de contenu scrollable
             Expanded(
               child: ListView(
-                padding: const EdgeInsets.only(top: 16.0),
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 children: [
-                  Container(
-                    padding: const EdgeInsets.all(16.0),
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.secondaryContainer,
-                      borderRadius: BorderRadius.circular(12.0),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Si vous êtes arrivés là,',
-                          style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                                fontWeight: FontWeight.bold,
-                              ),
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          "Vous voulez savoir ce que l'on fait, pourquoi on le fait, ou tout simplement nous connaître, histoire d'être rassuré.",
-                          style: Theme.of(context).textTheme.bodyLarge,
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          "Bon réflexe, vous êtes au bon endroit !.",
-                          style: Theme.of(context).textTheme.bodyLarge,
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 24),
-                  Container(
-                    padding: const EdgeInsets.all(16.0),
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.tertiaryContainer,
-                      borderRadius: BorderRadius.circular(12.0),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Chez BoxToBikers, notre mission est de fournir un service sécurisé de "gardiennage" de son équipement, aux adeptes du 2 roues.',
-                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            fontWeight: FontWeight.bold,
+                  Card(
+                    color: Theme.of(context).colorScheme.primaryContainer,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'BoxToBikers fourni un service sécurisé de "gardiennage" de son équipement, aux adeptes du 2 roues.',
+                            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          "Concrètement, pouvoir visiter, se baigner, déjeuner, ..., sans son équipement, c'est vous apporter plus de liberté.",
-                          style: Theme.of(context).textTheme.bodyLarge,
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          "Voici notre engagement, alors à bientôt et merci de votre confiance.",
-                          style: Theme.of(context).textTheme.bodyLarge,
-                        ),
-                      ],
+                          const SizedBox(height: 8),
+                          Text(
+                            "Concrètement, visiter, se baigner, déjeuner, ..., sans son équipement, c'est apporter plus de liberté.",
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            "Voici notre engagement, alors à bientôt et merci de votre confiance.",
+                            style: Theme.of(context).textTheme.bodyLarge,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
+                  const SizedBox(height: 16),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: IntrinsicHeight(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          {
+                            'year': '2023',
+                            'descriptions': ["L'idée du service en marche !", "La marque est protégée"],
+                          },
+                          {
+                            'year': '2025',
+                            'descriptions': ["Le design et le développement de l'application démarrent."],
+                          },
+                          {
+                            'year': "Aujourd'hui",
+                            'descriptions': ["On est sur les stores Apple, Android !", "x clients", "y lieux de dépose"],
+                          },
+                        ].asMap().entries.map((entry) {
+                          final index = entry.key;
+                          final data = entry.value;
+                          final year = data['year'] as String;
+                          final descriptions = data['descriptions'] as List<String>;
+
+                          return Padding(
+                            padding: EdgeInsets.only(
+                              right: index < 2 ? 16.0 : 0,
+                            ),
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.6,
+                              child: Card(
+                                color: Theme.of(context).colorScheme.secondaryContainer,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text(
+                                        year,
+                                        style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 16),
+                                      ...descriptions.map((description) => Padding(
+                                        padding: const EdgeInsets.only(bottom: 8.0),
+                                        child: Text(
+                                          description,
+                                          style: Theme.of(context).textTheme.bodyLarge,
+                                        ),
+                                      )).toList(),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  Card(
+                    color: Theme.of(context).colorScheme.tertiaryContainer,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Merci de votre confiance !',
+                            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+
                 ],
               ),
             ),
