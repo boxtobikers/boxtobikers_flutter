@@ -73,6 +73,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ridingStopButton => 'End ride';
 
   @override
+  String get settingsTitle => 'Settings';
+
+  @override
   String get commonCancel => 'Cancel';
 
   @override

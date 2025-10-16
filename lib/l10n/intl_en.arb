@@ -37,6 +37,9 @@
   "ridingStartButton": "Start a ride",
   "ridingStopButton": "End ride",
 
+  "@@_SETTINGS": {},
+  "settingsTitle": "Settings",
+
   "@@_COMMON": {},
   "commonCancel": "Cancel",
   "commonConfirm": "Confirm",

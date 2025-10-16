@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../shared/ui/widgets/app_navigation_drawer.dart';
+import '../../../../generated/l10n.dart';
 
 class SettingsPages extends StatefulWidget {
   const SettingsPages({super.key});
@@ -11,6 +12,8 @@ class SettingsPages extends StatefulWidget {
 class _SettingsPagesState extends State<SettingsPages> {
   @override
   Widget build(BuildContext context) {
+    final l10n = S.of(context);
+
     return Scaffold(
       drawer: const AppNavigationDrawer(
         selectedIndex: 2, // Settings est à l'index 2
@@ -32,7 +35,7 @@ class _SettingsPagesState extends State<SettingsPages> {
                   ),
                   const SizedBox(width: 8),
                   Text(
-                    'Settings Page',
+                    l10n.settingsTitle,
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),

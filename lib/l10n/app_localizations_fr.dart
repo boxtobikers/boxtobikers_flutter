@@ -72,6 +72,9 @@ class AppLocalizationsFr extends AppLocalizations {
   String get ridingStopButton => 'Terminer le trajet';
 
   @override
+  String get settingsTitle => 'Vos préférences';
+
+  @override
   String get commonCancel => 'Annuler';
 
   @override

@@ -218,6 +218,12 @@ abstract class AppLocalizations {
   /// **'End ride'**
   String get ridingStopButton;
 
+  /// No description provided for @settingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settingsTitle;
+
   /// No description provided for @commonCancel.
   ///
   /// In en, this message translates to:

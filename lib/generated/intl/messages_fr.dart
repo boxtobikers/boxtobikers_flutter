@@ -59,6 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Commencer un trajet"),
         "ridingStopButton":
             MessageLookupByLibrary.simpleMessage("Terminer le trajet"),
-        "ridingTitle": MessageLookupByLibrary.simpleMessage("Mes trajets")
+        "ridingTitle": MessageLookupByLibrary.simpleMessage("Mes trajets"),
+        "settingsTitle": MessageLookupByLibrary.simpleMessage("Vos préférences")
       };
 }

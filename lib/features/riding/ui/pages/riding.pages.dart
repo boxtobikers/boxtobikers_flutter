@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../shared/ui/widgets/app_navigation_drawer.dart';
+import '../../../../generated/l10n.dart';
 
 class RidingPages extends StatefulWidget {
   const RidingPages({super.key});
@@ -11,6 +12,8 @@ class RidingPages extends StatefulWidget {
 class _RidingPagesState extends State<RidingPages> {
   @override
   Widget build(BuildContext context) {
+    final l10n = S.of(context);
+
     return Scaffold(
       drawer: const AppNavigationDrawer(
         selectedIndex: 3, // Riding est à l'index 3
@@ -32,7 +35,7 @@ class _RidingPagesState extends State<RidingPages> {
                   ),
                   const SizedBox(width: 8),
                   Text(
-                    'Riding Page',
+                    l10n.ridingTitle,
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),

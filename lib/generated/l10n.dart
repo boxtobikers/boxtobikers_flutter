@@ -250,6 +250,16 @@ class S {
     );
   }
 
+  /// `Settings`
+  String get settingsTitle {
+    return Intl.message(
+      'Settings',
+      name: 'settingsTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Cancel`
   String get commonCancel {
     return Intl.message(

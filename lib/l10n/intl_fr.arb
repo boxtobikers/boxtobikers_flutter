@@ -38,6 +38,9 @@
   "ridingStartButton": "Commencer un trajet",
   "ridingStopButton": "Terminer le trajet",
 
+  "@@_SETTINGS": {},
+  "settingsTitle": "Vos préférences",
+
   "@@_COMMON": {},
   "commonCancel": "Annuler",
   "commonConfirm": "Confirmer",

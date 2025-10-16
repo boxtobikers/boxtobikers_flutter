@@ -4,31 +4,31 @@ import '../../../generated/l10n.dart';
 
 /// Retourne la liste des destinations de navigation de l'application avec les traductions
 List<AppDrawerDestination> getAppDrawerDestinations(BuildContext context) {
-  final s = S.of(context);
+  final l10n = S.of(context);
 
   return [
     AppDrawerDestination(
       icon: Icons.home_outlined,
       selectedIcon: Icons.home,
-      label: s.appDrawerHomeTitle,
+      label: l10n.appDrawerHomeTitle,
       route: '/home',
     ),
     AppDrawerDestination(
       icon: Icons.info_outlined,
       selectedIcon: Icons.info,
-      label: s.appDrawerAboutTitle,
+      label: l10n.appDrawerAboutTitle,
       route: '/about',
     ),
     AppDrawerDestination(
       icon: Icons.settings_outlined,
       selectedIcon: Icons.settings,
-      label: s.appDrawerSettingsTitle,
+      label: l10n.appDrawerSettingsTitle,
       route: '/settings',
     ),
     AppDrawerDestination(
       icon: Icons.directions_bike_outlined,
       selectedIcon: Icons.directions_bike,
-      label: s.appDrawerRidingTitle,
+      label: l10n.appDrawerRidingTitle,
       route: '/riding',
     ),
   ];

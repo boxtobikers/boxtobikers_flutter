@@ -156,7 +156,7 @@ class _AboutPagesState extends State<AboutPages> {
                                           description,
                                           style: Theme.of(context).textTheme.bodyLarge,
                                         ),
-                                      )).toList(),
+                                      )),
                                     ],
                                   ),
                                 ),

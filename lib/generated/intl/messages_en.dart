@@ -57,6 +57,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "ridingStartButton":
             MessageLookupByLibrary.simpleMessage("Start a ride"),
         "ridingStopButton": MessageLookupByLibrary.simpleMessage("End ride"),
-        "ridingTitle": MessageLookupByLibrary.simpleMessage("My rides")
+        "ridingTitle": MessageLookupByLibrary.simpleMessage("My rides"),
+        "settingsTitle": MessageLookupByLibrary.simpleMessage("Settings")
       };
 }

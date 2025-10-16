@@ -11,6 +11,7 @@ class HomePages extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final stackHeight = screenHeight * 0.5;
+    final l10n = S.of(context);
 
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primaryContainer,
@@ -50,7 +51,7 @@ class HomePages extends StatelessWidget {
                                 weight: 700,
                               ),
                               label: Text(
-                                S.of(context).homeLoginButton,
+                                l10n.homeLoginButton,
                                 style: const TextStyle(fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -64,7 +65,7 @@ class HomePages extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Text(
-                            S.of(context).homeTitle,
+                            l10n.homeTitle,
                             style: Theme.of(context).textTheme.titleLarge?.copyWith(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
