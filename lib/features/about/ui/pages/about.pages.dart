@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../shared/ui/widgets/app_navigation_drawer.dart';
+import '../../../../generated/l10n.dart';
 
 class AboutPages extends StatefulWidget {
   const AboutPages({super.key});
@@ -11,6 +12,8 @@ class AboutPages extends StatefulWidget {
 class _AboutPagesState extends State<AboutPages> {
   @override
   Widget build(BuildContext context) {
+    final l10n = S.of(context);
+
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surfaceContainer,
       drawer: const AppNavigationDrawer(
@@ -26,7 +29,7 @@ class _AboutPagesState extends State<AboutPages> {
                 children: [
                   Container(
                     width: double.infinity,
-                    height: MediaQuery.of(context).size.height / 3,
+                    height: MediaQuery.of(context).size.height / 4,
                     decoration: BoxDecoration(
                       image: const DecorationImage(
                         image: AssetImage('assets/btb_header_moto.jpg'),
@@ -45,7 +48,7 @@ class _AboutPagesState extends State<AboutPages> {
                     ),
                   ),
                   Positioned(
-                    top: 24.0,
+                    top: 8.0,
                     left: 8.0,
                     child: Builder(
                       builder: (context) => IconButton(
@@ -66,7 +69,7 @@ class _AboutPagesState extends State<AboutPages> {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
-                'Qui sommes-nous ?',
+                  l10n.aboutTitle,
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
@@ -186,7 +189,6 @@ class _AboutPagesState extends State<AboutPages> {
                     ),
                   ),
                   const SizedBox(height: 16),
-
                 ],
               ),
             ),

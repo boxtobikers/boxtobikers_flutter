@@ -37,11 +37,29 @@
   "ridingStartButton": "Start a ride",
   "ridingStopButton": "End ride",
 
+  "@@_ABOUT": {},
+  "aboutTitle": "About us",
+
   "@@_SETTINGS": {},
   "settingsTitle": "Settings",
+  "settingsGeneralTitle": "General",
+  "settingsGeneralSubTitle": "Configure your application preferences and settings",
+  "settingsNotificationsTitle": "Notifications",
+  "settingsNotificationsText": "disabled currently",
+  "settingsNotificationsTextEnabled": "enabled currently",
+  "settingsProfilTitle": "Profil",
+  "settingsDisplayTitle": "Display",
+  "settingsDistanceTitle": "Distance",
+  "settingsDeviseTitle": "Currency",
+  "settingsLegalTitle": "Legal notices T&Cs",
+  "settingsLegalDocumentsTitle": "Regulatory documents",
+  "settingsLegalSubTitle": "Access all important legal information",
 
   "@@_COMMON": {},
   "commonCancel": "Cancel",
   "commonConfirm": "Confirm",
+  "commonView": "Consult",
+  "commonPersonalize": "Personalize",
+  "commonUpdate": "Update",
   "commonSave": "Save"
 }

@@ -73,13 +73,62 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ridingStopButton => 'End ride';
 
   @override
+  String get aboutTitle => 'About us';
+
+  @override
   String get settingsTitle => 'Settings';
+
+  @override
+  String get settingsGeneralTitle => 'General';
+
+  @override
+  String get settingsGeneralSubTitle =>
+      'Configure your application preferences and settings';
+
+  @override
+  String get settingsNotificationsTitle => 'Notifications';
+
+  @override
+  String get settingsNotificationsText => 'disabled currently';
+
+  @override
+  String get settingsNotificationsTextEnabled => 'enabled currently';
+
+  @override
+  String get settingsProfilTitle => 'Profil';
+
+  @override
+  String get settingsDisplayTitle => 'Display';
+
+  @override
+  String get settingsDistanceTitle => 'Distance';
+
+  @override
+  String get settingsDeviseTitle => 'Currency';
+
+  @override
+  String get settingsLegalTitle => 'Legal notices T&Cs';
+
+  @override
+  String get settingsLegalDocumentsTitle => 'Regulatory documents';
+
+  @override
+  String get settingsLegalSubTitle => 'Access all important legal information';
 
   @override
   String get commonCancel => 'Cancel';
 
   @override
   String get commonConfirm => 'Confirm';
+
+  @override
+  String get commonView => 'Consult';
+
+  @override
+  String get commonPersonalize => 'Personalize';
+
+  @override
+  String get commonUpdate => 'Update';
 
   @override
   String get commonSave => 'Save';

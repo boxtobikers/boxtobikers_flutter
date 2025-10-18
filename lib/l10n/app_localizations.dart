@@ -218,11 +218,89 @@ abstract class AppLocalizations {
   /// **'End ride'**
   String get ridingStopButton;
 
+  /// No description provided for @aboutTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'About us'**
+  String get aboutTitle;
+
   /// No description provided for @settingsTitle.
   ///
   /// In en, this message translates to:
   /// **'Settings'**
   String get settingsTitle;
+
+  /// No description provided for @settingsGeneralTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'General'**
+  String get settingsGeneralTitle;
+
+  /// No description provided for @settingsGeneralSubTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Configure your application preferences and settings'**
+  String get settingsGeneralSubTitle;
+
+  /// No description provided for @settingsNotificationsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get settingsNotificationsTitle;
+
+  /// No description provided for @settingsNotificationsText.
+  ///
+  /// In en, this message translates to:
+  /// **'disabled currently'**
+  String get settingsNotificationsText;
+
+  /// No description provided for @settingsNotificationsTextEnabled.
+  ///
+  /// In en, this message translates to:
+  /// **'enabled currently'**
+  String get settingsNotificationsTextEnabled;
+
+  /// No description provided for @settingsProfilTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Profil'**
+  String get settingsProfilTitle;
+
+  /// No description provided for @settingsDisplayTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Display'**
+  String get settingsDisplayTitle;
+
+  /// No description provided for @settingsDistanceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Distance'**
+  String get settingsDistanceTitle;
+
+  /// No description provided for @settingsDeviseTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Currency'**
+  String get settingsDeviseTitle;
+
+  /// No description provided for @settingsLegalTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Legal notices T&Cs'**
+  String get settingsLegalTitle;
+
+  /// No description provided for @settingsLegalDocumentsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Regulatory documents'**
+  String get settingsLegalDocumentsTitle;
+
+  /// No description provided for @settingsLegalSubTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Access all important legal information'**
+  String get settingsLegalSubTitle;
 
   /// No description provided for @commonCancel.
   ///
@@ -235,6 +313,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Confirm'**
   String get commonConfirm;
+
+  /// No description provided for @commonView.
+  ///
+  /// In en, this message translates to:
+  /// **'Consult'**
+  String get commonView;
+
+  /// No description provided for @commonPersonalize.
+  ///
+  /// In en, this message translates to:
+  /// **'Personalize'**
+  String get commonPersonalize;
+
+  /// No description provided for @commonUpdate.
+  ///
+  /// In en, this message translates to:
+  /// **'Update'**
+  String get commonUpdate;
 
   /// No description provided for @commonSave.
   ///

@@ -23,6 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "aboutTitle": MessageLookupByLibrary.simpleMessage("À propos de nous"),
         "appDrawerAboutTitle":
             MessageLookupByLibrary.simpleMessage("Qui sommes-nous ?"),
         "appDrawerHomeTitle": MessageLookupByLibrary.simpleMessage("Accueil"),
@@ -33,7 +34,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "appTitle": MessageLookupByLibrary.simpleMessage("BoxtoBikers"),
         "commonCancel": MessageLookupByLibrary.simpleMessage("Annuler"),
         "commonConfirm": MessageLookupByLibrary.simpleMessage("Confirmer"),
+        "commonPersonalize":
+            MessageLookupByLibrary.simpleMessage("Personnaliser"),
         "commonSave": MessageLookupByLibrary.simpleMessage("Enregistrer"),
+        "commonUpdate": MessageLookupByLibrary.simpleMessage("Modifier"),
+        "commonView": MessageLookupByLibrary.simpleMessage("Consulter"),
         "flag": MessageLookupByLibrary.simpleMessage("fr"),
         "homeCounterLabel": MessageLookupByLibrary.simpleMessage(
             "Vous avez appuyé sur le bouton ce nombre de fois :"),
@@ -60,6 +65,27 @@ class MessageLookup extends MessageLookupByLibrary {
         "ridingStopButton":
             MessageLookupByLibrary.simpleMessage("Terminer le trajet"),
         "ridingTitle": MessageLookupByLibrary.simpleMessage("Mes trajets"),
-        "settingsTitle": MessageLookupByLibrary.simpleMessage("Vos préférences")
+        "settingsDeviseTitle": MessageLookupByLibrary.simpleMessage("Devise"),
+        "settingsDisplayTitle":
+            MessageLookupByLibrary.simpleMessage("Affichage"),
+        "settingsDistanceTitle":
+            MessageLookupByLibrary.simpleMessage("Distance"),
+        "settingsGeneralSubTitle": MessageLookupByLibrary.simpleMessage(
+            "Configurez vos préférences et paramètres de l\'application"),
+        "settingsGeneralTitle": MessageLookupByLibrary.simpleMessage("Général"),
+        "settingsLegalDocumentsTitle":
+            MessageLookupByLibrary.simpleMessage("Documents règlementaires"),
+        "settingsLegalSubTitle": MessageLookupByLibrary.simpleMessage(
+            "Accéder à toutes les informations importantes"),
+        "settingsLegalTitle":
+            MessageLookupByLibrary.simpleMessage("Mentions légales CGU"),
+        "settingsNotificationsText":
+            MessageLookupByLibrary.simpleMessage("Actuellement désactivées"),
+        "settingsNotificationsTextEnabled":
+            MessageLookupByLibrary.simpleMessage("Actuellement activées"),
+        "settingsNotificationsTitle":
+            MessageLookupByLibrary.simpleMessage("Notifications"),
+        "settingsProfilTitle": MessageLookupByLibrary.simpleMessage("Profil"),
+        "settingsTitle": MessageLookupByLibrary.simpleMessage("Pramètres")
       };
 }

@@ -250,11 +250,141 @@ class S {
     );
   }
 
+  /// `About us`
+  String get aboutTitle {
+    return Intl.message(
+      'About us',
+      name: 'aboutTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Settings`
   String get settingsTitle {
     return Intl.message(
       'Settings',
       name: 'settingsTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `General`
+  String get settingsGeneralTitle {
+    return Intl.message(
+      'General',
+      name: 'settingsGeneralTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Configure your application preferences and settings`
+  String get settingsGeneralSubTitle {
+    return Intl.message(
+      'Configure your application preferences and settings',
+      name: 'settingsGeneralSubTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Notifications`
+  String get settingsNotificationsTitle {
+    return Intl.message(
+      'Notifications',
+      name: 'settingsNotificationsTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `disabled currently`
+  String get settingsNotificationsText {
+    return Intl.message(
+      'disabled currently',
+      name: 'settingsNotificationsText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `enabled currently`
+  String get settingsNotificationsTextEnabled {
+    return Intl.message(
+      'enabled currently',
+      name: 'settingsNotificationsTextEnabled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profil`
+  String get settingsProfilTitle {
+    return Intl.message(
+      'Profil',
+      name: 'settingsProfilTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Display`
+  String get settingsDisplayTitle {
+    return Intl.message(
+      'Display',
+      name: 'settingsDisplayTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Distance`
+  String get settingsDistanceTitle {
+    return Intl.message(
+      'Distance',
+      name: 'settingsDistanceTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Currency`
+  String get settingsDeviseTitle {
+    return Intl.message(
+      'Currency',
+      name: 'settingsDeviseTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Legal notices T&Cs`
+  String get settingsLegalTitle {
+    return Intl.message(
+      'Legal notices T&Cs',
+      name: 'settingsLegalTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Regulatory documents`
+  String get settingsLegalDocumentsTitle {
+    return Intl.message(
+      'Regulatory documents',
+      name: 'settingsLegalDocumentsTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Access all important legal information`
+  String get settingsLegalSubTitle {
+    return Intl.message(
+      'Access all important legal information',
+      name: 'settingsLegalSubTitle',
       desc: '',
       args: [],
     );
@@ -275,6 +405,36 @@ class S {
     return Intl.message(
       'Confirm',
       name: 'commonConfirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Consult`
+  String get commonView {
+    return Intl.message(
+      'Consult',
+      name: 'commonView',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Personalize`
+  String get commonPersonalize {
+    return Intl.message(
+      'Personalize',
+      name: 'commonPersonalize',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update`
+  String get commonUpdate {
+    return Intl.message(
+      'Update',
+      name: 'commonUpdate',
       desc: '',
       args: [],
     );

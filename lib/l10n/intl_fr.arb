@@ -39,10 +39,28 @@
   "ridingStopButton": "Terminer le trajet",
 
   "@@_SETTINGS": {},
-  "settingsTitle": "Vos préférences",
+  "settingsTitle": "Pramètres",
+  "settingsGeneralTitle": "Général",
+  "settingsGeneralSubTitle": "Configurez vos préférences et paramètres de l'application",
+  "settingsProfilTitle": "Profil",
+  "settingsNotificationsTitle": "Notifications",
+  "settingsNotificationsText": "Actuellement désactivées",
+  "settingsNotificationsTextEnabled": "Actuellement activées",
+  "settingsDisplayTitle": "Affichage",
+  "settingsLegalTitle": "Mentions légales CGU",
+  "settingsLegalDocumentsTitle": "Documents règlementaires",
+  "settingsDeviseTitle": "Devise",
+  "settingsDistanceTitle": "Distance",
+  "settingsLegalSubTitle": "Accéder à toutes les informations importantes",
+
+  "@@_ABOUT": {},
+  "aboutTitle": "À propos de nous",
 
   "@@_COMMON": {},
   "commonCancel": "Annuler",
   "commonConfirm": "Confirmer",
+  "commonView": "Consulter",
+  "commonPersonalize": "Personnaliser",
+  "commonUpdate": "Modifier",
   "commonSave": "Enregistrer"
 }

@@ -23,6 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "aboutTitle": MessageLookupByLibrary.simpleMessage("About us"),
         "appDrawerAboutTitle":
             MessageLookupByLibrary.simpleMessage("What about us ?"),
         "appDrawerHomeTitle": MessageLookupByLibrary.simpleMessage("Home"),
@@ -33,7 +34,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "appTitle": MessageLookupByLibrary.simpleMessage("BoxtoBikers"),
         "commonCancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "commonConfirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+        "commonPersonalize":
+            MessageLookupByLibrary.simpleMessage("Personalize"),
         "commonSave": MessageLookupByLibrary.simpleMessage("Save"),
+        "commonUpdate": MessageLookupByLibrary.simpleMessage("Update"),
+        "commonView": MessageLookupByLibrary.simpleMessage("Consult"),
         "flag": MessageLookupByLibrary.simpleMessage("en"),
         "homeCounterLabel": MessageLookupByLibrary.simpleMessage(
             "You have pushed the button this many times:"),
@@ -58,6 +63,26 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Start a ride"),
         "ridingStopButton": MessageLookupByLibrary.simpleMessage("End ride"),
         "ridingTitle": MessageLookupByLibrary.simpleMessage("My rides"),
+        "settingsDeviseTitle": MessageLookupByLibrary.simpleMessage("Currency"),
+        "settingsDisplayTitle": MessageLookupByLibrary.simpleMessage("Display"),
+        "settingsDistanceTitle":
+            MessageLookupByLibrary.simpleMessage("Distance"),
+        "settingsGeneralSubTitle": MessageLookupByLibrary.simpleMessage(
+            "Configure your application preferences and settings"),
+        "settingsGeneralTitle": MessageLookupByLibrary.simpleMessage("General"),
+        "settingsLegalDocumentsTitle":
+            MessageLookupByLibrary.simpleMessage("Regulatory documents"),
+        "settingsLegalSubTitle": MessageLookupByLibrary.simpleMessage(
+            "Access all important legal information"),
+        "settingsLegalTitle":
+            MessageLookupByLibrary.simpleMessage("Legal notices T&Cs"),
+        "settingsNotificationsText":
+            MessageLookupByLibrary.simpleMessage("disabled currently"),
+        "settingsNotificationsTextEnabled":
+            MessageLookupByLibrary.simpleMessage("enabled currently"),
+        "settingsNotificationsTitle":
+            MessageLookupByLibrary.simpleMessage("Notifications"),
+        "settingsProfilTitle": MessageLookupByLibrary.simpleMessage("Profil"),
         "settingsTitle": MessageLookupByLibrary.simpleMessage("Settings")
       };
 }

@@ -72,13 +72,63 @@ class AppLocalizationsFr extends AppLocalizations {
   String get ridingStopButton => 'Terminer le trajet';
 
   @override
-  String get settingsTitle => 'Vos préférences';
+  String get aboutTitle => 'À propos de nous';
+
+  @override
+  String get settingsTitle => 'Pramètres';
+
+  @override
+  String get settingsGeneralTitle => 'Général';
+
+  @override
+  String get settingsGeneralSubTitle =>
+      'Configurez vos préférences et paramètres de l\'application';
+
+  @override
+  String get settingsNotificationsTitle => 'Notifications';
+
+  @override
+  String get settingsNotificationsText => 'Actuellement désactivées';
+
+  @override
+  String get settingsNotificationsTextEnabled => 'Actuellement activées';
+
+  @override
+  String get settingsProfilTitle => 'Profil';
+
+  @override
+  String get settingsDisplayTitle => 'Affichage';
+
+  @override
+  String get settingsDistanceTitle => 'Distance';
+
+  @override
+  String get settingsDeviseTitle => 'Devise';
+
+  @override
+  String get settingsLegalTitle => 'Mentions légales CGU';
+
+  @override
+  String get settingsLegalDocumentsTitle => 'Documents règlementaires';
+
+  @override
+  String get settingsLegalSubTitle =>
+      'Accéder à toutes les informations importantes';
 
   @override
   String get commonCancel => 'Annuler';
 
   @override
   String get commonConfirm => 'Confirmer';
+
+  @override
+  String get commonView => 'Consulter';
+
+  @override
+  String get commonPersonalize => 'Personnaliser';
+
+  @override
+  String get commonUpdate => 'Modifier';
 
   @override
   String get commonSave => 'Enregistrer';
