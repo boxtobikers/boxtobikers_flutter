@@ -50,6 +50,10 @@
   "settingsLegalTitle": "Mentions légales CGU",
   "settingsLegalDocumentsTitle": "Documents règlementaires",
   "settingsDeviseTitle": "Devise",
+  "settingsThemeTitle": "Thème",
+  "settingsThemeLight": "Clair",
+  "settingsThemeDark": "Sombre",
+  "settingsThemeSystem": "Système",
   "settingsDistanceTitle": "Distance",
   "settingsLegalSubTitle": "Accéder à toutes les informations importantes",
 

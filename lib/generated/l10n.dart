@@ -360,6 +360,46 @@ class S {
     );
   }
 
+  /// `Theme`
+  String get settingsThemeTitle {
+    return Intl.message(
+      'Theme',
+      name: 'settingsThemeTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Light`
+  String get settingsThemeLight {
+    return Intl.message(
+      'Light',
+      name: 'settingsThemeLight',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dark`
+  String get settingsThemeDark {
+    return Intl.message(
+      'Dark',
+      name: 'settingsThemeDark',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `System`
+  String get settingsThemeSystem {
+    return Intl.message(
+      'System',
+      name: 'settingsThemeSystem',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Legal notices T&Cs`
   String get settingsLegalTitle {
     return Intl.message(

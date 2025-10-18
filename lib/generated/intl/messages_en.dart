@@ -83,6 +83,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "settingsNotificationsTitle":
             MessageLookupByLibrary.simpleMessage("Notifications"),
         "settingsProfilTitle": MessageLookupByLibrary.simpleMessage("Profil"),
+        "settingsThemeDark": MessageLookupByLibrary.simpleMessage("Dark"),
+        "settingsThemeLight": MessageLookupByLibrary.simpleMessage("Light"),
+        "settingsThemeSystem": MessageLookupByLibrary.simpleMessage("System"),
+        "settingsThemeTitle": MessageLookupByLibrary.simpleMessage("Theme"),
         "settingsTitle": MessageLookupByLibrary.simpleMessage("Settings")
       };
 }

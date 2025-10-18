@@ -106,6 +106,18 @@ class AppLocalizationsFr extends AppLocalizations {
   String get settingsDeviseTitle => 'Devise';
 
   @override
+  String get settingsThemeTitle => 'Thème';
+
+  @override
+  String get settingsThemeLight => 'Clair';
+
+  @override
+  String get settingsThemeDark => 'Sombre';
+
+  @override
+  String get settingsThemeSystem => 'Système';
+
+  @override
   String get settingsLegalTitle => 'Mentions légales CGU';
 
   @override

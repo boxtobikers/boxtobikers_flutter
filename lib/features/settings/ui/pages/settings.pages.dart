@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../../shared/ui/widgets/app_navigation_drawer.dart';
+import '../../../shared/business/providers/app_state_provider.dart';
+import '../../../shared/business/models/currency.dart';
+import '../../../shared/business/models/distance_unit.dart';
 import '../../../../generated/l10n.dart';
 
 class SettingsPages extends StatefulWidget {
@@ -11,27 +15,24 @@ class SettingsPages extends StatefulWidget {
 
 class _SettingsPagesState extends State<SettingsPages> {
   bool _notificationsEnabled = false;
-  String _distanceUnit = 'km';
-  String _currency = '€';
 
-  IconData _getCurrencyIcon() {
-    switch (_currency) {
-      case '€':
+  IconData _getCurrencyIcon(Currency currency) {
+    switch (currency) {
+      case Currency.euro:
         return Icons.euro_symbol;
-      case '\$':
+      case Currency.dollar:
         return Icons.attach_money;
-      case '£':
+      case Currency.pound:
         return Icons.currency_pound;
-      case '¥':
+      case Currency.yen:
         return Icons.currency_yen;
-      default:
-        return Icons.euro_symbol;
     }
   }
 
   @override
   Widget build(BuildContext context) {
     final l10n = S.of(context);
+    final appState = Provider.of<AppStateProvider>(context);
 
     return Scaffold(
       drawer: const AppNavigationDrawer(
@@ -180,7 +181,42 @@ class _SettingsPagesState extends State<SettingsPages> {
                         ListTile(
                           contentPadding: EdgeInsets.zero,
                           leading: Icon(
-                            _getCurrencyIcon(),
+                            Icons.brightness_6,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                          title: Text(
+                            l10n.settingsThemeTitle,
+                            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          trailing: SegmentedButton<ThemeMode>(
+                            segments: const [
+                              ButtonSegment<ThemeMode>(
+                                value: ThemeMode.light,
+                                icon: Icon(Icons.light_mode, size: 18),
+                              ),
+                              ButtonSegment<ThemeMode>(
+                                value: ThemeMode.dark,
+                                icon: Icon(Icons.dark_mode, size: 18),
+                              ),
+                              ButtonSegment<ThemeMode>(
+                                value: ThemeMode.system,
+                                icon: Icon(Icons.brightness_auto, size: 18),
+                              ),
+                            ],
+                            showSelectedIcon: false,
+                            selected: {appState.themeMode},
+                            onSelectionChanged: (Set<ThemeMode> newSelection) {
+                              appState.setThemeMode(newSelection.first);
+                            },
+                          ),
+                        ),
+                        const Divider(),
+                        ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          leading: Icon(
+                            _getCurrencyIcon(appState.currency),
                             color: Theme.of(context).colorScheme.primary,
                           ),
                           title: Text(
@@ -189,32 +225,20 @@ class _SettingsPagesState extends State<SettingsPages> {
                               fontWeight: FontWeight.w500,
                             ),
                           ),
-                          trailing: DropdownButton<String>(
-                            value: _currency,
+                          trailing: DropdownButton<Currency>(
+                            value: appState.currency,
                             underline: const SizedBox(),
                             alignment: AlignmentDirectional.centerEnd,
-                            items: const [
-                              DropdownMenuItem(
-                                value: '€',
-                                child: Text('Euro (€)'),
-                              ),
-                              DropdownMenuItem(
-                                value: '\$',
-                                child: Text('Dollar US (\$)'),
-                              ),
-                              DropdownMenuItem(
-                                value: '£',
-                                child: Text('Livre Sterling (£)'),
-                              ),
-                              DropdownMenuItem(
-                                value: '¥',
-                                child: Text('Yen (¥)'),
-                              ),
-                            ],
-                            onChanged: (value) {
-                              setState(() {
-                                _currency = value!;
-                              });
+                            items: Currency.values.map((currency) {
+                              return DropdownMenuItem(
+                                value: currency,
+                                child: Text('${currency.name} (${currency.symbol})'),
+                              );
+                            }).toList(),
+                            onChanged: (currency) {
+                              if (currency != null) {
+                                appState.setCurrency(currency);
+                              }
                             },
                           ),
                         ),
@@ -231,22 +255,20 @@ class _SettingsPagesState extends State<SettingsPages> {
                               fontWeight: FontWeight.w500,
                             ),
                           ),
-                          trailing: SegmentedButton<String>(
+                          trailing: SegmentedButton<DistanceUnit>(
                             segments: const [
-                              ButtonSegment<String>(
-                                value: 'km',
+                              ButtonSegment<DistanceUnit>(
+                                value: DistanceUnit.kilometers,
                                 label: Text('km'),
                               ),
-                              ButtonSegment<String>(
-                                value: 'miles',
+                              ButtonSegment<DistanceUnit>(
+                                value: DistanceUnit.miles,
                                 label: Text('miles'),
                               ),
                             ],
-                            selected: {_distanceUnit},
-                            onSelectionChanged: (Set<String> newSelection) {
-                              setState(() {
-                                _distanceUnit = newSelection.first;
-                              });
+                            selected: {appState.distanceUnit},
+                            onSelectionChanged: (Set<DistanceUnit> newSelection) {
+                              appState.setDistanceUnit(newSelection.first);
                             },
                           ),
                         ),
