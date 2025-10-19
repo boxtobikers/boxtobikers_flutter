@@ -46,7 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "homeIncrementTooltip":
             MessageLookupByLibrary.simpleMessage("Incrémenter"),
         "homeItemExploreDescription": MessageLookupByLibrary.simpleMessage(
-            "Envie de découvrir, c\'est ici !"),
+            "Envie de découvrir, c'est ici !"),
         "homeItemExploreTitle":
             MessageLookupByLibrary.simpleMessage("Visiter le site"),
         "homeItemSettingsDescription":
@@ -60,6 +60,51 @@ class MessageLookup extends MessageLookupByLibrary {
         "homeLoginButton": MessageLookupByLibrary.simpleMessage("Se connecter"),
         "homeTitle":
             MessageLookupByLibrary.simpleMessage("BoxToBikers, en route !"),
+        "profilAddressError": MessageLookupByLibrary.simpleMessage(
+            "Veuillez entrer votre adresse"),
+        "profilAddressLabel":
+            MessageLookupByLibrary.simpleMessage("Adresse complète"),
+        "profilAddressTitle": MessageLookupByLibrary.simpleMessage("Adresse"),
+        "profilBirthDateLabel":
+            MessageLookupByLibrary.simpleMessage("Date de naissance"),
+        "profilContactTitle": MessageLookupByLibrary.simpleMessage("Contact"),
+        "profilDangerZoneSubtitle": MessageLookupByLibrary.simpleMessage(
+            "Actions irréversibles concernant votre compte"),
+        "profilDangerZoneTitle":
+            MessageLookupByLibrary.simpleMessage("Zone de danger"),
+        "profilDeleteAccountButton":
+            MessageLookupByLibrary.simpleMessage("Supprimer le compte"),
+        "profilDeleteAccountInfo": MessageLookupByLibrary.simpleMessage(
+            "Fonctionnalité de suppression de compte à venir"),
+        "profilDeleteDialogMessage": MessageLookupByLibrary.simpleMessage(
+            "Êtes-vous sûr de vouloir supprimer définitivement votre compte ? Cette action est irréversible."),
+        "profilDeleteDialogTitle":
+            MessageLookupByLibrary.simpleMessage("Supprimer votre compte ?"),
+        "profilDeleteDialogWarning": MessageLookupByLibrary.simpleMessage(
+            "Toutes vos données seront définitivement supprimées"),
+        "profilEditButton":
+            MessageLookupByLibrary.simpleMessage("Modifier le profil"),
+        "profilEmailError":
+            MessageLookupByLibrary.simpleMessage("Veuillez entrer votre email"),
+        "profilEmailInvalidError": MessageLookupByLibrary.simpleMessage(
+            "Veuillez entrer un email valide"),
+        "profilEmailLabel": MessageLookupByLibrary.simpleMessage("Email"),
+        "profilFirstNameError": MessageLookupByLibrary.simpleMessage(
+            "Veuillez entrer votre prénom"),
+        "profilFirstNameLabel": MessageLookupByLibrary.simpleMessage("Prénom"),
+        "profilLastNameError":
+            MessageLookupByLibrary.simpleMessage("Veuillez entrer votre nom"),
+        "profilLastNameLabel": MessageLookupByLibrary.simpleMessage("Nom"),
+        "profilPersonalInfoTitle":
+            MessageLookupByLibrary.simpleMessage("Informations personnelles"),
+        "profilPhoneError": MessageLookupByLibrary.simpleMessage(
+            "Veuillez entrer votre téléphone"),
+        "profilPhoneLabel": MessageLookupByLibrary.simpleMessage("Téléphone"),
+        "profilPhotoChangeInfo": MessageLookupByLibrary.simpleMessage(
+            "Modification de la photo à venir"),
+        "profilSaveSuccess": MessageLookupByLibrary.simpleMessage(
+            "Profil mis à jour avec succès"),
+        "profilTitle": MessageLookupByLibrary.simpleMessage("Profil"),
         "ridingStartButton":
             MessageLookupByLibrary.simpleMessage("Commencer un trajet"),
         "ridingStopButton":
@@ -71,7 +116,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "settingsDistanceTitle":
             MessageLookupByLibrary.simpleMessage("Distance"),
         "settingsGeneralSubTitle": MessageLookupByLibrary.simpleMessage(
-            "Configurez vos préférences et paramètres de l\'application"),
+            "Configurez vos préférences et paramètres de l'application"),
         "settingsGeneralTitle": MessageLookupByLibrary.simpleMessage("Général"),
         "settingsLegalDocumentsTitle":
             MessageLookupByLibrary.simpleMessage("Documents règlementaires"),

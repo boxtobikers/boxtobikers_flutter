@@ -4,6 +4,7 @@ import '../../../shared/ui/widgets/app_navigation_drawer.dart';
 import '../../../shared/business/providers/app_state_provider.dart';
 import '../../../shared/business/models/currency.dart';
 import '../../../shared/business/models/distance_unit.dart';
+import '../../../shared/business/app_router.dart';
 import '../../../../generated/l10n.dart';
 
 class SettingsPages extends StatefulWidget {
@@ -33,6 +34,7 @@ class _SettingsPagesState extends State<SettingsPages> {
   Widget build(BuildContext context) {
     final l10n = S.of(context);
     final appState = Provider.of<AppStateProvider>(context);
+    final double headerImageHeight = MediaQuery.of(context).size.height / 4;
 
     return Scaffold(
       drawer: const AppNavigationDrawer(
@@ -48,7 +50,7 @@ class _SettingsPagesState extends State<SettingsPages> {
                 children: [
                   Container(
                     width: double.infinity,
-                    height: MediaQuery.of(context).size.height / 4,
+                    height: headerImageHeight,
                     decoration: BoxDecoration(
                       image: const DecorationImage(
                         image: AssetImage('assets/btb_header_biker.jpg'),
@@ -122,14 +124,25 @@ class _SettingsPagesState extends State<SettingsPages> {
                               fontWeight: FontWeight.w500,
                             ),
                           ),
-                          trailing: Text(
-                            l10n.commonUpdate,
-                            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              color: Theme.of(context).colorScheme.secondary,
+                          trailing: SizedBox(
+                            height: 32,
+                            child: FilledButton.tonal(
+                              onPressed: () {
+                                AppRouter.navigateTo(context, AppRouter.profil);
+                              },
+                              style: FilledButton.styleFrom(
+                                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 0),
+                                minimumSize: const Size(0, 32),
+                                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                              ),
+                              child: Text(
+                                l10n.commonUpdate,
+                                style: Theme.of(context).textTheme.labelSmall,
+                              ),
                             ),
                           ),
                           onTap: () {
-                            // Navigation vers les paramètres d'affichage
+                            AppRouter.navigateTo(context, AppRouter.profil);
                           },
                         ),
                         const Divider(),

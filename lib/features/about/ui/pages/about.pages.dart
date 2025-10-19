@@ -13,6 +13,7 @@ class _AboutPagesState extends State<AboutPages> {
   @override
   Widget build(BuildContext context) {
     final l10n = S.of(context);
+    final double headerImageHeight = MediaQuery.of(context).size.height / 4;
 
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surfaceContainer,
@@ -29,7 +30,7 @@ class _AboutPagesState extends State<AboutPages> {
                 children: [
                   Container(
                     width: double.infinity,
-                    height: MediaQuery.of(context).size.height / 4,
+                    height: headerImageHeight,
                     decoration: BoxDecoration(
                       image: const DecorationImage(
                         image: AssetImage('assets/btb_header_moto.jpg'),

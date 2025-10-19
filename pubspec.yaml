@@ -82,10 +82,13 @@ flutter:
     - assets/btb_header_mountain.jpg
     - assets/btb_header_ocean.jpg
     - assets/btb_header_paris.jpg
+    - assets/btb_header_paris_arc_de_triomphe.jpg
     - assets/btb_medium_sea.jpg
     - assets/btb_moto.jpg
     - assets/btb_nice_park.jpg
     - assets/btb_road.jpg
+    - assets/btb_road_mediterranean_sea.jpg
+    - assets/btb_road_trip_mountain.jpg
     - assets/btb_sea.jpg
     - assets/btb_sea_free.jpg
     - assets/btb_sea_front.jpg

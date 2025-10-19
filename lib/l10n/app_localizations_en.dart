@@ -64,6 +64,87 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeItemSettingsDescription => 'Cookies, notifications, ...';
 
   @override
+  String get profilTitle => 'User profile';
+
+  @override
+  String get profilPersonalInfoTitle => 'Personal information';
+
+  @override
+  String get profilContactTitle => 'Contact';
+
+  @override
+  String get profilAddressTitle => 'Address';
+
+  @override
+  String get profilFirstNameLabel => 'First name';
+
+  @override
+  String get profilFirstNameError => 'Please enter your first name';
+
+  @override
+  String get profilLastNameLabel => 'Last name';
+
+  @override
+  String get profilLastNameError => 'Please enter your last name';
+
+  @override
+  String get profilBirthDateLabel => 'Date of birth';
+
+  @override
+  String get profilEmailLabel => 'Email';
+
+  @override
+  String get profilEmailError => 'Please enter your email';
+
+  @override
+  String get profilEmailInvalidError => 'Please enter a valid email';
+
+  @override
+  String get profilPhoneLabel => 'Phone';
+
+  @override
+  String get profilPhoneError => 'Please enter your phone number';
+
+  @override
+  String get profilAddressLabel => 'Full address';
+
+  @override
+  String get profilAddressError => 'Please enter your address';
+
+  @override
+  String get profilEditButton => 'Edit profile';
+
+  @override
+  String get profilSaveSuccess => 'Profile updated successfully';
+
+  @override
+  String get profilPhotoChangeInfo => 'Photo modification coming soon';
+
+  @override
+  String get profilDangerZoneTitle => 'Danger zone';
+
+  @override
+  String get profilDangerZoneSubtitle =>
+      'Irreversible actions concerning your account';
+
+  @override
+  String get profilDeleteAccountButton => 'Delete account';
+
+  @override
+  String get profilDeleteAccountInfo => 'Account deletion feature coming soon';
+
+  @override
+  String get profilDeleteDialogTitle => 'Delete your account?';
+
+  @override
+  String get profilDeleteDialogMessage =>
+      'Are you sure you want to permanently delete your account? This action is irreversible.';
+
+  @override
+  String get profilDeleteDialogWarning =>
+      'All your data will be permanently deleted';
+
+  @override
   String get ridingTitle => 'My rides';
 
   @override

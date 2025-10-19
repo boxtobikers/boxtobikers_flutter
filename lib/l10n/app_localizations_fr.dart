@@ -63,6 +63,88 @@ class AppLocalizationsFr extends AppLocalizations {
   String get homeItemSettingsDescription => 'Vos cookies, notifications…';
 
   @override
+  String get profilTitle => 'Profil';
+
+  @override
+  String get profilPersonalInfoTitle => 'Informations personnelles';
+
+  @override
+  String get profilContactTitle => 'Contact';
+
+  @override
+  String get profilAddressTitle => 'Adresse';
+
+  @override
+  String get profilFirstNameLabel => 'Prénom';
+
+  @override
+  String get profilFirstNameError => 'Veuillez entrer votre prénom';
+
+  @override
+  String get profilLastNameLabel => 'Nom';
+
+  @override
+  String get profilLastNameError => 'Veuillez entrer votre nom';
+
+  @override
+  String get profilBirthDateLabel => 'Date de naissance';
+
+  @override
+  String get profilEmailLabel => 'Email';
+
+  @override
+  String get profilEmailError => 'Veuillez entrer votre email';
+
+  @override
+  String get profilEmailInvalidError => 'Veuillez entrer un email valide';
+
+  @override
+  String get profilPhoneLabel => 'Téléphone';
+
+  @override
+  String get profilPhoneError => 'Veuillez entrer votre téléphone';
+
+  @override
+  String get profilAddressLabel => 'Adresse complète';
+
+  @override
+  String get profilAddressError => 'Veuillez entrer votre adresse';
+
+  @override
+  String get profilEditButton => 'Modifier le profil';
+
+  @override
+  String get profilSaveSuccess => 'Profil mis à jour avec succès';
+
+  @override
+  String get profilPhotoChangeInfo => 'Modification de la photo à venir';
+
+  @override
+  String get profilDangerZoneTitle => 'Zone de danger';
+
+  @override
+  String get profilDangerZoneSubtitle =>
+      'Actions irréversibles concernant votre compte';
+
+  @override
+  String get profilDeleteAccountButton => 'Supprimer le compte';
+
+  @override
+  String get profilDeleteAccountInfo =>
+      'Fonctionnalité de suppression de compte à venir';
+
+  @override
+  String get profilDeleteDialogTitle => 'Supprimer votre compte ?';
+
+  @override
+  String get profilDeleteDialogMessage =>
+      'Êtes-vous sûr de vouloir supprimer définitivement votre compte ? Cette action est irréversible.';
+
+  @override
+  String get profilDeleteDialogWarning =>
+      'Toutes vos données seront définitivement supprimées';
+
+  @override
   String get ridingTitle => 'Mes trajets';
 
   @override

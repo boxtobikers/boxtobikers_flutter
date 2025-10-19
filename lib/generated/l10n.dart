@@ -220,6 +220,266 @@ class S {
     );
   }
 
+  /// `User profile`
+  String get profilTitle {
+    return Intl.message(
+      'User profile',
+      name: 'profilTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Personal information`
+  String get profilPersonalInfoTitle {
+    return Intl.message(
+      'Personal information',
+      name: 'profilPersonalInfoTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contact`
+  String get profilContactTitle {
+    return Intl.message(
+      'Contact',
+      name: 'profilContactTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address`
+  String get profilAddressTitle {
+    return Intl.message(
+      'Address',
+      name: 'profilAddressTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `First name`
+  String get profilFirstNameLabel {
+    return Intl.message(
+      'First name',
+      name: 'profilFirstNameLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your first name`
+  String get profilFirstNameError {
+    return Intl.message(
+      'Please enter your first name',
+      name: 'profilFirstNameError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last name`
+  String get profilLastNameLabel {
+    return Intl.message(
+      'Last name',
+      name: 'profilLastNameLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your last name`
+  String get profilLastNameError {
+    return Intl.message(
+      'Please enter your last name',
+      name: 'profilLastNameError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date of birth`
+  String get profilBirthDateLabel {
+    return Intl.message(
+      'Date of birth',
+      name: 'profilBirthDateLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get profilEmailLabel {
+    return Intl.message(
+      'Email',
+      name: 'profilEmailLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your email`
+  String get profilEmailError {
+    return Intl.message(
+      'Please enter your email',
+      name: 'profilEmailError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a valid email`
+  String get profilEmailInvalidError {
+    return Intl.message(
+      'Please enter a valid email',
+      name: 'profilEmailInvalidError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone`
+  String get profilPhoneLabel {
+    return Intl.message(
+      'Phone',
+      name: 'profilPhoneLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your phone number`
+  String get profilPhoneError {
+    return Intl.message(
+      'Please enter your phone number',
+      name: 'profilPhoneError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Full address`
+  String get profilAddressLabel {
+    return Intl.message(
+      'Full address',
+      name: 'profilAddressLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your address`
+  String get profilAddressError {
+    return Intl.message(
+      'Please enter your address',
+      name: 'profilAddressError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit profile`
+  String get profilEditButton {
+    return Intl.message(
+      'Edit profile',
+      name: 'profilEditButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Profile updated successfully`
+  String get profilSaveSuccess {
+    return Intl.message(
+      'Profile updated successfully',
+      name: 'profilSaveSuccess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Photo modification coming soon`
+  String get profilPhotoChangeInfo {
+    return Intl.message(
+      'Photo modification coming soon',
+      name: 'profilPhotoChangeInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Danger zone`
+  String get profilDangerZoneTitle {
+    return Intl.message(
+      'Danger zone',
+      name: 'profilDangerZoneTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Irreversible actions concerning your account`
+  String get profilDangerZoneSubtitle {
+    return Intl.message(
+      'Irreversible actions concerning your account',
+      name: 'profilDangerZoneSubtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete account`
+  String get profilDeleteAccountButton {
+    return Intl.message(
+      'Delete account',
+      name: 'profilDeleteAccountButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account deletion feature coming soon`
+  String get profilDeleteAccountInfo {
+    return Intl.message(
+      'Account deletion feature coming soon',
+      name: 'profilDeleteAccountInfo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete your account?`
+  String get profilDeleteDialogTitle {
+    return Intl.message(
+      'Delete your account?',
+      name: 'profilDeleteDialogTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure you want to permanently delete your account? This action is irreversible.`
+  String get profilDeleteDialogMessage {
+    return Intl.message(
+      'Are you sure you want to permanently delete your account? This action is irreversible.',
+      name: 'profilDeleteDialogMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All your data will be permanently deleted`
+  String get profilDeleteDialogWarning {
+    return Intl.message(
+      'All your data will be permanently deleted',
+      name: 'profilDeleteDialogWarning',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `My rides`
   String get ridingTitle {
     return Intl.message(

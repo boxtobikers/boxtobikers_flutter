@@ -200,6 +200,162 @@ abstract class AppLocalizations {
   /// **'Cookies, notifications, ...'**
   String get homeItemSettingsDescription;
 
+  /// No description provided for @profilTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'User profile'**
+  String get profilTitle;
+
+  /// No description provided for @profilPersonalInfoTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal information'**
+  String get profilPersonalInfoTitle;
+
+  /// No description provided for @profilContactTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact'**
+  String get profilContactTitle;
+
+  /// No description provided for @profilAddressTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Address'**
+  String get profilAddressTitle;
+
+  /// No description provided for @profilFirstNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'First name'**
+  String get profilFirstNameLabel;
+
+  /// No description provided for @profilFirstNameError.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your first name'**
+  String get profilFirstNameError;
+
+  /// No description provided for @profilLastNameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Last name'**
+  String get profilLastNameLabel;
+
+  /// No description provided for @profilLastNameError.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your last name'**
+  String get profilLastNameError;
+
+  /// No description provided for @profilBirthDateLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Date of birth'**
+  String get profilBirthDateLabel;
+
+  /// No description provided for @profilEmailLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get profilEmailLabel;
+
+  /// No description provided for @profilEmailError.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your email'**
+  String get profilEmailError;
+
+  /// No description provided for @profilEmailInvalidError.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid email'**
+  String get profilEmailInvalidError;
+
+  /// No description provided for @profilPhoneLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone'**
+  String get profilPhoneLabel;
+
+  /// No description provided for @profilPhoneError.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your phone number'**
+  String get profilPhoneError;
+
+  /// No description provided for @profilAddressLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Full address'**
+  String get profilAddressLabel;
+
+  /// No description provided for @profilAddressError.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your address'**
+  String get profilAddressError;
+
+  /// No description provided for @profilEditButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit profile'**
+  String get profilEditButton;
+
+  /// No description provided for @profilSaveSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile updated successfully'**
+  String get profilSaveSuccess;
+
+  /// No description provided for @profilPhotoChangeInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Photo modification coming soon'**
+  String get profilPhotoChangeInfo;
+
+  /// No description provided for @profilDangerZoneTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Danger zone'**
+  String get profilDangerZoneTitle;
+
+  /// No description provided for @profilDangerZoneSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Irreversible actions concerning your account'**
+  String get profilDangerZoneSubtitle;
+
+  /// No description provided for @profilDeleteAccountButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete account'**
+  String get profilDeleteAccountButton;
+
+  /// No description provided for @profilDeleteAccountInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Account deletion feature coming soon'**
+  String get profilDeleteAccountInfo;
+
+  /// No description provided for @profilDeleteDialogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete your account?'**
+  String get profilDeleteDialogTitle;
+
+  /// No description provided for @profilDeleteDialogMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to permanently delete your account? This action is irreversible.'**
+  String get profilDeleteDialogMessage;
+
+  /// No description provided for @profilDeleteDialogWarning.
+  ///
+  /// In en, this message translates to:
+  /// **'All your data will be permanently deleted'**
+  String get profilDeleteDialogWarning;
+
   /// No description provided for @ridingTitle.
   ///
   /// In en, this message translates to:

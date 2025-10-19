@@ -3,14 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
-import 'generated/l10n.dart';
 import 'features/home/ui/pages/home.pages.dart';
-import 'features/about/ui/pages/about.pages.dart';
-import 'features/settings/ui/pages/settings.pages.dart';
-import 'features/riding/ui/pages/riding.pages.dart';
+import 'generated/l10n.dart';
 import 'features/shared/business/app_constants.dart';
 import 'features/shared/business/app_launcher.dart';
 import 'features/shared/business/providers/app_state_provider.dart';
+import 'features/shared/business/app_router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -77,13 +75,8 @@ class MyApp extends StatelessWidget {
               ),
             ),
             themeMode: appState.themeMode,
-            initialRoute: '/home',
-            routes: {
-              '/home': (context) => HomePages(title: S.of(context).homeTitle),
-              '/about': (context) => const AboutPages(),
-              '/settings': (context) => const SettingsPages(),
-              '/riding': (context) => const RidingPages(),
-            },
+            initialRoute: AppRouter.initialRoute,
+            routes: AppRouter.getRoutes(context),
             home: Builder(
               builder: (context) => HomePages(title: S.of(context).homeTitle),
             ),

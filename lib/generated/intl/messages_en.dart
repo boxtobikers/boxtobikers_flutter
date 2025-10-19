@@ -28,7 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("What about us ?"),
         "appDrawerHomeTitle": MessageLookupByLibrary.simpleMessage("Home"),
         "appDrawerRidingTitle":
-            MessageLookupByLibrary.simpleMessage("Let\'s go !"),
+            MessageLookupByLibrary.simpleMessage("Let's go !"),
         "appDrawerSettingsTitle":
             MessageLookupByLibrary.simpleMessage("Settings"),
         "appTitle": MessageLookupByLibrary.simpleMessage("BoxtoBikers"),
@@ -46,7 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "homeIncrementTooltip":
             MessageLookupByLibrary.simpleMessage("Increment"),
         "homeItemExploreDescription": MessageLookupByLibrary.simpleMessage(
-            "Make a tour to discover, it\'s here !"),
+            "Make a tour to discover, it's here !"),
         "homeItemExploreTitle":
             MessageLookupByLibrary.simpleMessage("Explore the site"),
         "homeItemSettingsDescription":
@@ -59,6 +59,53 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Who am I ?"),
         "homeLoginButton": MessageLookupByLibrary.simpleMessage("Login"),
         "homeTitle": MessageLookupByLibrary.simpleMessage("Welcome to my site"),
+        "profilAddressError":
+            MessageLookupByLibrary.simpleMessage("Please enter your address"),
+        "profilAddressLabel":
+            MessageLookupByLibrary.simpleMessage("Full address"),
+        "profilAddressTitle": MessageLookupByLibrary.simpleMessage("Address"),
+        "profilBirthDateLabel":
+            MessageLookupByLibrary.simpleMessage("Date of birth"),
+        "profilContactTitle": MessageLookupByLibrary.simpleMessage("Contact"),
+        "profilDangerZoneSubtitle": MessageLookupByLibrary.simpleMessage(
+            "Irreversible actions concerning your account"),
+        "profilDangerZoneTitle":
+            MessageLookupByLibrary.simpleMessage("Danger zone"),
+        "profilDeleteAccountButton":
+            MessageLookupByLibrary.simpleMessage("Delete account"),
+        "profilDeleteAccountInfo": MessageLookupByLibrary.simpleMessage(
+            "Account deletion feature coming soon"),
+        "profilDeleteDialogMessage": MessageLookupByLibrary.simpleMessage(
+            "Are you sure you want to permanently delete your account? This action is irreversible."),
+        "profilDeleteDialogTitle":
+            MessageLookupByLibrary.simpleMessage("Delete your account?"),
+        "profilDeleteDialogWarning": MessageLookupByLibrary.simpleMessage(
+            "All your data will be permanently deleted"),
+        "profilEditButton":
+            MessageLookupByLibrary.simpleMessage("Edit profile"),
+        "profilEmailError":
+            MessageLookupByLibrary.simpleMessage("Please enter your email"),
+        "profilEmailInvalidError":
+            MessageLookupByLibrary.simpleMessage("Please enter a valid email"),
+        "profilEmailLabel": MessageLookupByLibrary.simpleMessage("Email"),
+        "profilFirstNameError": MessageLookupByLibrary.simpleMessage(
+            "Please enter your first name"),
+        "profilFirstNameLabel":
+            MessageLookupByLibrary.simpleMessage("First name"),
+        "profilLastNameError":
+            MessageLookupByLibrary.simpleMessage("Please enter your last name"),
+        "profilLastNameLabel":
+            MessageLookupByLibrary.simpleMessage("Last name"),
+        "profilPersonalInfoTitle":
+            MessageLookupByLibrary.simpleMessage("Personal information"),
+        "profilPhoneError": MessageLookupByLibrary.simpleMessage(
+            "Please enter your phone number"),
+        "profilPhoneLabel": MessageLookupByLibrary.simpleMessage("Phone"),
+        "profilPhotoChangeInfo": MessageLookupByLibrary.simpleMessage(
+            "Photo modification coming soon"),
+        "profilSaveSuccess": MessageLookupByLibrary.simpleMessage(
+            "Profile updated successfully"),
+        "profilTitle": MessageLookupByLibrary.simpleMessage("User profile"),
         "ridingStartButton":
             MessageLookupByLibrary.simpleMessage("Start a ride"),
         "ridingStopButton": MessageLookupByLibrary.simpleMessage("End ride"),
