@@ -28,7 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("What about us ?"),
         "appDrawerHomeTitle": MessageLookupByLibrary.simpleMessage("Home"),
         "appDrawerRidingTitle":
-            MessageLookupByLibrary.simpleMessage("Let's go !"),
+            MessageLookupByLibrary.simpleMessage("Let\'s go !"),
         "appDrawerSettingsTitle":
             MessageLookupByLibrary.simpleMessage("Settings"),
         "appTitle": MessageLookupByLibrary.simpleMessage("BoxtoBikers"),
@@ -47,7 +47,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "homeIncrementTooltip":
             MessageLookupByLibrary.simpleMessage("Increment"),
         "homeItemExploreDescription": MessageLookupByLibrary.simpleMessage(
-            "Make a tour to discover, it's here !"),
+            "Make a tour to discover, it\'s here !"),
         "homeItemExploreTitle":
             MessageLookupByLibrary.simpleMessage("Explore the site"),
         "homeItemSettingsDescription":
