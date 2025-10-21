@@ -1,7 +1,7 @@
+import 'package:boxtobikers/features/shared/core/app_router.dart';
+import 'package:boxtobikers/features/shared/drawer/business/models/app_drawer_destination.dart';
+import 'package:boxtobikers/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'app_drawer_destination.dart';
-import 'app_router.dart';
-import '../../../generated/l10n.dart';
 
 /// Retourne la liste des destinations de navigation de l'application avec les traductions
 List<AppDrawerDestination> getAppDrawerDestinations(BuildContext context) {

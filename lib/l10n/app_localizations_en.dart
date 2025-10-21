@@ -215,6 +215,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get commonConfirm => 'Confirm';
 
   @override
+  String get commonDownload => 'Download';
+
+  @override
   String get commonView => 'Consult';
 
   @override

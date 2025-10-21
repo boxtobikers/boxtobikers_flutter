@@ -494,6 +494,12 @@ abstract class AppLocalizations {
   /// **'Confirm'**
   String get commonConfirm;
 
+  /// No description provided for @commonDownload.
+  ///
+  /// In en, this message translates to:
+  /// **'Download'**
+  String get commonDownload;
+
   /// No description provided for @commonView.
   ///
   /// In en, this message translates to:

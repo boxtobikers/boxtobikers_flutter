@@ -1,11 +1,11 @@
+import 'package:boxtobikers/features/shared/core/app_router.dart';
+import 'package:boxtobikers/features/shared/core/models/currency.dart';
+import 'package:boxtobikers/features/shared/core/models/distance_unit.dart';
+import 'package:boxtobikers/features/shared/core/providers/app_state_provider.dart';
+import 'package:boxtobikers/features/shared/drawer/ui/widgets/app_navigation_drawer.dart';
+import 'package:boxtobikers/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../../shared/ui/widgets/app_navigation_drawer.dart';
-import '../../../shared/business/providers/app_state_provider.dart';
-import '../../../shared/business/models/currency.dart';
-import '../../../shared/business/models/distance_unit.dart';
-import '../../../shared/business/app_router.dart';
-import '../../../../generated/l10n.dart';
 
 class SettingsPages extends StatefulWidget {
   const SettingsPages({super.key});

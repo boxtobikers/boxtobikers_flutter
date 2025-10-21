@@ -1,6 +1,6 @@
+import 'package:boxtobikers/features/shared/drawer/ui/widgets/app_navigation_drawer.dart';
+import 'package:boxtobikers/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import '../../../shared/ui/widgets/app_navigation_drawer.dart';
-import '../../../../generated/l10n.dart';
 
 class RidingPages extends StatefulWidget {
   const RidingPages({super.key});

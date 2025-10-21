@@ -1,6 +1,8 @@
+import 'dart:async';
+
+import 'package:boxtobikers/features/settings/business/services/settings_service.dart';
+import 'package:boxtobikers/features/shared/core/providers/app_state_provider.dart';
 import 'package:flutter/material.dart';
-import 'services/preferences_service.dart';
-import 'providers/app_state_provider.dart';
 
 /// Classe responsable de l'initialisation de l'application
 /// Principe SOLID : Single Responsibility - gère uniquement le lancement de l'app
@@ -28,11 +30,11 @@ class AppLauncher {
     debugPrint('🚀 AppLauncher: Démarrage de l\'application');
 
     // 1. Créer le service de préférences
-    final preferencesService = await PreferencesService.create();
+    final settingsService = await SettingsService.create();
     debugPrint('✅ AppLauncher: Service de préférences initialisé');
 
     // 2. Créer le provider d'état
-    _appStateProvider = AppStateProvider(preferencesService);
+    _appStateProvider = AppStateProvider(settingsService);
     debugPrint('✅ AppLauncher: Provider d\'état créé');
 
     return _appStateProvider!;

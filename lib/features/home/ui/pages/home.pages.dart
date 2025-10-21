@@ -1,6 +1,6 @@
+import 'package:boxtobikers/features/home/ui/widgets/home_list_view.widget.dart';
+import 'package:boxtobikers/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import '../../../../generated/l10n.dart';
-import '../widgets/home_list_view.widget.dart';
 
 class HomePages extends StatelessWidget {
   const HomePages({super.key, required this.title});

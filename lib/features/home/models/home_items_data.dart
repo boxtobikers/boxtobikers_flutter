@@ -1,8 +1,8 @@
+import 'package:boxtobikers/features/about/ui/pages/about.pages.dart';
+import 'package:boxtobikers/features/home/models/home_items.dart';
+import 'package:boxtobikers/features/riding/ui/pages/riding.pages.dart';
+import 'package:boxtobikers/features/settings/ui/pages/settings.pages.dart';
 import 'package:flutter/material.dart';
-import 'home_items.dart';
-import '../../about/ui/pages/about.pages.dart';
-import '../../riding/ui/pages/riding.pages.dart';
-import '../../settings/ui/pages/settings.pages.dart';
 
 class HomeItemsData {
   static List<HomeItems> getHomeItems(BuildContext context) {

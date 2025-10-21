@@ -1,7 +1,7 @@
+import 'package:boxtobikers/features/settings/business/services/settings_service.dart';
+import 'package:boxtobikers/features/shared/core/models/currency.dart';
+import 'package:boxtobikers/features/shared/core/models/distance_unit.dart';
 import 'package:flutter/material.dart';
-import '../models/currency.dart';
-import '../models/distance_unit.dart';
-import '../services/preferences_service.dart';
 
 /// Provider pour gérer l'état global de l'application
 /// Principe SOLID :
@@ -9,9 +9,9 @@ import '../services/preferences_service.dart';
 /// - Open/Closed : extensible sans modification
 /// - Liskov Substitution : hérite de ChangeNotifier
 /// - Interface Segregation : expose uniquement les méthodes nécessaires
-/// - Dependency Inversion : dépend de l'abstraction PreferencesService
+/// - Dependency Inversion : dépend de l'abstraction SettingsService
 class AppStateProvider extends ChangeNotifier {
-  final PreferencesService _preferencesService;
+  final SettingsService _settingsService;
 
   ThemeMode _themeMode = ThemeMode.system;
   Locale _locale = const Locale('fr', 'FR');
@@ -19,7 +19,7 @@ class AppStateProvider extends ChangeNotifier {
   DistanceUnit _distanceUnit = DistanceUnit.kilometers;
   bool _isInitialized = false;
 
-  AppStateProvider(this._preferencesService);
+  AppStateProvider(this._settingsService);
 
   // ============ Getters ============
 
@@ -35,7 +35,7 @@ class AppStateProvider extends ChangeNotifier {
   /// Note : lors du réveil de l'app, cette valeur n'est PAS écrasée
   Future<void> setThemeMode(ThemeMode mode) async {
     _themeMode = mode;
-    await _preferencesService.saveThemeMode(mode);
+    await _settingsService.saveThemeMode(mode);
     // Utiliser addPostFrameCallback pour notifier après la fin du frame actuel
     WidgetsBinding.instance.addPostFrameCallback((_) {
       notifyListeners();
@@ -46,16 +46,16 @@ class AppStateProvider extends ChangeNotifier {
   /// Note : lors du réveil de l'app, cette valeur n'est PAS écrasée
   Future<void> setLocale(Locale locale) async {
     _locale = locale;
-    await _preferencesService.saveLocale(locale);
+    await _settingsService.saveLocale(locale);
 
     // Si la devise n'a pas été personnalisée, on la met à jour selon la locale
-    final savedCurrency = _preferencesService.getSavedCurrency();
+    final savedCurrency = _settingsService.getSavedCurrency();
     if (savedCurrency == null) {
       _currency = Currency.fromLocale(locale.toString());
     }
 
     // Si l'unité de distance n'a pas été personnalisée, on la met à jour selon la locale
-    final savedDistanceUnit = _preferencesService.getSavedDistanceUnit();
+    final savedDistanceUnit = _settingsService.getSavedDistanceUnit();
     if (savedDistanceUnit == null) {
       _distanceUnit = DistanceUnit.fromLocale(locale.toString());
     }
@@ -70,7 +70,7 @@ class AppStateProvider extends ChangeNotifier {
   /// Note : lors du réveil de l'app, cette valeur n'est PAS écrasée
   Future<void> setCurrency(Currency currency) async {
     _currency = currency;
-    await _preferencesService.saveCurrency(currency);
+    await _settingsService.saveCurrency(currency);
     // Utiliser addPostFrameCallback pour notifier après la fin du frame actuel
     WidgetsBinding.instance.addPostFrameCallback((_) {
       notifyListeners();
@@ -81,7 +81,7 @@ class AppStateProvider extends ChangeNotifier {
   /// Note : lors du réveil de l'app, cette valeur n'est PAS écrasée
   Future<void> setDistanceUnit(DistanceUnit unit) async {
     _distanceUnit = unit;
-    await _preferencesService.saveDistanceUnit(unit);
+    await _settingsService.saveDistanceUnit(unit);
     // Utiliser addPostFrameCallback pour notifier après la fin du frame actuel
     WidgetsBinding.instance.addPostFrameCallback((_) {
       notifyListeners();
@@ -97,10 +97,10 @@ class AppStateProvider extends ChangeNotifier {
     final deviceLocale = WidgetsBinding.instance.platformDispatcher.locale;
 
     // 2. Vérifier si des préférences ont été sauvegardées
-    final savedThemeMode = _preferencesService.getSavedThemeMode();
-    final savedLocale = _preferencesService.getSavedLocale();
-    final savedCurrency = _preferencesService.getSavedCurrency();
-    final savedDistanceUnit = _preferencesService.getSavedDistanceUnit();
+    final savedThemeMode = _settingsService.getSavedThemeMode();
+    final savedLocale = _settingsService.getSavedLocale();
+    final savedCurrency = _settingsService.getSavedCurrency();
+    final savedDistanceUnit = _settingsService.getSavedDistanceUnit();
 
     // 3. Définir les valeurs selon la priorité :
     //    - Si l'utilisateur a déjà personnalisé -> utiliser la valeur sauvegardée
@@ -122,8 +122,8 @@ class AppStateProvider extends ChangeNotifier {
     notifyListeners();
 
     // 4. Marquer le premier lancement comme terminé
-    if (_preferencesService.isFirstLaunch()) {
-      await _preferencesService.setFirstLaunchComplete();
+    if (_settingsService.isFirstLaunch()) {
+      await _settingsService.setFirstLaunchComplete();
     }
   }
 
@@ -131,10 +131,10 @@ class AppStateProvider extends ChangeNotifier {
   /// Charge uniquement depuis les préférences sauvegardées
   Future<void> initializeForTesting() async {
     // Vérifier si des préférences ont été sauvegardées
-    final savedThemeMode = _preferencesService.getSavedThemeMode();
-    final savedLocale = _preferencesService.getSavedLocale();
-    final savedCurrency = _preferencesService.getSavedCurrency();
-    final savedDistanceUnit = _preferencesService.getSavedDistanceUnit();
+    final savedThemeMode = _settingsService.getSavedThemeMode();
+    final savedLocale = _settingsService.getSavedLocale();
+    final savedCurrency = _settingsService.getSavedCurrency();
+    final savedDistanceUnit = _settingsService.getSavedDistanceUnit();
 
     // Définir les valeurs avec des valeurs par défaut si rien n'est sauvegardé
     _themeMode = savedThemeMode ?? ThemeMode.system;
@@ -148,7 +148,7 @@ class AppStateProvider extends ChangeNotifier {
 
   /// Réinitialise toutes les préférences (redémarre l'app)
   Future<void> resetAllPreferences() async {
-    await _preferencesService.clearAll();
+    await _settingsService.clearAll();
     _isInitialized = false;
     notifyListeners();
   }

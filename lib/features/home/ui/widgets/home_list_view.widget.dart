@@ -1,6 +1,6 @@
+import 'package:boxtobikers/features/home/models/home_items_data.dart';
+import 'package:boxtobikers/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import '../../../../generated/l10n.dart';
-import '../../models/home_items_data.dart';
 
 class HomeListViewWidget extends StatefulWidget {
   const HomeListViewWidget({super.key});

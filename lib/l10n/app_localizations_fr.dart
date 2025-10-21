@@ -157,7 +157,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get aboutTitle => 'À propos de nous';
 
   @override
-  String get settingsTitle => 'Pramètres';
+  String get settingsTitle => 'Paramètres';
 
   @override
   String get settingsGeneralTitle => 'Général';
@@ -214,6 +214,9 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get commonConfirm => 'Confirmer';
+
+  @override
+  String get commonDownload => 'Télécharger';
 
   @override
   String get commonView => 'Consulter';

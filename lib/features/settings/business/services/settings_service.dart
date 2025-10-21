@@ -1,14 +1,14 @@
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:boxtobikers/features/shared/core/models/currency.dart';
+import 'package:boxtobikers/features/shared/core/models/distance_unit.dart';
 import 'package:flutter/material.dart';
-import '../models/currency.dart';
-import '../models/distance_unit.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// Service de gestion des préférences utilisateur
 /// Principe SOLID : Single Responsibility - gère uniquement la persistance des données
 /// Principe DRY : centralise toutes les opérations de lecture/écriture
 ///
 /// Utilise SharedPreferencesWithCache pour de meilleures performances
-class PreferencesService {
+class SettingsService {
   static const String _keyThemeMode = 'theme_mode';
   static const String _keyLocale = 'locale';
   static const String _keyCurrency = 'currency';
@@ -17,12 +17,12 @@ class PreferencesService {
 
   final dynamic _prefs; // Peut être SharedPreferences ou SharedPreferencesWithCache
 
-  PreferencesService(this._prefs);
+  SettingsService(this._prefs);
 
   /// Factory pour créer une instance du service avec cache (PRODUCTION)
   /// SharedPreferencesWithCache offre de meilleures performances
   /// car il maintient un cache en mémoire
-  static Future<PreferencesService> create() async {
+  static Future<SettingsService> create() async {
     final prefs = await SharedPreferencesWithCache.create(
       cacheOptions: const SharedPreferencesWithCacheOptions(
         // Met en cache toutes les clés utilisées par l'app
@@ -35,14 +35,14 @@ class PreferencesService {
         },
       ),
     );
-    return PreferencesService(prefs);
+    return SettingsService(prefs);
   }
 
   /// Factory pour créer une instance du service pour les TESTS
   /// Utilise SharedPreferences classique compatible avec les mocks
-  static Future<PreferencesService> createForTesting() async {
+  static Future<SettingsService> createForTesting() async {
     final prefs = await SharedPreferences.getInstance();
-    return PreferencesService(prefs);
+    return SettingsService(prefs);
   }
 
   // ============ Theme Mode ============

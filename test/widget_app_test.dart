@@ -5,14 +5,13 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
+import 'package:boxtobikers/features/settings/business/services/settings_service.dart';
+import 'package:boxtobikers/features/shared/core/models/currency.dart';
+import 'package:boxtobikers/features/shared/core/providers/app_state_provider.dart';
+import 'package:boxtobikers/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'package:boxtobikers/main.dart';
-import 'package:boxtobikers/features/shared/business/services/preferences_service.dart';
-import 'package:boxtobikers/features/shared/business/providers/app_state_provider.dart';
-import 'package:boxtobikers/features/shared/business/models/currency.dart';
 
 void main() {
   // Configuration initiale avant tous les tests
@@ -24,8 +23,8 @@ void main() {
   });
 
   testWidgets('App should initialize and load home page', (WidgetTester tester) async {
-    // Créer le PreferencesService pour les tests
-    final prefsService = await PreferencesService.createForTesting();
+    // Créer le SettingsService pour les tests
+    final prefsService = await SettingsService.createForTesting();
 
     // Créer le AppStateProvider
     final appStateProvider = AppStateProvider(prefsService);
@@ -45,8 +44,8 @@ void main() {
   });
 
   test('AppStateProvider should manage currency changes', () async {
-    // Créer le PreferencesService pour les tests
-    final prefsService = await PreferencesService.createForTesting();
+    // Créer le SettingsService pour les tests
+    final prefsService = await SettingsService.createForTesting();
 
     // Créer le AppStateProvider
     final appStateProvider = AppStateProvider(prefsService);
@@ -69,8 +68,8 @@ void main() {
   });
 
   test('AppStateProvider should manage theme mode changes', () async {
-    // Créer le PreferencesService pour les tests
-    final prefsService = await PreferencesService.createForTesting();
+    // Créer le SettingsService pour les tests
+    final prefsService = await SettingsService.createForTesting();
 
     // Créer le AppStateProvider
     final appStateProvider = AppStateProvider(prefsService);
@@ -93,8 +92,8 @@ void main() {
   });
 
   test('AppStateProvider should manage locale changes', () async {
-    // Créer le PreferencesService pour les tests
-    final prefsService = await PreferencesService.createForTesting();
+    // Créer le SettingsService pour les tests
+    final prefsService = await SettingsService.createForTesting();
 
     // Créer le AppStateProvider
     final appStateProvider = AppStateProvider(prefsService);
@@ -127,9 +126,9 @@ void main() {
     expect(Currency.fromLocale('es_ES'), Currency.euro);
   });
 
-  test('PreferencesService should persist and retrieve values', () async {
-    // Créer le PreferencesService pour les tests
-    final prefsService = await PreferencesService.createForTesting();
+  test('SettingsService should persist and retrieve values', () async {
+    // Créer le SettingsService pour les tests
+    final prefsService = await SettingsService.createForTesting();
 
     // Sauvegarder des valeurs
     await prefsService.saveThemeMode(ThemeMode.light);

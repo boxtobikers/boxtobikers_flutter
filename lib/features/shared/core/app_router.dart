@@ -1,10 +1,10 @@
+import 'package:boxtobikers/features/about/ui/pages/about.pages.dart';
+import 'package:boxtobikers/features/home/ui/pages/home.pages.dart';
+import 'package:boxtobikers/features/profil/ui/pages/profil.pages.dart';
+import 'package:boxtobikers/features/riding/ui/pages/riding.pages.dart';
+import 'package:boxtobikers/features/settings/ui/pages/settings.pages.dart';
+import 'package:boxtobikers/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import '../../../generated/l10n.dart';
-import '../../home/ui/pages/home.pages.dart';
-import '../../about/ui/pages/about.pages.dart';
-import '../../settings/ui/pages/settings.pages.dart';
-import '../../riding/ui/pages/riding.pages.dart';
-import '../../profil/ui/pages/profil.pages.dart';
 
 /// Classe centralisée pour la gestion des routes de l'application
 /// Respecte les principes DRY (Don't Repeat Yourself) et SOLID

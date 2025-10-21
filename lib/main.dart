@@ -1,14 +1,14 @@
+import 'package:boxtobikers/features/home/ui/pages/home.pages.dart';
+import 'package:boxtobikers/features/shared/core/app_launcher.dart';
+import 'package:boxtobikers/features/shared/core/app_router.dart';
+import 'package:boxtobikers/features/shared/core/providers/app_state_provider.dart';
+import 'package:boxtobikers/features/shared/core/utils/app_constants.dart';
+import 'package:boxtobikers/generated/l10n.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
-import 'features/home/ui/pages/home.pages.dart';
-import 'generated/l10n.dart';
-import 'features/shared/business/app_constants.dart';
-import 'features/shared/business/app_launcher.dart';
-import 'features/shared/business/providers/app_state_provider.dart';
-import 'features/shared/business/app_router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

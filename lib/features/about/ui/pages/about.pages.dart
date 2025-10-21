@@ -1,6 +1,6 @@
+import 'package:boxtobikers/features/shared/drawer/ui/widgets/app_navigation_drawer.dart';
+import 'package:boxtobikers/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import '../../../shared/ui/widgets/app_navigation_drawer.dart';
-import '../../../../generated/l10n.dart';
 
 class AboutPages extends StatefulWidget {
   const AboutPages({super.key});
@@ -101,7 +101,7 @@ class _AboutPagesState extends State<AboutPages> {
                           ),
                           const SizedBox(height: 8),
                           Text(
-                            "Voici notre engagement, alors à bientôt et merci de votre confiance.",
+                            'Voici notre engagement, alors à bientôt et merci de votre confiance.',
                             style: Theme.of(context).textTheme.bodyLarge,
                           ),
                         ],
@@ -117,7 +117,7 @@ class _AboutPagesState extends State<AboutPages> {
                         children: [
                           {
                             'year': '2023',
-                            'descriptions': ["L'idée du service en marche !", "La marque est protégée"],
+                            'descriptions': ["L'idée du service en marche !", 'La marque est protégée'],
                           },
                           {
                             'year': '2025',
@@ -125,7 +125,7 @@ class _AboutPagesState extends State<AboutPages> {
                           },
                           {
                             'year': "Aujourd'hui",
-                            'descriptions': ["On est sur les stores Apple, Android !", "x clients", "y lieux de dépose"],
+                            'descriptions': ['On est sur les stores Apple, Android !', 'x clients', 'y lieux de dépose'],
                           },
                         ].asMap().entries.map((entry) {
                           final index = entry.key;

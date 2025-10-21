@@ -1,7 +1,7 @@
+import 'package:boxtobikers/features/shared/core/utils/app_constants.dart';
+import 'package:boxtobikers/features/shared/drawer/business/models/app_drawer_destination.dart';
+import 'package:boxtobikers/features/shared/drawer/business/models/app_drawer_destinations.dart';
 import 'package:flutter/material.dart';
-import '../../business/app_drawer_destination.dart';
-import '../../business/app_drawer_destinations.dart';
-import '../../business/app_constants.dart';
 
 /// Widget réutilisable pour le NavigationDrawer de l'application
 class AppNavigationDrawer extends StatelessWidget {

@@ -34,6 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "appTitle": MessageLookupByLibrary.simpleMessage("BoxtoBikers"),
         "commonCancel": MessageLookupByLibrary.simpleMessage("Annuler"),
         "commonConfirm": MessageLookupByLibrary.simpleMessage("Confirmer"),
+        "commonDownload": MessageLookupByLibrary.simpleMessage("Télécharger"),
         "commonPersonalize":
             MessageLookupByLibrary.simpleMessage("Personnaliser"),
         "commonSave": MessageLookupByLibrary.simpleMessage("Enregistrer"),
@@ -135,6 +136,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "settingsThemeLight": MessageLookupByLibrary.simpleMessage("Clair"),
         "settingsThemeSystem": MessageLookupByLibrary.simpleMessage("Système"),
         "settingsThemeTitle": MessageLookupByLibrary.simpleMessage("Thème"),
-        "settingsTitle": MessageLookupByLibrary.simpleMessage("Pramètres")
+        "settingsTitle": MessageLookupByLibrary.simpleMessage("Paramètres")
       };
 }

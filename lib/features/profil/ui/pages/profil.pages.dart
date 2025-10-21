@@ -1,8 +1,8 @@
+import 'package:boxtobikers/features/profil/business/models/user_profile.dart';
+import 'package:boxtobikers/features/shared/core/app_router.dart';
+import 'package:boxtobikers/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import '../../../shared/business/app_router.dart';
-import '../../../../generated/l10n.dart';
-import '../../business/models/user_profile.dart';
 
 class ProfilPages extends StatefulWidget {
   const ProfilPages({super.key});

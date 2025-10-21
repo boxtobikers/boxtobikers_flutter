@@ -33,7 +33,7 @@ lib/features/shared/business/
 - Mapping automatique langue → devise (FR → Euro, US → Dollar, etc.)
 - Conversion depuis symbole ou code
 
-### 3. PreferencesService
+### 3. SettingsService
 **Responsabilité** : Gérer la persistance des données avec SharedPreferences
 
 **Données persistées** :
@@ -56,7 +56,7 @@ lib/features/shared/business/
 ### Démarrage de l'application
 ```
 1. main() → AppLauncher.initialize()
-2. Création du PreferencesService
+2. Création du SettingsService
 3. Création du AppStateProvider
 4. Injection dans MaterialApp via Provider
 5. initializeFromDevice() depuis le BuildContext
@@ -81,7 +81,7 @@ lib/features/shared/business/
 
 ### Single Responsibility Principle (SRP)
 - `Currency` : gère uniquement les devises
-- `PreferencesService` : gère uniquement la persistance
+- `SettingsService` : gère uniquement la persistance
 - `AppStateProvider` : gère uniquement l'état
 - `AppLauncher` : gère uniquement l'initialisation
 
@@ -96,19 +96,19 @@ lib/features/shared/business/
 - Chaque classe expose uniquement les méthodes nécessaires
 
 ### Dependency Inversion Principle (DIP)
-- `AppStateProvider` dépend de `PreferencesService` (abstraction)
-- `AppLauncher` dépend de `PreferencesService` et `AppStateProvider`
+- `AppStateProvider` dépend de `SettingsService` (abstraction)
+- `AppLauncher` dépend de `SettingsService` et `AppStateProvider`
 
 ## 🔨 Principe DRY
 
 ### Centralisation
 - Toute la logique de mapping langue → devise est dans `Currency.fromLocale()`
-- Toute la logique de persistance est dans `PreferencesService`
+- Toute la logique de persistance est dans `SettingsService`
 - Toute la logique d'initialisation est dans `AppLauncher.initialize()`
 
 ### Réutilisation
 - `Currency.fromLocale()` : utilisé pour déterminer la devise par défaut
-- `PreferencesService` : utilisé par le provider et peut être utilisé ailleurs
+- `SettingsService` : utilisé par le provider et peut être utilisé ailleurs
 - `AppStateProvider` : accessible partout via Provider
 
 ## 📖 Utilisation

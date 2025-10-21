@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
+import 'package:boxtobikers/generated/intl/messages_all.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'intl/messages_all.dart';
 
 // **************************************************************************
 // Generator: Flutter Intl IDE plugin
@@ -705,6 +705,16 @@ class S {
     return Intl.message(
       'Confirm',
       name: 'commonConfirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Download`
+  String get commonDownload {
+    return Intl.message(
+      'Download',
+      name: 'commonDownload',
       desc: '',
       args: [],
     );

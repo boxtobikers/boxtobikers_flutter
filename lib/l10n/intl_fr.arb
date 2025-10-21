@@ -67,7 +67,7 @@
   "ridingStopButton": "Terminer le trajet",
 
   "@@_SETTINGS": {},
-  "settingsTitle": "Pramètres",
+  "settingsTitle": "Paramètres",
   "settingsGeneralTitle": "Général",
   "settingsGeneralSubTitle": "Configurez vos préférences et paramètres de l'application",
   "settingsProfilTitle": "Profil",
@@ -91,6 +91,7 @@
   "@@_COMMON": {},
   "commonCancel": "Annuler",
   "commonConfirm": "Confirmer",
+  "commonDownload": "Télécharger",
   "commonView": "Consulter",
   "commonPersonalize": "Personnaliser",
   "commonUpdate": "Modifier",

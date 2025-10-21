@@ -34,6 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "appTitle": MessageLookupByLibrary.simpleMessage("BoxtoBikers"),
         "commonCancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "commonConfirm": MessageLookupByLibrary.simpleMessage("Confirm"),
+        "commonDownload": MessageLookupByLibrary.simpleMessage("Download"),
         "commonPersonalize":
             MessageLookupByLibrary.simpleMessage("Personalize"),
         "commonSave": MessageLookupByLibrary.simpleMessage("Save"),
