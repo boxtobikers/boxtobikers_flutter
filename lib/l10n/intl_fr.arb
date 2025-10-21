@@ -28,6 +28,8 @@
   "@@_HOME_LIST_ITEMS": {},
   "homeItemExploreTitle": "Visiter le site",
   "homeItemExploreDescription": "Envie de découvrir, c'est ici !",
+  "homeItemHistoryTitle": "Vos voyages passés...",
+  "homeItemHistoryDescription": "Retrouvez vos anciens trajets",
   "homeItemWhoAmITitle": "Qui sommes-nous ?",
   "homeItemWhoAmIDescription": "On vous dit tout… ou presque !",
   "homeItemSettingsTitle": "Vos paramètres",

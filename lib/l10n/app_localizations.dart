@@ -176,6 +176,18 @@ abstract class AppLocalizations {
   /// **'Make a tour to discover, it\'s here !'**
   String get homeItemExploreDescription;
 
+  /// No description provided for @homeItemHistoryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your past travels...'**
+  String get homeItemHistoryTitle;
+
+  /// No description provided for @homeItemHistoryDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Find all your previous journeys.'**
+  String get homeItemHistoryDescription;
+
   /// No description provided for @homeItemWhoAmITitle.
   ///
   /// In en, this message translates to:

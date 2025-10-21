@@ -27,6 +27,8 @@
   "@@_HOME_LIST_ITEMS": {},
   "homeItemExploreTitle": "Explore the site",
   "homeItemExploreDescription": "Make a tour to discover, it's here !",
+  "homeItemHistoryTitle": "Your past travels...",
+  "homeItemHistoryDescription": "Find all your previous journeys.",
   "homeItemWhoAmITitle": "Who am I ?",
   "homeItemWhoAmIDescription": "We tell you everything... or almost !",
   "homeItemSettingsTitle": "Your settings",

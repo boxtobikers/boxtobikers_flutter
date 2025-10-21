@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-import 'package:boxtobikers/generated/intl/messages_all.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'intl/messages_all.dart';
 
 // **************************************************************************
 // Generator: Flutter Intl IDE plugin
@@ -175,6 +175,26 @@ class S {
     return Intl.message(
       'Make a tour to discover, it\'s here !',
       name: 'homeItemExploreDescription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your past travels...`
+  String get homeItemHistoryTitle {
+    return Intl.message(
+      'Your past travels...',
+      name: 'homeItemHistoryTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Find all your previous journeys.`
+  String get homeItemHistoryDescription {
+    return Intl.message(
+      'Find all your previous journeys.',
+      name: 'homeItemHistoryDescription',
       desc: '',
       args: [],
     );

@@ -159,6 +159,10 @@ class _HomeListViewWidgetState extends State<HomeListViewWidget> {
         return localizations.homeItemExploreTitle;
       case 'homeItemExploreDescription':
         return localizations.homeItemExploreDescription;
+      case 'homeItemHistoryTitle':
+        return localizations.homeItemHistoryTitle;
+      case 'homeItemHistoryDescription':
+        return localizations.homeItemHistoryDescription;
       case 'homeItemWhoAmITitle':
         return localizations.homeItemWhoAmITitle;
       case 'homeItemWhoAmIDescription':

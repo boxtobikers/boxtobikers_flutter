@@ -51,6 +51,12 @@ class AppLocalizationsFr extends AppLocalizations {
   String get homeItemExploreDescription => 'Envie de découvrir, c\'est ici !';
 
   @override
+  String get homeItemHistoryTitle => 'Vos voyages passés...';
+
+  @override
+  String get homeItemHistoryDescription => 'Retrouvez vos anciens trajets';
+
+  @override
   String get homeItemWhoAmITitle => 'Qui sommes-nous ?';
 
   @override

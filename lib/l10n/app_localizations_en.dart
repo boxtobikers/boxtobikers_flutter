@@ -51,6 +51,12 @@ class AppLocalizationsEn extends AppLocalizations {
       'Make a tour to discover, it\'s here !';
 
   @override
+  String get homeItemHistoryTitle => 'Your past travels...';
+
+  @override
+  String get homeItemHistoryDescription => 'Find all your previous journeys.';
+
+  @override
   String get homeItemWhoAmITitle => 'Who am I ?';
 
   @override
