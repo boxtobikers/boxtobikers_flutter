@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:boxtobikers/features/settings/business/services/settings_service.dart';
-import 'package:boxtobikers/features/shared/core/providers/app_state_provider.dart';
+import 'package:boxtobikers/features/shared/core/providers/app_state.provider.dart';
 import 'package:flutter/material.dart';
 
 /// Classe responsable de l'initialisation de l'application

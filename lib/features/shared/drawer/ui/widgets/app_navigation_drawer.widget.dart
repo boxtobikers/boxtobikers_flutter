@@ -1,22 +1,22 @@
-import 'package:boxtobikers/features/shared/core/utils/app_constants.dart';
-import 'package:boxtobikers/features/shared/drawer/business/models/app_drawer_destination.dart';
-import 'package:boxtobikers/features/shared/drawer/business/models/app_drawer_destinations.dart';
+import 'package:boxtobikers/features/shared/core/utils/app_constants.utils.dart';
+import 'package:boxtobikers/features/shared/drawer/business/models/app_drawer_destination.model.dart';
+import 'package:boxtobikers/features/shared/drawer/business/models/app_drawer_destinations.model.dart';
 import 'package:flutter/material.dart';
 
 /// Widget réutilisable pour le NavigationDrawer de l'application
-class AppNavigationDrawer extends StatelessWidget {
+class AppNavigationDrawerWidget extends StatelessWidget {
   final int selectedIndex;
   final String? title;
-  final List<AppDrawerDestination>? destinations;
+  final List<AppDrawerDestinationModel>? destinations;
 
-  const AppNavigationDrawer({
+  const AppNavigationDrawerWidget({
     super.key,
     required this.selectedIndex,
     this.title,
     this.destinations,
   });
 
-  void _onDestinationSelected(BuildContext context, int index, List<AppDrawerDestination> destList) {
+  void _onDestinationSelected(BuildContext context, int index, List<AppDrawerDestinationModel> destList) {
     if (index == selectedIndex) {
       Navigator.of(context).pop();
       return;

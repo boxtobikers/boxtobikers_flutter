@@ -1,8 +1,8 @@
 import 'package:boxtobikers/features/shared/core/app_router.dart';
-import 'package:boxtobikers/features/shared/core/models/currency.dart';
-import 'package:boxtobikers/features/shared/core/models/distance_unit.dart';
-import 'package:boxtobikers/features/shared/core/providers/app_state_provider.dart';
-import 'package:boxtobikers/features/shared/drawer/ui/widgets/app_navigation_drawer.dart';
+import 'package:boxtobikers/features/shared/core/models/currency.model.dart';
+import 'package:boxtobikers/features/shared/core/models/distance_unit.model.dart';
+import 'package:boxtobikers/features/shared/core/providers/app_state.provider.dart';
+import 'package:boxtobikers/features/shared/drawer/ui/widgets/app_navigation_drawer.widget.dart';
 import 'package:boxtobikers/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,15 +17,15 @@ class SettingsPages extends StatefulWidget {
 class _SettingsPagesState extends State<SettingsPages> {
   bool _notificationsEnabled = false;
 
-  IconData _getCurrencyIcon(Currency currency) {
+  IconData _getCurrencyIcon(CurrencyModel currency) {
     switch (currency) {
-      case Currency.euro:
+      case CurrencyModel.euro:
         return Icons.euro_symbol;
-      case Currency.dollar:
+      case CurrencyModel.dollar:
         return Icons.attach_money;
-      case Currency.pound:
+      case CurrencyModel.pound:
         return Icons.currency_pound;
-      case Currency.yen:
+      case CurrencyModel.yen:
         return Icons.currency_yen;
     }
   }
@@ -37,7 +37,7 @@ class _SettingsPagesState extends State<SettingsPages> {
     final double headerImageHeight = MediaQuery.of(context).size.height / 4;
 
     return Scaffold(
-      drawer: const AppNavigationDrawer(
+      drawer: const AppNavigationDrawerWidget(
         selectedIndex: 2, // Settings est à l'index 2
       ),
       body: SafeArea(
@@ -238,11 +238,11 @@ class _SettingsPagesState extends State<SettingsPages> {
                               fontWeight: FontWeight.w500,
                             ),
                           ),
-                          trailing: DropdownButton<Currency>(
+                          trailing: DropdownButton<CurrencyModel>(
                             value: appState.currency,
                             underline: const SizedBox(),
                             alignment: AlignmentDirectional.centerEnd,
-                            items: Currency.values.map((currency) {
+                            items: CurrencyModel.values.map((currency) {
                               return DropdownMenuItem(
                                 value: currency,
                                 child: Text('${currency.name} (${currency.symbol})'),
@@ -268,19 +268,19 @@ class _SettingsPagesState extends State<SettingsPages> {
                               fontWeight: FontWeight.w500,
                             ),
                           ),
-                          trailing: SegmentedButton<DistanceUnit>(
+                          trailing: SegmentedButton<DistanceUnitModel>(
                             segments: const [
-                              ButtonSegment<DistanceUnit>(
-                                value: DistanceUnit.kilometers,
+                              ButtonSegment<DistanceUnitModel>(
+                                value: DistanceUnitModel.kilometers,
                                 label: Text('km'),
                               ),
-                              ButtonSegment<DistanceUnit>(
-                                value: DistanceUnit.miles,
+                              ButtonSegment<DistanceUnitModel>(
+                                value: DistanceUnitModel.miles,
                                 label: Text('miles'),
                               ),
                             ],
                             selected: {appState.distanceUnit},
-                            onSelectionChanged: (Set<DistanceUnit> newSelection) {
+                            onSelectionChanged: (Set<DistanceUnitModel> newSelection) {
                               appState.setDistanceUnit(newSelection.first);
                             },
                           ),

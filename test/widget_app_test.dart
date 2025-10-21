@@ -6,8 +6,8 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:boxtobikers/features/settings/business/services/settings_service.dart';
-import 'package:boxtobikers/features/shared/core/models/currency.dart';
-import 'package:boxtobikers/features/shared/core/providers/app_state_provider.dart';
+import 'package:boxtobikers/features/shared/core/models/currency.model.dart';
+import 'package:boxtobikers/features/shared/core/providers/app_state.provider.dart';
 import 'package:boxtobikers/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -57,7 +57,7 @@ void main() {
     expect(appStateProvider.currency.code, 'EUR');
 
     // Changer la devise
-    await appStateProvider.setCurrency(Currency.dollar);
+    await appStateProvider.setCurrency(CurrencyModel.dollar);
 
     // Vérifier que la devise a changé
     expect(appStateProvider.currency.code, 'USD');
@@ -118,12 +118,12 @@ void main() {
 
   test('Currency should map correctly from locale', () {
     // Test des mappings langue -> devise
-    expect(Currency.fromLocale('fr_FR'), Currency.euro);
-    expect(Currency.fromLocale('en_US'), Currency.dollar);
-    expect(Currency.fromLocale('en_GB'), Currency.pound);
-    expect(Currency.fromLocale('ja_JP'), Currency.yen);
-    expect(Currency.fromLocale('de_DE'), Currency.euro);
-    expect(Currency.fromLocale('es_ES'), Currency.euro);
+    expect(CurrencyModel.fromLocale('fr_FR'), CurrencyModel.euro);
+    expect(CurrencyModel.fromLocale('en_US'), CurrencyModel.dollar);
+    expect(CurrencyModel.fromLocale('en_GB'), CurrencyModel.pound);
+    expect(CurrencyModel.fromLocale('ja_JP'), CurrencyModel.yen);
+    expect(CurrencyModel.fromLocale('de_DE'), CurrencyModel.euro);
+    expect(CurrencyModel.fromLocale('es_ES'), CurrencyModel.euro);
   });
 
   test('SettingsService should persist and retrieve values', () async {
@@ -132,12 +132,12 @@ void main() {
 
     // Sauvegarder des valeurs
     await prefsService.saveThemeMode(ThemeMode.light);
-    await prefsService.saveCurrency(Currency.pound);
+    await prefsService.saveCurrency(CurrencyModel.pound);
     await prefsService.saveLocale(const Locale('en', 'GB'));
 
     // Récupérer et vérifier
     expect(prefsService.getSavedThemeMode(), ThemeMode.light);
-    expect(prefsService.getSavedCurrency(), Currency.pound);
+    expect(prefsService.getSavedCurrency(), CurrencyModel.pound);
     expect(prefsService.getSavedLocale()?.languageCode, 'en');
     expect(prefsService.getSavedLocale()?.countryCode, 'GB');
   });

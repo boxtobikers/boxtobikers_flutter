@@ -1,8 +1,8 @@
 import 'package:boxtobikers/features/home/ui/pages/home.pages.dart';
 import 'package:boxtobikers/features/shared/core/app_launcher.dart';
 import 'package:boxtobikers/features/shared/core/app_router.dart';
-import 'package:boxtobikers/features/shared/core/providers/app_state_provider.dart';
-import 'package:boxtobikers/features/shared/core/utils/app_constants.dart';
+import 'package:boxtobikers/features/shared/core/providers/app_state.provider.dart';
+import 'package:boxtobikers/features/shared/core/utils/app_constants.utils.dart';
 import 'package:boxtobikers/generated/l10n.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';

@@ -1,4 +1,4 @@
-class UserProfile {
+class UserProfileModel {
   final String firstName;
   final String lastName;
   final String email;
@@ -6,7 +6,7 @@ class UserProfile {
   final String address;
   final DateTime? dateOfBirth;
 
-  UserProfile({
+  UserProfileModel({
     required this.firstName,
     required this.lastName,
     required this.email,
@@ -17,7 +17,7 @@ class UserProfile {
 
   String get fullName => '$firstName $lastName';
 
-  UserProfile copyWith({
+  UserProfileModel copyWith({
     String? firstName,
     String? lastName,
     String? email,
@@ -25,7 +25,7 @@ class UserProfile {
     String? address,
     DateTime? dateOfBirth,
   }) {
-    return UserProfile(
+    return UserProfileModel(
       firstName: firstName ?? this.firstName,
       lastName: lastName ?? this.lastName,
       email: email ?? this.email,
@@ -46,8 +46,8 @@ class UserProfile {
     };
   }
 
-  factory UserProfile.fromJson(Map<String, dynamic> json) {
-    return UserProfile(
+  factory UserProfileModel.fromJson(Map<String, dynamic> json) {
+    return UserProfileModel(
       firstName: json['firstName'] as String,
       lastName: json['lastName'] as String,
       email: json['email'] as String,

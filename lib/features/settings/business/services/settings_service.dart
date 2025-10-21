@@ -1,5 +1,5 @@
-import 'package:boxtobikers/features/shared/core/models/currency.dart';
-import 'package:boxtobikers/features/shared/core/models/distance_unit.dart';
+import 'package:boxtobikers/features/shared/core/models/currency.model.dart';
+import 'package:boxtobikers/features/shared/core/models/distance_unit.model.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -85,31 +85,31 @@ class SettingsService {
   // ============ Currency ============
 
   /// Sauvegarde la devise
-  Future<void> saveCurrency(Currency currency) async {
+  Future<void> saveCurrency(CurrencyModel currency) async {
     await _prefs.setString(_keyCurrency, currency.code);
   }
 
   /// Récupère la devise sauvegardée
-  Currency? getSavedCurrency() {
+  CurrencyModel? getSavedCurrency() {
     final currencyCode = _prefs.getString(_keyCurrency);
     if (currencyCode == null) return null;
 
-    return Currency.fromCode(currencyCode);
+    return CurrencyModel.fromCode(currencyCode);
   }
 
   // ============ Distance Unit ============
 
   /// Sauvegarde l'unité de distance
-  Future<void> saveDistanceUnit(DistanceUnit unit) async {
+  Future<void> saveDistanceUnit(DistanceUnitModel unit) async {
     await _prefs.setString(_keyDistanceUnit, unit.symbol);
   }
 
   /// Récupère l'unité de distance sauvegardée
-  DistanceUnit? getSavedDistanceUnit() {
+  DistanceUnitModel? getSavedDistanceUnit() {
     final unitSymbol = _prefs.getString(_keyDistanceUnit);
     if (unitSymbol == null) return null;
 
-    return DistanceUnit.fromSymbol(unitSymbol);
+    return DistanceUnitModel.fromSymbol(unitSymbol);
   }
 
   // ============ First Launch ============

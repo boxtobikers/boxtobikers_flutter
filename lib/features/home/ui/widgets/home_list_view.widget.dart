@@ -1,4 +1,4 @@
-import 'package:boxtobikers/features/home/models/home_items_data.dart';
+import 'package:boxtobikers/features/home/models/home_items_data.model.dart';
 import 'package:boxtobikers/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +30,7 @@ class _HomeListViewWidgetState extends State<HomeListViewWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final listItems = HomeItemsData.getHomeItems(context);
+    final listItems = HomeItemsDataModel.getHomeItems(context);
 
     return Padding(
       padding: const EdgeInsets.all(16.0),

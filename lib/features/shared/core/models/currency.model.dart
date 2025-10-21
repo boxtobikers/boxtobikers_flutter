@@ -1,6 +1,6 @@
 /// Énumération des devises supportées par l'application
 /// Principe SOLID : Single Responsibility - gère uniquement les devises
-enum Currency {
+enum CurrencyModel {
   euro('€', 'EUR', 'Euro'),
   dollar('\$', 'USD', 'US Dollar'),
   pound('£', 'GBP', 'British Pound'),
@@ -10,11 +10,11 @@ enum Currency {
   final String code;
   final String name;
 
-  const Currency(this.symbol, this.code, this.name);
+  const CurrencyModel(this.symbol, this.code, this.name);
 
   /// Retourne la devise par défaut selon la locale
   /// Principe DRY : centralise la logique de mapping locale -> devise
-  static Currency fromLocale(String localeCode) {
+  static CurrencyModel fromLocale(String localeCode) {
     // Extrait le code pays de la locale (ex: 'en_US' -> 'US', 'fr_FR' -> 'FR')
     final countryCode = localeCode.contains('_')
         ? localeCode.split('_').last.toUpperCase()
@@ -32,37 +32,37 @@ enum Currency {
       case 'IE':
       case 'FI':
       case 'GR':
-        return Currency.euro;
+        return CurrencyModel.euro;
 
       case 'US':
       case 'CA':
       case 'MX':
-        return Currency.dollar;
+        return CurrencyModel.dollar;
 
       case 'GB':
-        return Currency.pound;
+        return CurrencyModel.pound;
 
       case 'JP':
-        return Currency.yen;
+        return CurrencyModel.yen;
 
       default:
-        return Currency.euro; // Par défaut
+        return CurrencyModel.euro; // Par défaut
     }
   }
 
   /// Retourne une devise à partir de son code
-  static Currency fromCode(String code) {
-    return Currency.values.firstWhere(
+  static CurrencyModel fromCode(String code) {
+    return CurrencyModel.values.firstWhere(
       (currency) => currency.code == code,
-      orElse: () => Currency.euro,
+      orElse: () => CurrencyModel.euro,
     );
   }
 
   /// Retourne une devise à partir de son symbole
-  static Currency fromSymbol(String symbol) {
-    return Currency.values.firstWhere(
+  static CurrencyModel fromSymbol(String symbol) {
+    return CurrencyModel.values.firstWhere(
       (currency) => currency.symbol == symbol,
-      orElse: () => Currency.euro,
+      orElse: () => CurrencyModel.euro,
     );
   }
 }

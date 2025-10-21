@@ -1,4 +1,4 @@
-import 'package:boxtobikers/features/shared/drawer/ui/widgets/app_navigation_drawer.dart';
+import 'package:boxtobikers/features/shared/drawer/ui/widgets/app_navigation_drawer.widget.dart';
 import 'package:boxtobikers/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +17,7 @@ class _AboutPagesState extends State<AboutPages> {
 
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surfaceContainer,
-      drawer: const AppNavigationDrawer(
+      drawer: const AppNavigationDrawerWidget(
         selectedIndex: 1, // About est à l'index 1
       ),
       body: SafeArea(

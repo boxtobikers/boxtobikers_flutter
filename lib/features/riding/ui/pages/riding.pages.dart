@@ -1,4 +1,4 @@
-import 'package:boxtobikers/features/shared/drawer/ui/widgets/app_navigation_drawer.dart';
+import 'package:boxtobikers/features/shared/drawer/ui/widgets/app_navigation_drawer.widget.dart';
 import 'package:boxtobikers/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +15,7 @@ class _RidingPagesState extends State<RidingPages> {
     final l10n = S.of(context);
 
     return Scaffold(
-      drawer: const AppNavigationDrawer(
+      drawer: const AppNavigationDrawerWidget(
         selectedIndex: 3, // Riding est à l'index 3
       ),
       body: SafeArea(

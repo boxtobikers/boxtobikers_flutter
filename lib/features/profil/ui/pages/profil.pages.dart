@@ -1,4 +1,4 @@
-import 'package:boxtobikers/features/profil/business/models/user_profile.dart';
+import 'package:boxtobikers/features/profil/business/models/user_profile.model.dart';
 import 'package:boxtobikers/features/shared/core/app_router.dart';
 import 'package:boxtobikers/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -26,14 +26,14 @@ class _ProfilPagesState extends State<ProfilPages> {
   bool _isEditing = false;
 
   // Données de profil en dur (pour la démo)
-  late UserProfile _userProfile;
+  late UserProfileModel _userProfile;
 
   @override
   void initState() {
     super.initState();
 
     // Initialisation du profil avec des données de test
-    _userProfile = UserProfile(
+    _userProfile = UserProfileModel(
       firstName: 'Jean',
       lastName: 'Dupont',
       email: 'jean.dupont@example.com',
@@ -89,7 +89,7 @@ class _ProfilPagesState extends State<ProfilPages> {
   void _saveProfile() {
     if (_formKey.currentState!.validate()) {
       setState(() {
-        _userProfile = UserProfile(
+        _userProfile = UserProfileModel(
           firstName: _firstNameController.text,
           lastName: _lastNameController.text,
           email: _emailController.text,
