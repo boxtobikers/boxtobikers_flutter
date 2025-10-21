@@ -1,4 +1,4 @@
-import 'package:boxtobikers/features/shared/drawer/ui/widgets/app_navigation_drawer.widget.dart';
+import 'package:boxtobikers/core/drawer/ui/widgets/app_navigation_drawer.widget.dart';
 import 'package:boxtobikers/generated/l10n.dart';
 import 'package:flutter/material.dart';
 

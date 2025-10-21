@@ -5,9 +5,9 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
+import 'package:boxtobikers/core/app/models/currency.model.dart';
+import 'package:boxtobikers/core/app/providers/app_state.provider.dart';
 import 'package:boxtobikers/features/settings/business/services/settings_service.dart';
-import 'package:boxtobikers/features/shared/core/models/currency.model.dart';
-import 'package:boxtobikers/features/shared/core/providers/app_state.provider.dart';
 import 'package:boxtobikers/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';

@@ -1,5 +1,5 @@
+import 'package:boxtobikers/core/app/app_router.dart';
 import 'package:boxtobikers/features/profil/business/models/user_profile.model.dart';
-import 'package:boxtobikers/features/shared/core/app_router.dart';
 import 'package:boxtobikers/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';

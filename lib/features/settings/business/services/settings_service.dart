@@ -1,5 +1,5 @@
-import 'package:boxtobikers/features/shared/core/models/currency.model.dart';
-import 'package:boxtobikers/features/shared/core/models/distance_unit.model.dart';
+import 'package:boxtobikers/core/app/models/currency.model.dart';
+import 'package:boxtobikers/core/app/models/distance_unit.model.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

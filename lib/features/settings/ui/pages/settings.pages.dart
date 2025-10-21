@@ -1,8 +1,8 @@
-import 'package:boxtobikers/features/shared/core/app_router.dart';
-import 'package:boxtobikers/features/shared/core/models/currency.model.dart';
-import 'package:boxtobikers/features/shared/core/models/distance_unit.model.dart';
-import 'package:boxtobikers/features/shared/core/providers/app_state.provider.dart';
-import 'package:boxtobikers/features/shared/drawer/ui/widgets/app_navigation_drawer.widget.dart';
+import 'package:boxtobikers/core/app/app_router.dart';
+import 'package:boxtobikers/core/app/models/currency.model.dart';
+import 'package:boxtobikers/core/app/models/distance_unit.model.dart';
+import 'package:boxtobikers/core/app/providers/app_state.provider.dart';
+import 'package:boxtobikers/core/drawer/ui/widgets/app_navigation_drawer.widget.dart';
 import 'package:boxtobikers/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
