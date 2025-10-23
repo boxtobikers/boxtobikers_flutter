@@ -37,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "commonDownload": MessageLookupByLibrary.simpleMessage("Download"),
         "commonPersonalize":
             MessageLookupByLibrary.simpleMessage("Personalize"),
+        "commonRetry": MessageLookupByLibrary.simpleMessage("Retry"),
         "commonSave": MessageLookupByLibrary.simpleMessage("Save"),
         "commonUpdate": MessageLookupByLibrary.simpleMessage("Update"),
         "commonView": MessageLookupByLibrary.simpleMessage("Consult"),

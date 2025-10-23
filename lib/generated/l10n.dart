@@ -770,6 +770,16 @@ class S {
     );
   }
 
+  /// `Retry`
+  String get commonRetry {
+    return Intl.message(
+      'Retry',
+      name: 'commonRetry',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Save`
   String get commonSave {
     return Intl.message(

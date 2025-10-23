@@ -96,5 +96,6 @@
   "commonView": "Consult",
   "commonPersonalize": "Personalize",
   "commonUpdate": "Update",
+  "commonRetry": "Retry",
   "commonSave": "Save"
 }

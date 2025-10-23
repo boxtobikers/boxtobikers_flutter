@@ -530,6 +530,12 @@ abstract class AppLocalizations {
   /// **'Update'**
   String get commonUpdate;
 
+  /// No description provided for @commonRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get commonRetry;
+
   /// No description provided for @commonSave.
   ///
   /// In en, this message translates to:

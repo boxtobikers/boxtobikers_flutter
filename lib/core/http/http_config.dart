@@ -20,8 +20,9 @@ class HttpConfig {
   });
 
   /// Configuration par défaut pour le développement
+  /// https://swapi.dev/api/planets/?page=1
   static const HttpConfig development = HttpConfig(
-    baseUrl: 'https://api.boxtobikers.dev',
+    baseUrl: 'https://swapi.dev/api/',
     connectTimeout: Duration(seconds: 30),
     receiveTimeout: Duration(seconds: 30),
     sendTimeout: Duration(seconds: 30),
@@ -30,7 +31,7 @@ class HttpConfig {
 
   /// Configuration par défaut pour la production
   static const HttpConfig production = HttpConfig(
-    baseUrl: 'https://api.boxtobikers.com',
+    baseUrl: 'https://swapi.dev/api/',
     connectTimeout: Duration(seconds: 15),
     receiveTimeout: Duration(seconds: 15),
     sendTimeout: Duration(seconds: 15),

@@ -234,5 +234,8 @@ class AppLocalizationsFr extends AppLocalizations {
   String get commonUpdate => 'Modifier';
 
   @override
+  String get commonRetry => 'Réessayer';
+
+  @override
   String get commonSave => 'Enregistrer';
 }

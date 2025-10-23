@@ -10,6 +10,13 @@ class HttpService {
   late final Dio _dio;
   late final HttpConfig _config;
 
+  /// Constantes d'API externes
+  /// URL de base de l'API SWAPI pour le développement
+  static const String swapiBaseUrlDev = 'https://swapi.dev/api';
+
+  /// URL de base de l'API SWAPI pour la production
+  static const String swapiBaseUrlProd = 'https://swapi.dev/api';
+
   // Constructeur privé pour le pattern Singleton
   HttpService._internal();
 
