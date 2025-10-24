@@ -2,6 +2,8 @@ import 'package:boxtobikers/core/app/app_launcher.dart';
 import 'package:boxtobikers/core/app/app_router.dart';
 import 'package:boxtobikers/core/app/providers/app_state.provider.dart';
 import 'package:boxtobikers/core/app/utils/app_constants.utils.dart';
+import 'package:boxtobikers/core/config/env_config.dart';
+import 'package:boxtobikers/core/services/supabase_service.dart';
 import 'package:boxtobikers/features/home/ui/pages/home.pages.dart';
 import 'package:boxtobikers/generated/l10n.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
@@ -12,6 +14,23 @@ import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Valider et afficher la configuration des variables d'environnement
+  try {
+    EnvConfig.validate();
+    EnvConfig.printInfo();
+  } catch (e) {
+    debugPrint('❌ Erreur de configuration : $e');
+    rethrow;
+  }
+
+  // Initialiser Supabase
+  try {
+    await SupabaseService.initialize();
+  } catch (e) {
+    debugPrint('❌ Erreur lors de l\'initialisation de Supabase : $e');
+    rethrow;
+  }
 
   // Configuration pour améliorer le rendu des polices sur Android
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
@@ -49,7 +68,9 @@ class MyApp extends StatelessWidget {
             ],
             supportedLocales: S.delegate.supportedLocales,
             locale: appState.locale,
-            title: AppConstants.appTitle,
+            title: EnvConfig.isDevelopment
+                ? '${AppConstants.appTitle} [DEV]'
+                : AppConstants.appTitle,
             // The Big stone, light theme
             theme: FlexThemeData.light(
               scheme: FlexScheme.bigStone,

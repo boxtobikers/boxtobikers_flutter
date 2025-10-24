@@ -1,0 +1,7 @@
+{
+  "SUPABASE_URL": "https://lnoondakrogdriiwqtcp.supabase.co",
+  "SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imxub29uZGFrcm9nZHJpaXdxdGNwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjEzMTIyNzksImV4cCI6MjA3Njg4ODI3OX0.qyKgl6tjMbn37ne4_B9xUruozDrSus3qjtY1dNrFoqs",
+  "API_URL": "https://api-dev.boxtobikers.com",
+  "ENV": "development"
+}
+

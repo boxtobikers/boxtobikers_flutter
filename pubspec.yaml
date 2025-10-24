@@ -43,6 +43,7 @@ dependencies:
   provider: ^6.1.2
   radio_group_v2: ^3.3.1
   shared_preferences: ^2.3.3
+  supabase_flutter: ^2.10.3
 
 dev_dependencies:
   flutter_test:

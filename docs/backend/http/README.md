@@ -1,35 +1,43 @@
-# Service HTTP Centralisé
+# 🌐 Client HTTP - Dio
 
-Ce service HTTP centralisé utilise Dio avec le pattern Singleton pour gérer toutes les requêtes HTTP de l'application. Il respecte les principes DRY et SOLID.
+Documentation du service HTTP centralisé utilisant Dio pour BoxToBikers.
 
-## Architecture
+---
 
-### Composants principaux
+## 📋 Vue d'Ensemble
+
+Le service HTTP centralisé utilise **Dio** avec le pattern **Singleton** pour gérer toutes les requêtes HTTP de l'application. Il respecte les principes **DRY** et **SOLID**.
+
+---
+
+## 🏗️ Architecture
+
+### Composants Principaux
 
 1. **HttpService** - Service principal avec pattern Singleton
 2. **HttpConfig** - Configuration du service
 3. **HttpResponse** - Modèle de réponse générique
 4. **HttpInterceptor** - Intercepteurs pour auth et logging
 
-### Structure des fichiers
+### Structure des Fichiers
 
 ```
-lib/shared/core/
+lib/core/http/
 ├── http_service.dart      # Service principal
 ├── http_config.dart       # Configuration
 ├── http_response.dart     # Modèles de réponse
 ├── http_interceptor.dart  # Intercepteurs
-├── index.dart            # Exports
-├── example_usage.dart    # Exemples d'utilisation
-└── README.md            # Documentation
+└── index.dart            # Exports
 ```
 
-## Utilisation
+---
+
+## 💻 Utilisation
 
 ### 1. Initialisation
 
 ```dart
-import 'package:boxtobikers/shared/core/index.dart';
+import 'package:boxtobikers/core/http/index.dart';
 
 void main() {
   // Initialiser le service HTTP
@@ -39,7 +47,7 @@ void main() {
 }
 ```
 
-### 2. Configuration de l'authentification
+### 2. Configuration de l'Authentification
 
 ```dart
 HttpService.instance.configureAuth(
@@ -79,7 +87,7 @@ final response = await HttpService.instance.put<Map<String, dynamic>>(
 final response = await HttpService.instance.delete<void>('/users/1');
 ```
 
-#### Upload de fichier
+#### Upload de Fichier
 ```dart
 final response = await HttpService.instance.uploadFile<Map<String, dynamic>>(
   '/upload',
@@ -88,7 +96,7 @@ final response = await HttpService.instance.uploadFile<Map<String, dynamic>>(
 );
 ```
 
-#### Download de fichier
+#### Download de Fichier
 ```dart
 final response = await HttpService.instance.downloadFile(
   '/download/file.pdf',
@@ -96,7 +104,11 @@ final response = await HttpService.instance.downloadFile(
 );
 ```
 
-## Configuration
+**[Voir les exemples complets →](examples/example_usage.dart)**
+
+---
+
+## ⚙️ Configuration
 
 ### Environnements
 
@@ -115,7 +127,7 @@ HttpConfig(
 )
 ```
 
-### Headers par défaut
+### Headers par Défaut
 
 ```dart
 {
@@ -124,17 +136,23 @@ HttpConfig(
 }
 ```
 
-## Gestion des erreurs
+---
 
-Le service gère automatiquement les erreurs et les convertit en `HttpResponse` avec les codes d'erreur appropriés :
+## 🚨 Gestion des Erreurs
 
-- **408** - Timeout
-- **401** - Non authentifié
-- **403** - Non autorisé
-- **404** - Non trouvé
-- **500** - Erreur serveur
+Le service gère automatiquement les erreurs et les convertit en `HttpResponse` avec les codes appropriés :
 
-## Intercepteurs
+| Code | Description |
+|------|-------------|
+| **408** | Timeout |
+| **401** | Non authentifié |
+| **403** | Non autorisé |
+| **404** | Non trouvé |
+| **500** | Erreur serveur |
+
+---
+
+## 🔌 Intercepteurs
 
 ### AuthInterceptor
 - Ajoute automatiquement le token d'authentification
@@ -144,7 +162,9 @@ Le service gère automatiquement les erreurs et les convertit en `HttpResponse` 
 - Log les requêtes et réponses (développement uniquement)
 - Affiche les erreurs détaillées
 
-## Principes SOLID respectés
+---
+
+## 🎯 Principes SOLID Respectés
 
 1. **Single Responsibility** - Chaque classe a une responsabilité unique
 2. **Open/Closed** - Extensible via les intercepteurs
@@ -152,7 +172,9 @@ Le service gère automatiquement les erreurs et les convertit en `HttpResponse` 
 4. **Interface Segregation** - Interfaces spécifiques
 5. **Dependency Inversion** - Dépend d'abstractions
 
-## Avantages
+---
+
+## ✨ Avantages
 
 - ✅ Pattern Singleton pour une instance unique
 - ✅ Gestion centralisée des requêtes HTTP
@@ -163,3 +185,24 @@ Le service gère automatiquement les erreurs et les convertit en `HttpResponse` 
 - ✅ Support upload/download
 - ✅ Type-safe avec génériques
 - ✅ Respect des principes SOLID et DRY
+
+---
+
+## 📚 Ressources
+
+- **[Exemples d'utilisation](examples/example_usage.dart)** - Code d'exemple complet
+- **[Documentation Dio](https://pub.dev/packages/dio)** - Package officiel
+- **[Guide développeur](../../development/README.md)** - Développement
+
+---
+
+## 🔗 Intégration avec Supabase
+
+Pour les requêtes Supabase, utilisez plutôt le **SupabaseService** qui est optimisé pour ce backend.
+
+**[Guide Supabase →](../supabase/README.md)**
+
+---
+
+📖 **[Retour à la documentation →](../../README.md)**
+
