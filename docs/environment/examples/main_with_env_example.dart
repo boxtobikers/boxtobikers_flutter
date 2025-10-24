@@ -5,6 +5,7 @@
 ///
 /// ⚠️ CECI EST UN EXEMPLE - Ne remplacez pas votre main.dart actuel !
 /// Copiez uniquement les parties dont vous avez besoin.
+library;
 
 import 'package:boxtobikers/core/app/app_launcher.dart';
 import 'package:boxtobikers/core/app/providers/app_state.provider.dart';

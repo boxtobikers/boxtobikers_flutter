@@ -4,7 +4,7 @@
 /// lors du lancement de l'application avec --dart-define-from-file.
 ///
 /// Exemple d'utilisation :
-/// ```dart
+/// ```text
 /// // Vérifier la configuration
 /// EnvConfig.validate();
 ///

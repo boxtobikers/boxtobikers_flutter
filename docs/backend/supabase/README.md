@@ -20,7 +20,7 @@ Supabase est déjà configuré dans le projet avec :
 
 ### Authentification
 
-```dart
+```text
 import 'package:boxtobikers/core/services/supabase_service.dart';
 
 // Se connecter
@@ -40,7 +40,7 @@ await SupabaseService.instance.signOut();
 
 ### Données (CRUD)
 
-```dart
+```text
 // Lire
 final users = await SupabaseService.instance.getTableData('users');
 
@@ -61,7 +61,7 @@ await SupabaseService.instance.deleteData('users', 'id');
 
 ### Requêtes Personnalisées
 
-```dart
+```text
 final supabase = SupabaseService.instance.client;
 
 final bikers = await supabase
@@ -75,11 +75,10 @@ final bikers = await supabase
 
 ## 🏗️ Exemples d'Intégration
 
-**[Voir les exemples complets →](examples/)**
 
 ### Provider d'Authentification
 
-```dart
+```text
 class AuthProvider extends ChangeNotifier {
   User? _currentUser;
   
@@ -124,7 +123,7 @@ USING (auth.uid() = id);
 
 ### Gestion des Erreurs
 
-```dart
+```text
 try {
   final data = await SupabaseService.instance.getTableData('users');
 } on PostgrestException catch (e) {
@@ -141,7 +140,6 @@ try {
 ### Documentation du projet
 - **[Configuration](setup.md)** - Mise en place détaillée
 - **[Mises à jour](updates.md)** - Changelog et versions
-- **[Exemples](examples/)** - Code d'exemple
 
 ### Documentation externe
 - **[Supabase Docs](https://supabase.com/docs)** - Documentation officielle

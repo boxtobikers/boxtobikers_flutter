@@ -94,7 +94,7 @@ lib/
 
 ### Nommage
 
-```dart
+```text
 // Classes : PascalCase
 class UserProfile {}
 
@@ -111,7 +111,7 @@ user_profile_page.dart
 
 ### Organisation
 
-```dart
+```text
 // Import order
 import 'dart:async';                    // Dart SDK
 import 'package:flutter/material.dart'; // Flutter
@@ -159,7 +159,7 @@ make test-coverage
 
 ### Écrire des Tests
 
-```dart
+```text
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -206,7 +206,7 @@ flutter pub global run devtools
 
 ### Logs
 
-```dart
+```text
 import 'package:boxtobikers/core/config/env_config.dart';
 
 // Logs uniquement en dev
@@ -225,7 +225,6 @@ if (EnvConfig.isDevelopment) {
 ## 📚 Ressources
 
 - **[App Launcher](app-launcher.md)** - Système de démarrage
-- **[Features](features.md)** - Fonctionnalités disponibles
 - **[Architecture](../architecture/README.md)** - Structure du projet
 
 ---

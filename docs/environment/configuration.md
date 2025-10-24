@@ -57,7 +57,7 @@ make dev
 
 ### Accéder aux variables
 
-```dart
+```text
 import 'package:boxtobikers/core/config/env_config.dart';
 
 // Récupérer les valeurs
@@ -82,7 +82,7 @@ if (EnvConfig.isValid) {
 
 ### Initialiser au démarrage
 
-```dart
+```text
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -202,7 +202,7 @@ flutter test test/core/config/env_config_test.dart
 
 ### Tests manuels
 
-```dart
+```text
 // Vérifier que les variables sont chargées
 print('URL: ${EnvConfig.supabaseUrl}');
 print('Key: ${EnvConfig.supabaseAnonKey.isNotEmpty}');
@@ -257,7 +257,7 @@ cp config/example.json config/dev.json
 
 - **[Quick Start](../getting-started/quick-start.md)** - Démarrage rapide
 - **[Installation complète](../getting-started/setup-complete.md)** - Détails
-- **[Exemples de code](examples/)** - Exemples d'utilisation
+- **[Exemple de code](examples/main_with_env_example.dart)** - Exemple d'utilisation
 - **[Guide Supabase](../backend/supabase/README.md)** - Intégration backend
 
 ---
@@ -274,7 +274,7 @@ cp config/example.json config/dev.json
 ```
 
 2. Ajouter dans `EnvConfig` :
-```dart
+```text
 static const String maVariable = String.fromEnvironment(
   'MA_NOUVELLE_VAR',
   defaultValue: '',
@@ -282,7 +282,7 @@ static const String maVariable = String.fromEnvironment(
 ```
 
 3. Utiliser :
-```dart
+```text
 String valeur = EnvConfig.maVariable;
 ```
 

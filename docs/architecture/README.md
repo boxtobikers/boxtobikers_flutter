@@ -194,7 +194,7 @@ feature_name/
 
 Utilisé pour les services (ex: SupabaseService)
 
-```dart
+```text
 class SupabaseService {
   static SupabaseService? _instance;
   static SupabaseService get instance {
@@ -209,7 +209,7 @@ class SupabaseService {
 
 State management avec ChangeNotifier
 
-```dart
+```text
 class AppStateProvider extends ChangeNotifier {
   // État
   ThemeMode _themeMode = ThemeMode.system;
@@ -245,7 +245,7 @@ Abstraction de l'accès aux données (à implémenter si nécessaire)
 
 Supabase utilise RLS pour sécuriser les données au niveau de la base.
 
-**[Configuration RLS →](../backend/supabase/README.md#row-level-security)**
+**[Documentation Supabase →](../backend/supabase/README.md)**
 
 ---
 
@@ -269,7 +269,7 @@ test/
 - **Widget Tests** : UI Components
 - **Integration Tests** : Flux complets
 
-**[Guide de test →](../development/README.md#tests)**
+**[Guide développeur →](../development/README.md)**
 
 ---
 
@@ -309,7 +309,6 @@ make build-ios-prod
 ## 📚 Ressources
 
 - **[Structure détaillée](project-structure.md)** - Tous les dossiers expliqués
-- **[Standards de code](coding-standards.md)** - Conventions et bonnes pratiques
 - **[Guide développeur](../development/README.md)** - Développement quotidien
 
 ---

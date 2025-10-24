@@ -36,7 +36,7 @@ lib/core/http/
 
 ### 1. Initialisation
 
-```dart
+```text
 import 'package:boxtobikers/core/http/index.dart';
 
 void main() {
@@ -49,7 +49,7 @@ void main() {
 
 ### 2. Configuration de l'Authentification
 
-```dart
+```text
 HttpService.instance.configureAuth(
   getToken: () => 'your-jwt-token',
   refreshToken: () async => 'new-jwt-token',
@@ -59,7 +59,7 @@ HttpService.instance.configureAuth(
 ### 3. Requêtes HTTP
 
 #### GET
-```dart
+```text
 final response = await HttpService.instance.get<Map<String, dynamic>>('/users');
 if (response.success) {
   final data = response.data;
@@ -67,7 +67,7 @@ if (response.success) {
 ```
 
 #### POST
-```dart
+```text
 final response = await HttpService.instance.post<Map<String, dynamic>>(
   '/users',
   data: {'name': 'John', 'email': 'john@example.com'},
@@ -75,7 +75,7 @@ final response = await HttpService.instance.post<Map<String, dynamic>>(
 ```
 
 #### PUT
-```dart
+```text
 final response = await HttpService.instance.put<Map<String, dynamic>>(
   '/users/1',
   data: {'name': 'John Updated'},
@@ -83,12 +83,12 @@ final response = await HttpService.instance.put<Map<String, dynamic>>(
 ```
 
 #### DELETE
-```dart
+```text
 final response = await HttpService.instance.delete<void>('/users/1');
 ```
 
 #### Upload de Fichier
-```dart
+```text
 final response = await HttpService.instance.uploadFile<Map<String, dynamic>>(
   '/upload',
   '/path/to/file.jpg',
@@ -97,7 +97,7 @@ final response = await HttpService.instance.uploadFile<Map<String, dynamic>>(
 ```
 
 #### Download de Fichier
-```dart
+```text
 final response = await HttpService.instance.downloadFile(
   '/download/file.pdf',
   '/local/path/file.pdf',
@@ -112,7 +112,7 @@ final response = await HttpService.instance.downloadFile(
 
 ### Environnements
 
-```dart
+```text
 // Développement
 HttpConfig.development
 
@@ -129,7 +129,7 @@ HttpConfig(
 
 ### Headers par Défaut
 
-```dart
+```text
 {
   'Content-Type': 'application/json',
   'Accept': 'application/json',

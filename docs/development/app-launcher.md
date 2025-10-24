@@ -98,7 +98,7 @@ lib/core/app/
 
 ### Dans main.dart
 
-```dart
+```text
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
@@ -111,7 +111,7 @@ void main() async {
 
 ### Lire l'État dans un Widget
 
-```dart
+```text
 final appState = Provider.of<AppStateProvider>(context);
 final currentCurrency = appState.currency;
 final currentLocale = appState.locale;
@@ -120,7 +120,7 @@ final currentTheme = appState.themeMode;
 
 ### Modifier l'État
 
-```dart
+```text
 final appState = Provider.of<AppStateProvider>(context, listen: false);
 
 // Changer la devise
@@ -135,7 +135,7 @@ await appState.setThemeMode(ThemeMode.dark);
 
 ### Réinitialiser l'Application
 
-```dart
+```text
 await AppLauncher.reset();
 // Au prochain démarrage, tout sera réinitialisé
 ```
@@ -144,7 +144,7 @@ await AppLauncher.reset();
 
 ## 🎨 Exemple : Page Settings
 
-```dart
+```text
 import 'package:provider/provider.dart';
 
 class SettingsPage extends StatelessWidget {

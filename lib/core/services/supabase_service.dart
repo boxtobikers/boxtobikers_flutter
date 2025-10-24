@@ -44,7 +44,7 @@ class SupabaseService {
   /// Récupère le client Supabase
   ///
   /// Exemple d'utilisation :
-  /// ```dart
+  /// ```text
   /// final supabase = SupabaseService.instance.client;
   /// final data = await supabase.from('table').select();
   /// ```
@@ -109,7 +109,7 @@ class SupabaseService {
   /// Récupérer des données d'une table
   ///
   /// Exemple :
-  /// ```dart
+  /// ```text
   /// final data = await SupabaseService.instance.getTableData('users');
   /// ```
   Future<List<Map<String, dynamic>>> getTableData(

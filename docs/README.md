@@ -21,7 +21,7 @@ Configuration des variables d'environnement pour dev/staging/prod.
 
 - **[Guide complet](environment/README.md)** - Documentation technique détaillée
 - **[Configuration](environment/configuration.md)** - Guide de configuration pas à pas
-- **[Exemples de code](environment/examples/)** - Exemples d'utilisation
+- **[Exemple de code](environment/examples/main_with_env_example.dart)** - Exemple d'utilisation
 
 ### 🔗 Backend & Services
 
@@ -30,13 +30,12 @@ Configuration des variables d'environnement pour dev/staging/prod.
 - **[Guide Supabase](backend/supabase/README.md)** - Intégration et utilisation
 - **[Configuration](backend/supabase/setup.md)** - Mise en place de Supabase
 - **[Notes de version](backend/supabase/updates.md)** - Mises à jour et changelog
-- **[Exemples de code](backend/supabase/examples/)** - Exemples d'implémentation
 
 #### HTTP
 
 - **[Client HTTP](backend/http/README.md)** - Configuration et utilisation de Dio
 - **[Exemples](backend/http/examples/)** - Exemples d'utilisation
-
+- **[Exemple de code](backend/http/examples/example_usage.dart)** - Exemple d'utilisation
 ### 👨‍💻 Guide Développeur
 
 Guides et astuces pour le développement quotidien.
@@ -50,7 +49,6 @@ Compréhension de la structure du projet.
 
 - **[Vue d'ensemble](architecture/README.md)** - Architecture générale
 - **[Structure du projet](architecture/project-structure.md)** - Organisation des dossiers
-- **[Standards de code](architecture/coding-standards.md)** - Conventions et bonnes pratiques
 
 ---
 
@@ -89,12 +87,10 @@ docs/
 │       └── README.md
 ├── development/                       # Développement
 │   ├── README.md
-│   ├── app-launcher.md
-│   └── features.md
+│   └── app-launcher.md
 └── architecture/                      # Architecture
     ├── README.md
-    ├── project-structure.md
-    └── coding-standards.md
+    └── project-structure.md
 ```
 
 ---
@@ -119,7 +115,7 @@ docs/
 **Besoin d'aide ?**
 
 1. Consultez d'abord la documentation pertinente
-2. Vérifiez les [exemples de code](environment/examples/)
+2. Vérifiez les exemples de code dans la documentation
 3. Consultez les logs d'erreur
 4. Demandez à l'équipe
 

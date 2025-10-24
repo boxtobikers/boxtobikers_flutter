@@ -46,7 +46,7 @@ config/
 
 ### Dans le Code
 
-```dart
+```text
 import 'package:boxtobikers/core/config/env_config.dart';
 
 // Accéder aux variables
@@ -117,7 +117,7 @@ config/*.json
 
 L'application vérifie la configuration au démarrage :
 
-```dart
+```text
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
@@ -155,7 +155,7 @@ flutter test test/core/config/env_config_test.dart
 
 - **[Configuration rapide](configuration.md)** - Guide pas à pas
 - **[Quick Start](../getting-started/quick-start.md)** - Démarrage rapide
-- **[Exemples](examples/)** - Code d'exemple
+- **[Exemple de code](examples/main_with_env_example.dart)** - Exemple d'utilisation
 
 ### Documentation Externe
 
@@ -168,7 +168,7 @@ flutter test test/core/config/env_config_test.dart
 
 ### Variables vides
 
-```dart
+```text
 // Vérifiez que la commande inclut --dart-define-from-file
 flutter run --dart-define-from-file=config/dev.json
 ```

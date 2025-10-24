@@ -99,9 +99,9 @@ make clean          # Nettoyer le projet
 
 | Guide | Description |
 |-------|-------------|
-| [Configuration](configuration.md) | Guide de configuration détaillé |
-| [Exemples](examples/) | Exemples de code |
-| [Quick Start](../getting-started/quick-start.md) | Démarrage rapide |
+| [Configuration](../environment/configuration.md) | Guide de configuration détaillé |
+| [Exemple de code](../environment/examples/main_with_env_example.dart) | Exemple de code |
+| [Quick Start](quick-start.md) | Démarrage rapide |
 
 ---
 

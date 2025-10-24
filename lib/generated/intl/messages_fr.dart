@@ -48,7 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "homeIncrementTooltip":
             MessageLookupByLibrary.simpleMessage("Incrémenter"),
         "homeItemExploreDescription": MessageLookupByLibrary.simpleMessage(
-            "Envie de découvrir, c\'est ici !"),
+            "Envie de découvrir, c'est ici !"),
         "homeItemExploreTitle":
             MessageLookupByLibrary.simpleMessage("Visiter le site"),
         "homeItemHistoryDescription": MessageLookupByLibrary.simpleMessage(
@@ -122,7 +122,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "settingsDistanceTitle":
             MessageLookupByLibrary.simpleMessage("Distance"),
         "settingsGeneralSubTitle": MessageLookupByLibrary.simpleMessage(
-            "Configurez vos préférences et paramètres de l\'application"),
+            "Configurez vos préférences et paramètres de l'application"),
         "settingsGeneralTitle": MessageLookupByLibrary.simpleMessage("Général"),
         "settingsLegalDocumentsTitle":
             MessageLookupByLibrary.simpleMessage("Documents règlementaires"),
