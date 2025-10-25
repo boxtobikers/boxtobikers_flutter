@@ -1,3 +1,11 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+
+# Copilot files (migration data, not needed in version control)
+copilot*.xml
+studiobot.xml
+
+# Old run configurations (now in .run folder at project root)
+/runConfigurations/
+

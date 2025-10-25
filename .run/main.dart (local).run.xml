@@ -1,0 +1,6 @@
+<configuration name="main.dart (local)" type="FlutterRunConfigurationType" factoryName="Flutter">
+    <option name="additionalArgs" value="--dart-define-from-file=config/local.json" />
+    <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
+    <method v="2" />
+</configuration>
+
