@@ -23,9 +23,12 @@ cp config/example.json config/dev.json
 make dev
 ```
 
-**OU dans VS Code :** Appuyez sur `F5` → Sélectionnez "BoxToBikers (Development)"
+**IDE :**
+- **VS Code :** Appuyez sur `F5` → Sélectionnez "BoxToBikers (Development)"
+- **Android Studio :** Sélectionnez "main.dart (dev)" dans le menu déroulant en haut à droite → Run ▶
 
-👉 **[Guide de démarrage complet](docs/getting-started/quick-start.md)** (3 minutes)
+👉 **[Guide de démarrage complet](docs/getting-started/quick-start.md)** (3 minutes)  
+👉 **[Lancement depuis Android Studio](docs/development/ANDROID_STUDIO_LAUNCH.md)** - Résoudre l'erreur "Configuration manquante"
 
 ---
 
@@ -46,8 +49,8 @@ make dev
 ## 🧰 Commandes
 
 ```bash
-make dev              # Lancer en développement
-make staging          # Lancer en staging
+make local            # Lancer en mode local (Docker)
+make dev              # Lancer en développement (Supabase.io)
 make prod             # Lancer en production
 
 make test             # Lancer les tests

@@ -27,10 +27,10 @@ void main() {
     test('les helpers d\'environnement devraient fonctionner', () {
       // Au moins un helper doit être true
       final isDev = EnvConfig.isDevelopment;
-      final isStaging = EnvConfig.isStaging;
+      final isLocal = EnvConfig.isLocal;
       final isProd = EnvConfig.isProduction;
 
-      expect(isDev || isStaging || isProd, isTrue);
+      expect(isDev || isLocal || isProd, isTrue);
     });
 
     test('isValid devrait vérifier les variables requises', () {
@@ -74,7 +74,7 @@ void main() {
       test('un seul environnement doit être actif à la fois', () {
         final environments = [
           EnvConfig.isDevelopment,
-          EnvConfig.isStaging,
+          EnvConfig.isLocal,
           EnvConfig.isProduction,
         ];
 
@@ -88,8 +88,8 @@ void main() {
       test('environment doit correspondre au helper actif', () {
         if (EnvConfig.isDevelopment) {
           expect(EnvConfig.environment, equals('development'));
-        } else if (EnvConfig.isStaging) {
-          expect(EnvConfig.environment, equals('staging'));
+        } else if (EnvConfig.isLocal) {
+          expect(EnvConfig.environment, equals('local'));
         } else if (EnvConfig.isProduction) {
           expect(EnvConfig.environment, equals('production'));
         }

@@ -1,14 +1,14 @@
 # Makefile pour BoxToBikers Flutter
 
-.PHONY: help dev staging prod clean build-android build-ios test db-start db-stop db-reset db-push db-diff db-migration db-diff-migration db-login db-link db-types db-status db-dump check-supabase
+.PHONY: help local dev prod clean build-android build-ios test db-start db-stop db-reset db-push db-diff db-migration db-diff-migration db-login db-link db-types db-status db-dump check-supabase check-run-configs
 
 # Afficher l'aide par défaut
 help:
 	@echo "📱 BoxToBikers - Commandes disponibles"
 	@echo ""
 	@echo "🚀 Lancement de l'application :"
-	@echo "  make dev          - Lancer en mode développement"
-	@echo "  make staging      - Lancer en mode staging"
+	@echo "  make local        - Lancer en mode local (Docker)"
+	@echo "  make dev          - Lancer en mode développement (Supabase.io)"
 	@echo "  make prod         - Lancer en mode production"
 	@echo ""
 	@echo "🏗️  Build :"
@@ -39,17 +39,24 @@ help:
 	@echo "  make db-login     - Se connecter à Supabase"
 	@echo "  make db-link      - Lier au projet Supabase distant"
 	@echo "  make check-supabase - Vérifier l'installation Supabase"
+	@echo ""
+	@echo "🔍 Vérifications :"
+	@echo "  make check-run-configs - Vérifier les configurations Android Studio"
+
+# Lancer l'application en mode local (Docker)
+local:
+	@echo "🐳 Lancement en mode local (Docker Supabase)..."
+	@echo "⚠️  Assurez-vous que Docker est démarré : make db-start"
+	flutter run --dart-define-from-file=config/local.json
 
 # Lancer l'application en développement
 dev:
+	@echo "☁️  Lancement en mode développement (Supabase.io)..."
 	flutter run --dart-define-from-file=config/dev.json
-
-# Lancer l'application en staging
-staging:
-	flutter run --dart-define-from-file=config/staging.json
 
 # Lancer l'application en production
 prod:
+	@echo "🚀 Lancement en mode production..."
 	flutter run --dart-define-from-file=config/prod.json
 
 # Build Android
@@ -218,4 +225,9 @@ db-dump:
 check-supabase:
 	@chmod +x check_supabase_setup.sh
 	@./check_supabase_setup.sh
+
+# Vérifier les configurations de lancement Android Studio
+check-run-configs:
+	@chmod +x check_run_configs.sh
+	@./check_run_configs.sh
 

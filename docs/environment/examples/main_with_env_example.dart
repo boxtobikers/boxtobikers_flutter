@@ -153,8 +153,6 @@ class HomeScreen extends StatelessWidget {
 String getApiBaseUrl() {
   if (EnvConfig.isProduction) {
     return 'https://api.boxtobikers.com';
-  } else if (EnvConfig.isStaging) {
-    return 'https://api-staging.boxtobikers.com';
   } else {
     return EnvConfig.apiUrl.isNotEmpty
         ? EnvConfig.apiUrl

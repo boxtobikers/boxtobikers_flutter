@@ -14,10 +14,14 @@ make dev
 
 # Méthode 2 : Flutter direct
 flutter run --dart-define-from-file=config/dev.json
-
-# Méthode 3 : VS Code
-# Appuyez sur F5 → "BoxToBikers (Development)"
 ```
+
+**IDEs :**
+- **VS Code** : Appuyez sur `F5` → Sélectionnez "BoxToBikers (Development)"
+- **Android Studio** : Sélectionnez "main.dart (dev)" dans le menu en haut à droite → Run ▶
+
+> ⚠️ **Erreur "Configuration manquante SUPABASE_URL" ?**  
+> Consultez le **[Guide Android Studio](ANDROID_STUDIO_LAUNCH.md)** pour résoudre ce problème.
 
 ---
 

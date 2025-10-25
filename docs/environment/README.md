@@ -13,8 +13,9 @@ Ce projet utilise la méthode officielle Flutter `--dart-define-from-file` pour 
 - ✅ **Sécurisé** - Variables compilées dans l'app, pas de fichiers à lire
 - ✅ **Officiel** - Support natif Flutter, aucune dépendance externe
 - ✅ **Multi-plateformes** - Fonctionne sur iOS, Android, Web, Desktop
-- ✅ **Multi-environnements** - dev/staging/prod facilement gérables
+- ✅ **Multi-environnements** - local/dev/prod facilement gérables
 - ✅ **Type-safe** - Vérification à la compilation
+- ✅ **Détection automatique** - Android émulateur géré automatiquement
 
 ---
 
@@ -24,9 +25,73 @@ Ce projet utilise la méthode officielle Flutter `--dart-define-from-file` pour 
 config/
 ├── .gitkeep              # Garde le dossier dans Git
 ├── example.json          # Template (✅ commité)
+├── local.json            # Docker local (✅ commité)
 ├── dev.json              # Development (❌ ignoré)
-├── staging.json          # Staging (❌ ignoré)
 └── prod.json             # Production (❌ ignoré)
+```
+
+**Note** : `local.json` est commité car il ne contient pas de secrets (utilise Docker local).
+
+---
+
+## 🌍 Environnements
+
+### 1. Local (Docker) ⭐ NOUVEAU
+
+**Usage** : Développement local sans connexion Internet
+
+```bash
+make local
+```
+
+**Configuration** : `config/local.json`
+```json
+{
+  "ENV": "local"
+}
+```
+
+**Caractéristiques** :
+- ✅ Utilise Docker Supabase (http://localhost:54321)
+- ✅ Détection automatique Android (http://10.0.2.2:54321)
+- ✅ Clé Supabase hardcodée (sécurisé pour local)
+- ✅ Pas besoin de connexion Internet
+- ✅ Base de données isolée
+
+### 2. Development (Supabase.io)
+
+**Usage** : Développement sur le cloud
+
+```bash
+make dev
+```
+
+**Configuration** : `config/dev.json`
+```json
+{
+  "SUPABASE_URL": "https://xxx.supabase.co",
+  "SUPABASE_ANON_KEY": "eyJhbGc...",
+  "API_URL": "https://api-dev.boxtobikers.com",
+  "ENV": "development"
+}
+```
+
+### 3. Production (Supabase.io)
+
+**Usage** : Application en production
+
+```bash
+make prod
+```
+
+**Configuration** : `config/prod.json`
+```json
+{
+  "SUPABASE_URL": "https://prod.supabase.co",
+  "SUPABASE_ANON_KEY": "eyJhbGc...",
+  "API_URL": "https://api.boxtobikers.com",
+  "ENV": "production"
+}
 ```
 
 ---
@@ -67,22 +132,25 @@ EnvConfig.validate(); // Throws si invalide
 ### Lancement
 
 ```bash
-# Développement
-flutter run --dart-define-from-file=config/dev.json
+# Local (Docker)
+make local
+# ou : flutter run --dart-define-from-file=config/local.json
 
-# Staging
-flutter run --dart-define-from-file=config/staging.json
+# Développement (Supabase.io)
+make dev
+# ou : flutter run --dart-define-from-file=config/dev.json
 
-# Production
-flutter run --dart-define-from-file=config/prod.json
+# Production (Supabase.io)
+make prod
+# ou : flutter run --dart-define-from-file=config/prod.json
 ```
 
 ### VS Code
 
 Configurations disponibles dans `.vscode/launch.json` :
-- BoxToBikers (Development)
-- BoxToBikers (Staging)
-- BoxToBikers (Production)
+- BoxToBikers (Local) - Docker
+- BoxToBikers (Development) - Supabase.io
+- BoxToBikers (Production) - Supabase.io
 
 ---
 
