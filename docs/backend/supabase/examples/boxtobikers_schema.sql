@@ -52,8 +52,6 @@ create table public.rides (
   id uuid primary key default gen_random_uuid(),
   user_id uuid not null references public.profiles(id) on delete cascade,
   destination_id uuid not null references public.destinations(id) on delete cascade,
-  pickup_address text not null,
-  destination_address text,
   status text default 'PENDING' check (status in ('PENDING','CONFIRMED','CANCELLED','COMPLETED')),
   created_at timestamptz default now()
 );

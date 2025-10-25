@@ -28,7 +28,7 @@ Configuration des variables d'environnement pour dev/staging/prod.
 #### Supabase
 
 - **[Guide Supabase](backend/supabase/README.md)** - Intégration et utilisation
-- **[Configuration](backend/supabase/setup.md)** - Mise en place de Supabase
+- **[Configuration](backend/supabase/STARTER.md)** - Mise en place de Supabase
 - **[Notes de version](backend/supabase/updates.md)** - Mises à jour et changelog
 
 #### HTTP

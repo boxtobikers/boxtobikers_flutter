@@ -1,16 +1,59 @@
 # Guide de mise en place Supabase pour Boxtobikers
 
-Ce guide explique comment utiliser le système de versioning et déploiement automatique de la base de données Supabase.
+Ce guide complet explique comment configurer et utiliser Supabase pour BoxToBikers, incluant le système de versioning et le déploiement automatique de la base de données.
 
 ## 📋 Vue d'ensemble
 
-Votre projet est maintenant configuré pour :
+Votre projet est configuré pour :
 - ✅ Versionner votre schéma de base de données dans Git
 - ✅ Tester localement avec Supabase CLI
 - ✅ Déployer automatiquement via GitHub Actions
 - ✅ Avoir un historique complet des changements
+- ✅ Row Level Security (RLS) pour la sécurité des données
+- ✅ Authentication intégrée
 
-## 🚀 Démarrage rapide
+## 🎯 Prérequis
+
+1. Un compte Supabase (gratuit sur https://supabase.com)
+2. Un projet créé dans Supabase
+3. Docker Desktop installé et démarré
+4. Supabase CLI installé
+
+## 🚀 Configuration initiale
+
+### 1. Créer un projet Supabase (si ce n'est pas déjà fait)
+
+1. Allez sur https://supabase.com/dashboard
+2. Cliquez sur "New Project"
+3. Remplissez les informations :
+   - **Name:** BoxToBikers
+   - **Database Password:** (générez-en un fort et conservez-le)
+   - **Region:** Choisissez la plus proche de vos utilisateurs
+4. Cliquez sur "Create Project" et attendez quelques minutes
+
+### 2. Récupérer les clés d'API
+
+1. Dans le dashboard Supabase, allez dans **Settings → API**
+2. Copiez :
+   - **Project URL** (ex: https://xxxxx.supabase.co)
+   - **anon public** key (commence par eyJhbGc...)
+   - **Project Reference ID** (dans l'URL ou Settings → General)
+
+### 3. Configurer les variables d'environnement
+
+Éditez `config/dev.json` :
+
+```json
+{
+  "SUPABASE_URL": "https://votre-projet.supabase.co",
+  "SUPABASE_ANON_KEY": "votre_cle_anon",
+  "ENV": "development"
+}
+```
+
+**[Guide complet des variables d'env →](../../environment/configuration.md)**
+
+### 4. Installation des outils de développement
 
 ### 1. Installer Supabase CLI
 
@@ -199,7 +242,7 @@ make db-link ref=VOTRE_PROJECT_REF
 make db-push
 ```
 
-## 📊 Commandes disponibles
+## 📊 Commandes disponibles {#commandes-disponibles}
 
 ### Base de données
 
@@ -253,52 +296,118 @@ make db-diff
 git push
 ```
 
-## 🔒 Bonnes pratiques
+## 🔒 Sécurité et bonnes pratiques {#securite-et-bonnes-pratiques}
 
-### ✅ À faire
+### Row Level Security (RLS)
 
-- Toujours tester localement avant de pusher
-- Utiliser `IF NOT EXISTS` pour les créations de tables
+**Activez toujours RLS** sur vos tables pour protéger les données :
+
+```sql
+ALTER TABLE nom_table ENABLE ROW LEVEL SECURITY;
+```
+
+### Exemples de politiques RLS courantes
+
+```sql
+-- Lecture publique pour tous
+CREATE POLICY "Public read access"
+ON table_name FOR SELECT
+TO public
+USING (true);
+
+-- Écriture pour utilisateurs authentifiés uniquement
+CREATE POLICY "Authenticated users can insert"
+ON table_name FOR INSERT
+TO authenticated
+WITH CHECK (auth.uid() = user_id);
+
+-- Modification par le propriétaire uniquement
+CREATE POLICY "Users can update own data"
+ON table_name FOR UPDATE
+USING (auth.uid() = user_id);
+
+-- Lecture de ses propres données
+CREATE POLICY "Users can view own profile"
+ON users FOR SELECT
+USING (auth.uid() = id);
+```
+
+### Configuration de l'authentification
+
+Dans votre dashboard Supabase, allez dans **Authentication → Settings** pour configurer :
+- **Email confirmation** : Validation des emails (recommandé pour la production)
+- **Password requirements** : Complexité minimale des mots de passe
+- **OAuth providers** : Google, GitHub, etc. (optionnel)
+- **Email templates** : Personnalisation des emails envoyés
+
+## ✅ À faire
+
+- Toujours tester localement avec `make db-reset` avant de pusher
+- Utiliser `IF NOT EXISTS` pour les créations de tables/policies
 - Utiliser `DROP POLICY IF EXISTS` avant `CREATE POLICY`
-- Ajouter des commentaires dans vos migrations
+- Ajouter des commentaires dans vos migrations SQL
 - Versionner petit à petit (une fonctionnalité = une migration)
 - Utiliser des noms de migration descriptifs
+- Activer RLS sur toutes les tables contenant des données utilisateurs
+- Faire des backups réguliers avec `make db-dump`
 
-### ❌ À éviter
+## ❌ À éviter
 
 - Ne jamais modifier une migration déjà déployée en production
 - Ne jamais supprimer une migration déjà appliquée
-- Ne jamais commiter de secrets dans Git
-- Ne pas faire de migrations destructives sans backup
+- Ne jamais commiter de secrets (mots de passe, clés) dans Git
+- Ne pas faire de migrations destructives (DROP TABLE) sans backup
+- Ne pas désactiver RLS sans raison valable
+- Ne pas utiliser la clé `service_role` côté client
 
 ## 🛠️ Dépannage
+
+### Problèmes courants
+
+Pour une liste complète des problèmes et solutions, consultez **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)**.
+
+**Problèmes fréquents :**
 
 ### Docker n'est pas démarré
 ```
 Error: Cannot connect to the Docker daemon
 ```
-→ Démarrez Docker Desktop
+→ Démarrez Docker Desktop et attendez qu'il soit prêt
 
 ### Port déjà utilisé
 ```
 Error: port 54321 already in use
 ```
-→ Arrêtez Supabase : `make db-stop`
+→ Arrêtez Supabase : `make db-stop` puis relancez `make db-start`
 
 ### Migration échoue
 ```
 Error: migration failed
 ```
-→ Vérifiez les logs : `make db-status`
-→ Vérifiez la syntaxe SQL
-→ Testez avec `make db-reset`
+→ Vérifiez les logs : `make db-status`  
+→ Vérifiez la syntaxe SQL dans votre fichier de migration  
+→ Testez avec `make db-reset` pour réinitialiser
 
 ### Erreur "Access token not provided"
 ```
 Error: Access token not provided
 ```
-→ Vous devez vous connecter d'abord : `make db-login`
-→ Puis lier le projet : `make db-link ref=XXX`
+→ Connectez-vous d'abord : `make db-login`  
+→ Puis liez le projet : `make db-link ref=VOTRE_PROJECT_REF`
+
+**→ [Guide de dépannage complet](TROUBLESHOOTING.md)**
+
+## 📚 Ressources complémentaires
+
+- **[README.md](README.md)** - Index de la documentation Supabase
+- **[GITHUB_ACTIONS_SETUP.md](GITHUB_ACTIONS_SETUP.md)** - Configuration du déploiement automatique
+- **[MIGRATION_FROM_EXISTING.md](MIGRATION_FROM_EXISTING.md)** - Migrer depuis une base existante
+- **[Documentation officielle Supabase](https://supabase.com/docs)** - Docs complètes
+- **[Changelog supabase_flutter](https://pub.dev/packages/supabase_flutter/changelog)** - Versions du package
+
+---
+
+📖 **[Retour à la documentation principale →](../../README.md)**
 
 ### Connexion perdue avec le projet distant
 ```bash

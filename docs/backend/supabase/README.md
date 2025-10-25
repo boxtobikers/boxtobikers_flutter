@@ -4,12 +4,17 @@ Cette section contient toute la documentation relative à la base de données Su
 
 ## 📚 Guides disponibles
 
-| Guide | Description | Temps |
-|-------|-------------|-------|
-| **[SETUP_GUIDE.md](SETUP_GUIDE.md)** | Guide complet de mise en place et utilisation | 15 min |
-| **[GITHUB_ACTIONS_SETUP.md](GITHUB_ACTIONS_SETUP.md)** | Configuration du déploiement automatique | 10 min |
-| **[MIGRATION_FROM_EXISTING.md](MIGRATION_FROM_EXISTING.md)** | Migrer depuis un schéma existant | 10 min |
-| **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** | ⭐ Guide de dépannage rapide | 5 min |
+| Guide                                                              | Description                                           | Temps  |
+|--------------------------------------------------------------------|-------------------------------------------------------|--------|
+| **[NAVIGATION.md](NAVIGATION.md)**                                 | 🗺️ **Nouveau !** Guide de navigation rapide          | 2 min  |
+| **[STARTER.md](STARTER.md)**                                       | ⚡ Démarrage rapide en 5 minutes                       | 5 min  |
+| **[SETUP_GUIDE.md](SETUP_GUIDE.md)**                               | 📖 Guide complet : installation, migrations, workflow | 15 min |
+| **[GITHUB_ACTIONS_SETUP.md](GITHUB_ACTIONS_SETUP.md)**             | 🚀 Configuration du déploiement automatique CI/CD     | 10 min |
+| **[MIGRATION_FROM_EXISTING.md](MIGRATION_FROM_EXISTING.md)**       | 🔄 Migrer depuis un schéma existant                   | 10 min |
+| **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)**                       | ⭐ Guide de dépannage rapide                           | 5 min  |
+
+> **💡 Nouveau sur Supabase ?** Commencez par [NAVIGATION.md](NAVIGATION.md) pour trouver rapidement
+> ce dont vous avez besoin !
 
 ## 🚀 Démarrage rapide
 
@@ -59,14 +64,14 @@ docs/backend/supabase/
 
 ### Tables principales
 
-| Table | Description | Relations |
-|-------|-------------|-----------|
-| `roles` | Rôles utilisateurs (ADMIN, VISITOR, CLIENT) | → profiles |
-| `profiles` | Profils utilisateurs étendus | auth.users ← |
-| `destinations` | Points de dépôt/récupération | → opening_hours, rides, ratings |
-| `opening_hours` | Horaires d'ouverture | destinations ← |
-| `rides` | Trajets/réservations | profiles ←, destinations ← |
-| `ratings` | Évaluations des destinations | profiles ←, destinations ← |
+| Table           | Description                                 | Relations                       |
+|-----------------|---------------------------------------------|---------------------------------|
+| `roles`         | Rôles utilisateurs (ADMIN, VISITOR, CLIENT) | → profiles                      |
+| `profiles`      | Profils utilisateurs étendus                | auth.users ←                    |
+| `destinations`  | Points de dépôt/récupération                | → opening_hours, rides, ratings |
+| `opening_hours` | Horaires d'ouverture                        | destinations ←                  |
+| `rides`         | Trajets/réservations                        | profiles ←, destinations ←      |
+| `ratings`       | Évaluations des destinations                | profiles ←, destinations ←      |
 
 ### Schéma relationnel
 
@@ -90,11 +95,12 @@ destinations
 ### Sécurité (RLS)
 
 Toutes les tables ont Row Level Security activé avec des policies :
+
 - Les utilisateurs voient uniquement leurs données
 - Les admins ont accès complet
 - Les données publiques (destinations, horaires) sont lisibles par tous
 
-## 🔧 Commandes utiles
+## 🔧 Commandes utiles {#commandes-utiles}
 
 ### Base de données
 
@@ -216,6 +222,7 @@ make db-reset
 ### Rollback d'une migration
 
 Créez une nouvelle migration inverse :
+
 ```bash
 make db-migration name=rollback_previous_feature
 # Écrivez le SQL inverse dans le fichier créé
@@ -263,6 +270,7 @@ docker logs supabase_db_flutter
 ### Tester les RLS policies
 
 Connectez-vous dans Studio avec différents utilisateurs :
+
 1. Créez des utilisateurs test dans Auth
 2. Testez les requêtes avec chaque utilisateur
 3. Vérifiez que les policies fonctionnent
@@ -276,18 +284,51 @@ EXPLAIN ANALYZE SELECT * FROM bookings WHERE user_id = 'xxx';
 
 ## 🆘 Dépannage
 
-**⚠️ Problème d'authentification ?** → [TROUBLESHOOTING.md](TROUBLESHOOTING.md#erreur--access-token-not-provided)
+**⚠️ Problème d'authentification ?
+** → [TROUBLESHOOTING.md](TROUBLESHOOTING.md#erreur--access-token-not-provided)
 
-| Problème | Solution |
-|----------|----------|
-| Access token not provided | `make db-login` puis `make db-link ref=XXX` |
-| Port déjà utilisé | `make db-stop` puis `make db-start` |
-| Migration échoue | Vérifier les logs, corriger, `make db-reset` |
-| Docker non démarré | Lancer Docker Desktop |
-| Connexion perdue | `make db-login` puis `make db-link ref=XXX` |
-| Schema désynchronisé | `supabase db pull` |
+| Problème                  | Solution                                     |
+|---------------------------|----------------------------------------------|
+| Access token not provided | `make db-login` puis `make db-link ref=XXX`  |
+| Port déjà utilisé         | `make db-stop` puis `make db-start`          |
+| Migration échoue          | Vérifier les logs, corriger, `make db-reset` |
+| Docker non démarré        | Lancer Docker Desktop                        |
+| Connexion perdue          | `make db-login` puis `make db-link ref=XXX`  |
+| Schema désynchronisé      | `supabase db pull`                           |
 
 **[📖 Guide complet de dépannage →](TROUBLESHOOTING.md)**
+
+## 📦 Versions et mises à jour {#versions-et-updates}
+
+### Version actuelle : Supabase Flutter 2.10.3
+
+**Date :** Octobre 2025  
+**Status :** ✅ En production
+
+**Changements :**
+
+- 🐛 Corrections de bugs mineurs
+- 🔒 Améliorations de sécurité
+- ⚡ Optimisations de performance
+- 📚 Mises à jour des dépendances
+
+**Compatibilité :**
+
+- ✅ 100% compatible avec le code existant
+- ✅ Aucune breaking change
+- ✅ Migration automatique
+
+**Installation :**
+
+```bash
+flutter pub get
+make dev
+```
+
+**Ressources :**
+
+- [Changelog officiel](https://pub.dev/packages/supabase_flutter/changelog)
+- [Documentation du package](https://pub.dev/packages/supabase_flutter)
 
 ## 📚 Ressources externes
 
@@ -300,6 +341,7 @@ EXPLAIN ANALYZE SELECT * FROM bookings WHERE user_id = 'xxx';
 ## 🤝 Contribution
 
 Pour contribuer au schéma de base de données :
+
 1. Créez une branche
 2. Créez votre migration
 3. Testez localement
