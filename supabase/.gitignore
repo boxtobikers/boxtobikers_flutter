@@ -1,0 +1,18 @@
+# Supabase
+.branches
+.temp
+
+# dotenvx
+.env.keys
+.env.local
+.env.*.local
+
+# Backups et dumps
+schema_backup_*.sql
+backup_*.sql
+dump_*.sql
+
+# Fichiers temporaires
+*.log
+*.tmp
+

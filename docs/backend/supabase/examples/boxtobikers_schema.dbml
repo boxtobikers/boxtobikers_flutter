@@ -1,0 +1,76 @@
+
+// boxtobikers schema (dbdiagram.io / DBML)
+Project: "boxtobikers"
+
+Table roles {
+  id uuid [pk, default: `gen_random_uuid()`]
+  name text [unique, not null] // ('ADMIN','VISITOR','CLIENT')
+}
+
+Table profiles {
+  id uuid [pk, ref: > auth.users.id] // references auth.users(id)
+  role_id uuid [ref: > roles.id]
+  nom text [not null]
+  prenom text [not null]
+  email text [unique]
+  mobile text
+  adresse_postale text
+  created_at timestamptz [default: `now()`]
+  updated_at timestamptz [default: `now()`]
+}
+
+Table destinations {
+  id uuid [pk, default: `gen_random_uuid()`]
+  nom text [not null]
+  type text [not null] // 'COMMERCE'|'PARTICULIER'
+  description text
+  adresse text
+  latitude double precision [not null]
+  longitude double precision [not null]
+  place_id text [unique]
+  google_rating double precision
+  statut text [not null] // 'OUVERT'|'FERME'|'EN_PAUSE'
+  nombre_casiers integer [default: 0]
+  image_url text
+  created_at timestamptz [default: `now()`]
+}
+
+Table horaires_ouvertures {
+  id uuid [pk, default: `gen_random_uuid()`]
+  destination_id uuid [ref: > destinations.id]
+  jour_semaine text [not null] // LUNDI..DIMANCHE
+  heure_ouverture time [not null]
+  heure_fermeture time [not null]
+  is_ferme boolean [default: false]
+  created_at timestamptz [default: `now()`]
+}
+
+Table ratings {
+  id uuid [pk, default: `gen_random_uuid()`]
+  user_id uuid [ref: > profiles.id]
+  destination_id uuid [ref: > destinations.id]
+  note integer [not null] // 1..5
+  commentaire text
+  created_at timestamptz [default: `now()`]
+  // unique: user_id + destination_id
+}
+
+Table destinations_ratings_avg {
+  destination_id uuid [pk, ref: > destinations.id]
+  note_moyenne numeric(2,1)
+  nb_notes integer
+}
+
+Table ridings {
+  id uuid [pk, default: `gen_random_uuid()`]
+  user_id uuid [ref: > profiles.id]
+  destination_id uuid [ref: > destinations.id]
+  point_depart text [not null]
+  statut text [not null] // 'PENDING'|'CONFIRMED'|'CANCELLED'
+  date_reservation timestamptz [default: `now()`]
+  date_riding timestamptz
+  created_at timestamptz [default: `now()`]
+}
+
+// Indexes and notes
+// Add a unique index on ratings(user_id, destination_id) to prevent duplicates.

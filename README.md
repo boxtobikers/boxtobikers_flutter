@@ -56,9 +56,18 @@ make test-coverage    # Tests avec couverture
 make build-android-prod  # Build Android production
 make build-ios-prod      # Build iOS production
 
+# Base de données Supabase
+make db-start         # Démarrer Supabase en local
+make db-stop          # Arrêter Supabase
+make db-reset         # Réinitialiser la DB locale
+make db-migration name=XXX  # Créer une migration
+make check-supabase   # Vérifier l'installation
+
 make clean            # Nettoyer le projet
 make help             # Voir toutes les commandes
 ```
+
+👉 **[Guide Supabase complet](docs/backend/supabase/SETUP_GUIDE.md)**
 
 ---
 
