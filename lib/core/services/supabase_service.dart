@@ -3,8 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 /// Service Supabase pour BoxToBikers
-///
-/// Gère l'initialisation et l'accès au client Supabase
 class SupabaseService {
   // Singleton pattern
   static SupabaseService? _instance;
@@ -16,10 +14,6 @@ class SupabaseService {
   SupabaseService._();
 
   /// Initialise Supabase avec les variables d'environnement
-  ///
-  /// À appeler dans main() avant runApp()
-  ///
-  /// Throws [Exception] si la configuration est invalide
   static Future<void> initialize() async {
     try {
       // Valider que les variables d'environnement sont définies
@@ -42,12 +36,6 @@ class SupabaseService {
   }
 
   /// Récupère le client Supabase
-  ///
-  /// Exemple d'utilisation :
-  /// ```text
-  /// final supabase = SupabaseService.instance.client;
-  /// final data = await supabase.from('table').select();
-  /// ```
   SupabaseClient get client => Supabase.instance.client;
 
   /// Vérifie si l'utilisateur est connecté

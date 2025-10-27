@@ -1,42 +1,42 @@
-import 'package:boxtobikers/features/history/data/models/destination.model.dart';
-import 'package:boxtobikers/features/history/data/repositories/destination.repository.dart';
+import 'package:boxtobikers/features/poc/domain/models/planet_model.dart' show Planet;
+import 'package:boxtobikers/features/poc/domain/services/poc.service.dart' show PocService;
 import 'package:boxtobikers/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
-class HistoryPages extends StatefulWidget {
-  const HistoryPages({super.key});
+class PocPages extends StatefulWidget {
+  const PocPages({super.key});
 
   @override
-  State<StatefulWidget> createState() => _HistoryPagesState();
+  State<StatefulWidget> createState() => _PocPagesState();
 }
 
-class _HistoryPagesState extends State<HistoryPages> {
-  final DestinationRepository _destinationRepository = DestinationRepository();
-  List<Destination>? _destinations;
+class _PocPagesState extends State<PocPages> {
+  final PocService _pocService = PocService();
+  List<Planet>? _planets;
   bool _isLoading = true;
   String? _errorMessage;
 
   @override
   void initState() {
     super.initState();
-    _loadDestinations();
+    _loadPlanets();
   }
 
-  /// Charge les destinations depuis Supabase
-  Future<void> _loadDestinations() async {
+  /// Charge les planètes depuis l'API SWAPI
+  Future<void> _loadPlanets() async {
     setState(() {
       _isLoading = true;
       _errorMessage = null;
     });
 
-    final destinations = await _destinationRepository.getDestinations(limit: 10);
+    final planets = await _pocService.getPlanets(page: 1);
 
     setState(() {
       _isLoading = false;
-      if (destinations != null) {
-        _destinations = destinations;
+      if (planets != null) {
+        _planets = planets;
       } else {
-        _errorMessage = 'Erreur lors du chargement des destinations';
+        _errorMessage = 'Erreur lors du chargement des planètes';
       }
     });
   }
@@ -62,7 +62,7 @@ class _HistoryPagesState extends State<HistoryPages> {
                     height: headerImageHeight,
                     decoration: BoxDecoration(
                       image: const DecorationImage(
-                        image: AssetImage('assets/btb_header_paris.jpg'),
+                        image: AssetImage('assets/btb_header_bordeaux.jpg'),
                         fit: BoxFit.cover,
                       ),
                       borderRadius: const BorderRadius.only(
@@ -108,37 +108,31 @@ class _HistoryPagesState extends State<HistoryPages> {
                               ),
                               const SizedBox(height: 16),
                               ElevatedButton(
-                                onPressed: _loadDestinations,
+                                onPressed: _loadPlanets,
                                 child: Text(l10n.commonRetry),
                               ),
                             ],
                           ),
                         )
-                      : _destinations == null || _destinations!.isEmpty
-                          ? const Center(child: Text('Aucune destination trouvée'))
+                      : _planets == null || _planets!.isEmpty
+                          ? const Center(child: Text('Aucune planète trouvée'))
                           : ListView.builder(
                               padding: const EdgeInsets.all(16.0),
-                              itemCount: _destinations!.length,
+                              itemCount: _planets!.length,
                               itemBuilder: (context, index) {
-                                final destination = _destinations![index];
+                                final planet = _planets![index];
                                 return Card(
                                   margin: const EdgeInsets.only(bottom: 12.0),
                                   child: ListTile(
                                     leading: CircleAvatar(
-                                      backgroundColor: destination.status == 'OPEN'
-                                          ? Theme.of(context).colorScheme.primaryContainer
-                                          : Theme.of(context).colorScheme.errorContainer,
+                                      backgroundColor: Theme.of(context).colorScheme.primaryContainer,
                                       child: Icon(
-                                        destination.type == 'BUSINESS'
-                                            ? Icons.business
-                                            : Icons.home,
-                                        color: destination.status == 'OPEN'
-                                            ? Theme.of(context).colorScheme.onPrimaryContainer
-                                            : Theme.of(context).colorScheme.onErrorContainer,
+                                        Icons.public,
+                                        color: Theme.of(context).colorScheme.onPrimaryContainer,
                                       ),
                                     ),
                                     title: Text(
-                                      destination.name,
+                                      planet.name,
                                       style: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -147,21 +141,11 @@ class _HistoryPagesState extends State<HistoryPages> {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         const SizedBox(height: 4),
-                                        if (destination.address != null)
-                                          Text('📍 ${destination.address}'),
-                                        Text('${destination.typeLabel} • ${destination.statusLabel}'),
-                                        Text('🔒 ${destination.lockerCount} casiers disponibles'),
+                                        Text('Diamètre: ${planet.diameter} km'),
+                                        Text('Terrain: ${planet.terrain}'),
                                       ],
                                     ),
                                     isThreeLine: true,
-                                    trailing: Icon(
-                                      Icons.arrow_forward_ios,
-                                      size: 16,
-                                      color: Theme.of(context).colorScheme.onSurfaceVariant,
-                                    ),
-                                    onTap: () {
-                                      // TODO: Navigation vers les détails de la destination
-                                    },
                                   ),
                                 );
                               },

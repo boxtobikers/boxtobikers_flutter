@@ -1,8 +1,8 @@
 import 'package:boxtobikers/core/http/http_service.dart';
-import 'package:boxtobikers/features/history/data/models/planet_model.dart';
+import 'package:boxtobikers/features/poc/domain/models/planet_model.dart';
 
 /// Service pour gérer les appels à l'API SWAPI
-class HistoryService {
+class PocService {
   final HttpService _httpService = HttpService.instance;
 
   /// Récupère la liste des planètes depuis l'API SWAPI

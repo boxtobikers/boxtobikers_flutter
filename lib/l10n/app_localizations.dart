@@ -188,6 +188,18 @@ abstract class AppLocalizations {
   /// **'Find all your previous journeys.'**
   String get homeItemHistoryDescription;
 
+  /// No description provided for @homeItemPocTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Proof Of Concept'**
+  String get homeItemPocTitle;
+
+  /// No description provided for @homeItemPocDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Test and demonstration page'**
+  String get homeItemPocDescription;
+
   /// No description provided for @homeItemWhoAmITitle.
   ///
   /// In en, this message translates to:

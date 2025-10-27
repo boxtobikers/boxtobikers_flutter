@@ -57,6 +57,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homeItemHistoryDescription => 'Find all your previous journeys.';
 
   @override
+  String get homeItemPocTitle => 'Proof Of Concept';
+
+  @override
+  String get homeItemPocDescription => 'Test and demonstration page';
+
+  @override
   String get homeItemWhoAmITitle => 'Who am I ?';
 
   @override
