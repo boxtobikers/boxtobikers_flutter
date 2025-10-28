@@ -58,5 +58,17 @@ class UserProfileModel {
           : null,
     );
   }
+
+  /// Factory pour créer un profil visiteur anonyme par défaut
+  factory UserProfileModel.createVisitor() {
+    return UserProfileModel(
+      firstName: 'Visiteur',
+      lastName: '',
+      email: '',
+      phone: '',
+      address: '',
+      dateOfBirth: null,
+    );
+  }
 }
 

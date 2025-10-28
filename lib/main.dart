@@ -2,6 +2,7 @@ import 'package:boxtobikers/core/app/app_launcher.dart';
 import 'package:boxtobikers/core/app/app_router.dart';
 import 'package:boxtobikers/core/app/providers/app_state.provider.dart';
 import 'package:boxtobikers/core/app/utils/app_constants.utils.dart';
+import 'package:boxtobikers/core/auth/providers/auth.provider.dart';
 import 'package:boxtobikers/core/config/env_config.dart';
 import 'package:boxtobikers/core/services/supabase_service.dart';
 import 'package:boxtobikers/features/home/ui/pages/home.pages.dart';
@@ -36,20 +37,31 @@ void main() async {
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
 
   // Initialiser l'application avec AppLauncher
-  final appStateProvider = await AppLauncher.initialize();
+  final providers = await AppLauncher.initialize();
 
-  runApp(MyApp(appStateProvider: appStateProvider));
+  runApp(MyApp(
+    appStateProvider: providers['appStateProvider'],
+    authProvider: providers['authProvider'],
+  ));
 }
 
 class MyApp extends StatelessWidget {
   final AppStateProvider appStateProvider;
+  final AuthProvider authProvider;
 
-  const MyApp({super.key, required this.appStateProvider});
+  const MyApp({
+    super.key,
+    required this.appStateProvider,
+    required this.authProvider,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider.value(
-      value: appStateProvider,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(value: authProvider),
+        ChangeNotifierProvider.value(value: appStateProvider),
+      ],
       child: Consumer<AppStateProvider>(
         builder: (context, appState, child) {
           // Initialiser depuis le device si pas encore fait

@@ -73,14 +73,19 @@ create table if not exists public.ratings (
 create or replace function public.handle_new_user()
 returns trigger as $$
 begin
-  insert into public.profiles (id, role_id, first_name, last_name, email)
-  values (
-    new.id,
-    (select id from public.roles where name = 'VISITOR' limit 1),
-    '',
-    '',
-    new.email
-  );
+  -- Ne créer un profil que pour les utilisateurs authentifiés (non anonymes)
+  -- Les utilisateurs anonymes Supabase ne doivent plus être utilisés
+  -- On utilise maintenant le profil VISITOR pré-créé pour les non-connectés
+  if new.is_anonymous = false then
+    insert into public.profiles (id, role_id, first_name, last_name, email)
+    values (
+      new.id,
+      (select id from public.roles where name = 'CLIENT' limit 1), -- Les nouveaux inscrits sont CLIENT
+      coalesce(new.raw_user_meta_data->>'first_name', ''),
+      coalesce(new.raw_user_meta_data->>'last_name', ''),
+      new.email
+    );
+  end if;
   return new;
 end;
 $$ language plpgsql security definer;

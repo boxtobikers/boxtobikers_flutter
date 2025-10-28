@@ -7,6 +7,9 @@
 
 import 'package:boxtobikers/core/app/models/currency.model.dart';
 import 'package:boxtobikers/core/app/providers/app_state.provider.dart';
+import 'package:boxtobikers/core/auth/providers/auth.provider.dart';
+import 'package:boxtobikers/core/auth/repositories/auth.repository.dart';
+import 'package:boxtobikers/core/auth/services/session.service.dart';
 import 'package:boxtobikers/features/settings/business/services/settings_service.dart';
 import 'package:boxtobikers/main.dart';
 import 'package:flutter/material.dart';
@@ -24,16 +27,34 @@ void main() {
 
   testWidgets('App should initialize and load home page', (WidgetTester tester) async {
     // Créer le SettingsService pour les tests
-    final prefsService = await SettingsService.createForTesting();
+    final settingsService = await SettingsService.createForTesting();
+
+    // Créer le SessionService pour les tests
+    final sessionService = await SessionService.createForTesting();
+
+    // Créer le AuthRepository
+    final authRepository = AuthRepository();
+
+    // Créer le AuthProvider
+    final authProvider = AuthProvider(
+      authRepository: authRepository,
+      sessionService: sessionService,
+    );
 
     // Créer le AppStateProvider
-    final appStateProvider = AppStateProvider(prefsService);
+    final appStateProvider = AppStateProvider(settingsService);
 
     // Initialiser sans contexte pour les tests
     await appStateProvider.initializeForTesting();
 
+    // Note: On n'initialise pas authProvider.initialize() dans les tests
+    // car cela nécessite une connexion Supabase active
+
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MyApp(appStateProvider: appStateProvider));
+    await tester.pumpWidget(MyApp(
+      appStateProvider: appStateProvider,
+      authProvider: authProvider,
+    ));
 
     // Attendre que l'initialisation se termine
     await tester.pumpAndSettle();
