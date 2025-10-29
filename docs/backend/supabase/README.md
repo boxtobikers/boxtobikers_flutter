@@ -191,7 +191,6 @@ supabase/
 
 scripts/
 ├── check_supabase_setup.sh             # Vérification
-└── install_supabase.sh                 # Installation
 ```
 
 ## 🎯 Cas d'usage courants
