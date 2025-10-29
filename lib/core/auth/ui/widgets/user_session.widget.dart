@@ -1,4 +1,4 @@
-import 'package:boxtobikers/core/auth/auth.dart';
+import 'package:boxtobikers/core/auth/auth.index.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -9,7 +9,7 @@ class UserSessionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<AuthProvider>(
+    return Consumer<AppAuthProvider>(
       builder: (context, authProvider, child) {
         final session = authProvider.currentSession;
 

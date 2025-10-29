@@ -108,6 +108,7 @@ insert into public.profiles (
   email,
   mobile,
   address,
+  birthdate,
   created_at
 ) values (
   '00000000-0000-0000-0000-000000000000'::uuid,  -- UUID fixe pour VISITOR (même que auth.users)
@@ -117,12 +118,14 @@ insert into public.profiles (
   'visitor@boxtobikers.local',
   '',
   '1 Rue de La Lune 24000 La LUNE',
+  '1970-01-01'::date,                             -- Date de naissance par défaut
   now()
 )
 on conflict (id) do update set
   role_id = (select id from public.roles where name = 'VISITOR' limit 1),
   first_name = 'Visiteur',
-  last_name = 'Anonyme';
+  last_name = 'Anonyme',
+  birthdate = '1970-01-01'::date;
 
 -- =============================================
 -- 3. Exemple d'utilisateur admin pour les tests

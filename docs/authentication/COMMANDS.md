@@ -202,7 +202,7 @@ Navigator.pushNamed(context, '/login');
 **Dans n'importe quel widget :**
 ```dart
 import 'package:provider/provider.dart';
-import 'package:boxtobikers/core/auth/auth.dart';
+import 'package:boxtobikers/core/auth/auth.index.dart';
 
 // Dans build()
 final authProvider = Provider.of<AuthProvider>(context);
@@ -217,7 +217,7 @@ print('🔍 Is authenticated: ${authProvider.isAuthenticated}');
 **Créer une page de test protégée :**
 ```dart
 // Dans AppRouter
-import 'package:boxtobikers/core/auth/auth.dart';
+import 'package:boxtobikers/core/auth/auth.index.dart';
 
 testProtected: (context) => AuthGuard(
   allowedRoles: [UserRole.client, UserRole.admin],

@@ -1,5 +1,5 @@
 import 'package:boxtobikers/core/auth/models/user_role.enum.dart';
-import 'package:boxtobikers/core/auth/providers/auth.provider.dart';
+import 'package:boxtobikers/core/auth/providers/app_auth.provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -29,7 +29,7 @@ class AuthGuard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<AuthProvider>(
+    return Consumer<AppAuthProvider>(
       builder: (context, authProvider, _) {
         final session = authProvider.currentSession;
 

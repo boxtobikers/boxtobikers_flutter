@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:boxtobikers/core/app/providers/app_state.provider.dart';
-import 'package:boxtobikers/core/auth/providers/auth.provider.dart';
-import 'package:boxtobikers/core/auth/repositories/auth.repository.dart';
-import 'package:boxtobikers/core/auth/services/session.service.dart';
+import 'package:boxtobikers/core/auth/providers/app_auth.provider.dart';
+import 'package:boxtobikers/core/auth/repositories/app_auth.repository.dart';
+import 'package:boxtobikers/core/auth/services/app_session.service.dart';
 import 'package:boxtobikers/core/http/http_config.dart';
 import 'package:boxtobikers/core/http/http_service.dart';
 import 'package:boxtobikers/features/settings/business/services/settings_service.dart';
@@ -14,7 +14,7 @@ import 'package:flutter/foundation.dart';
 /// Principe DRY : centralise la logique de démarrage
 class AppLauncher {
   static AppStateProvider? _appStateProvider;
-  static AuthProvider? _authProvider;
+  static AppAuthProvider? _authProvider;
 
   /// Initialise l'application au démarrage ou au réveil
   ///
@@ -45,15 +45,15 @@ class AppLauncher {
     debugPrint('✅ AppLauncher: Service HTTP initialisé');
 
     // 2. Initialiser le service de session
-    final sessionService = await SessionService.create();
+    final sessionService = await AppSessionService.create();
     debugPrint('✅ AppLauncher: Service de session initialisé');
 
     // 3. Initialiser le repository d'authentification
-    final authRepository = AuthRepository();
+    final authRepository = AppAuthRepository();
     debugPrint('✅ AppLauncher: Repository d\'authentification créé');
 
     // 4. Créer le provider d'authentification
-    _authProvider = AuthProvider(
+    _authProvider = AppAuthProvider(
       authRepository: authRepository,
       sessionService: sessionService,
     );
@@ -81,7 +81,7 @@ class AppLauncher {
   static AppStateProvider? get appStateProvider => _appStateProvider;
 
   /// Récupère le provider d'authentification (doit être appelé après initialize)
-  static AuthProvider? get authProvider => _authProvider;
+  static AppAuthProvider? get authProvider => _authProvider;
 
   /// Réinitialise complètement l'application (simule un redémarrage)
   static Future<void> reset() async {

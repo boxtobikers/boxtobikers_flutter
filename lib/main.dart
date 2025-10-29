@@ -2,7 +2,7 @@ import 'package:boxtobikers/core/app/app_launcher.dart';
 import 'package:boxtobikers/core/app/app_router.dart';
 import 'package:boxtobikers/core/app/providers/app_state.provider.dart';
 import 'package:boxtobikers/core/app/utils/app_constants.utils.dart';
-import 'package:boxtobikers/core/auth/providers/auth.provider.dart';
+import 'package:boxtobikers/core/auth/providers/app_auth.provider.dart';
 import 'package:boxtobikers/core/config/env_config.dart';
 import 'package:boxtobikers/core/services/supabase_service.dart';
 import 'package:boxtobikers/features/home/ui/pages/home.pages.dart';
@@ -47,7 +47,7 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   final AppStateProvider appStateProvider;
-  final AuthProvider authProvider;
+  final AppAuthProvider authProvider;
 
   const MyApp({
     super.key,

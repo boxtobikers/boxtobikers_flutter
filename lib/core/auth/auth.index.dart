@@ -8,13 +8,13 @@ export 'models/user_role.enum.dart';
 export 'models/user_session.model.dart';
 
 // Providers
-export 'providers/auth.provider.dart';
+export 'providers/app_auth.provider.dart';
 
 // Repositories
-export 'repositories/auth.repository.dart';
+export 'repositories/app_auth.repository.dart';
 
 // Services
-export 'services/session.service.dart';
+export 'services/app_session.service.dart';
 
 // Widgets
 export 'widgets/auth_guard.widget.dart';

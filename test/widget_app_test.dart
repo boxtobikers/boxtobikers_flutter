@@ -7,9 +7,9 @@
 
 import 'package:boxtobikers/core/app/models/currency.model.dart';
 import 'package:boxtobikers/core/app/providers/app_state.provider.dart';
-import 'package:boxtobikers/core/auth/providers/auth.provider.dart';
-import 'package:boxtobikers/core/auth/repositories/auth.repository.dart';
-import 'package:boxtobikers/core/auth/services/session.service.dart';
+import 'package:boxtobikers/core/auth/providers/app_auth.provider.dart';
+import 'package:boxtobikers/core/auth/repositories/app_auth.repository.dart';
+import 'package:boxtobikers/core/auth/services/app_session.service.dart';
 import 'package:boxtobikers/features/settings/business/services/settings_service.dart';
 import 'package:boxtobikers/main.dart';
 import 'package:flutter/material.dart';
@@ -30,13 +30,13 @@ void main() {
     final settingsService = await SettingsService.createForTesting();
 
     // Créer le SessionService pour les tests
-    final sessionService = await SessionService.createForTesting();
+    final sessionService = await AppSessionService.createForTesting();
 
     // Créer le AuthRepository
-    final authRepository = AuthRepository();
+    final authRepository = AppAuthRepository();
 
     // Créer le AuthProvider
-    final authProvider = AuthProvider(
+    final authProvider = AppAuthProvider(
       authRepository: authRepository,
       sessionService: sessionService,
     );

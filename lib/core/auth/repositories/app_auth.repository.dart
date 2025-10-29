@@ -6,7 +6,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 /// Repository pour gérer l'authentification via Supabase
 /// Principe SOLID : Single Responsibility - gère uniquement les opérations d'authentification
-class AuthRepository {
+class AppAuthRepository {
   final SupabaseService _supabaseService = SupabaseService.instance;
 
   /// UUID fixe du profil VISITOR pré-créé dans la base de données
@@ -40,6 +40,11 @@ class AuthRepository {
         firstName: visitorProfile['first_name'] as String,
         lastName: visitorProfile['last_name'] as String,
         email: visitorProfile['email'] as String,
+        phone: visitorProfile['mobile'] as String? ?? '',
+        address: visitorProfile['address'] as String? ?? '',
+        birthdate: visitorProfile['birthdate'] != null
+            ? DateTime.parse(visitorProfile['birthdate'] as String)
+            : null,
       );
 
       debugPrint('✅ AuthRepository: Session VISITOR créée - ${session.toString()}');
@@ -64,6 +69,7 @@ class AuthRepository {
             email,
             mobile,
             address,
+            birthdate,
             created_at,
             role_id,
             roles!inner(name)
@@ -85,6 +91,7 @@ class AuthRepository {
         'email': response['email'],
         'mobile': response['mobile'],
         'address': response['address'],
+        'birthdate': response['birthdate'],
         'role': roleName,
       };
     } catch (e) {

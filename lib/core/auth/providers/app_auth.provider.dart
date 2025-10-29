@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:boxtobikers/core/auth/models/auth_status.enum.dart';
 import 'package:boxtobikers/core/auth/models/user_session.model.dart';
-import 'package:boxtobikers/core/auth/repositories/auth.repository.dart';
-import 'package:boxtobikers/core/auth/services/session.service.dart';
+import 'package:boxtobikers/core/auth/repositories/app_auth.repository.dart';
+import 'package:boxtobikers/core/auth/services/app_session.service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -11,18 +11,18 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 /// Principe SOLID :
 /// - Single Responsibility : gère l'état d'authentification
 /// - Dependency Inversion : dépend des abstractions AuthRepository et SessionService
-class AuthProvider extends ChangeNotifier {
-  final AuthRepository _authRepository;
-  final SessionService _sessionService;
+class AppAuthProvider extends ChangeNotifier {
+  final AppAuthRepository _authRepository;
+  final AppSessionService _sessionService;
 
   AuthStatus _status = AuthStatus.initial;
   UserSession? _currentSession;
   String? _errorMessage;
   StreamSubscription<AuthState>? _authSubscription;
 
-  AuthProvider({
-    required AuthRepository authRepository,
-    required SessionService sessionService,
+  AppAuthProvider({
+    required AppAuthRepository authRepository,
+    required AppSessionService sessionService,
   })  : _authRepository = authRepository,
         _sessionService = sessionService {
     _listenToAuthChanges();
@@ -242,6 +242,44 @@ class AuthProvider extends ChangeNotifier {
     } catch (e) {
       debugPrint('❌ AuthProvider: Erreur lors de la mise à jour du profil: $e');
       return false;
+    }
+  }
+
+  /// Met à jour la session complète (profil + autres données)
+  /// Utile pour mettre à jour plusieurs champs en une seule fois
+  /// Pour les sessions VISITOR, met uniquement à jour les données locales
+  /// Pour les utilisateurs authentifiés, synchronise avec Supabase
+  Future<void> updateSession(UserSession updatedSession) async {
+    try {
+      debugPrint('🔐 AuthProvider: Mise à jour de la session...');
+
+      // Si c'est un utilisateur authentifié, synchroniser avec Supabase
+      if (updatedSession.isAuthenticated && updatedSession.supabaseUserId != null) {
+        final success = await _authRepository.updateProfile(
+          userId: updatedSession.supabaseUserId!,
+          firstName: updatedSession.profile.firstName,
+          lastName: updatedSession.profile.lastName,
+          phone: updatedSession.profile.phone,
+          address: updatedSession.profile.address,
+        );
+
+        if (!success) {
+          debugPrint('⚠️ AuthProvider: Échec de la synchronisation avec Supabase');
+          // On continue quand même pour mettre à jour localement
+        }
+      }
+
+      // Mettre à jour la session locale et sauvegarder
+      _currentSession = updatedSession.copyWith(
+        lastActiveAt: DateTime.now(),
+      );
+      await _sessionService.saveSession(_currentSession!);
+      notifyListeners();
+
+      debugPrint('✅ AuthProvider: Session mise à jour');
+    } catch (e) {
+      debugPrint('❌ AuthProvider: Erreur lors de la mise à jour de la session: $e');
+      rethrow;
     }
   }
 

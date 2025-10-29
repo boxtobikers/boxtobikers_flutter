@@ -179,7 +179,7 @@ class UserSession {
 ### 2. Repository d'authentification
 
 ```dart
-// lib/core/auth/repositories/auth.repository.dart
+// lib/core/auth/repositories/app_auth.repository.dart
 
 class AuthRepository {
   static const String _visitorProfileId = '00000000-0000-0000-0000-000000000000';
@@ -213,7 +213,7 @@ class AuthRepository {
 ### 3. Provider d'authentification
 
 ```dart
-// lib/core/auth/providers/auth.provider.dart
+// lib/core/auth/providers/app_auth.provider.dart
 
 class AuthProvider extends ChangeNotifier {
   Future<void> initialize() async {

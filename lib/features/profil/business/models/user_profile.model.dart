@@ -4,7 +4,7 @@ class UserProfileModel {
   final String email;
   final String phone;
   final String address;
-  final DateTime? dateOfBirth;
+  final DateTime? birthdate;
 
   UserProfileModel({
     required this.firstName,
@@ -12,7 +12,7 @@ class UserProfileModel {
     required this.email,
     required this.phone,
     required this.address,
-    this.dateOfBirth,
+    this.birthdate,
   });
 
   String get fullName => '$firstName $lastName';
@@ -23,7 +23,7 @@ class UserProfileModel {
     String? email,
     String? phone,
     String? address,
-    DateTime? dateOfBirth,
+    DateTime? birthdate,
   }) {
     return UserProfileModel(
       firstName: firstName ?? this.firstName,
@@ -31,7 +31,7 @@ class UserProfileModel {
       email: email ?? this.email,
       phone: phone ?? this.phone,
       address: address ?? this.address,
-      dateOfBirth: dateOfBirth ?? this.dateOfBirth,
+      birthdate: birthdate ?? this.birthdate,
     );
   }
 
@@ -42,7 +42,7 @@ class UserProfileModel {
       'email': email,
       'phone': phone,
       'address': address,
-      'dateOfBirth': dateOfBirth?.toIso8601String(),
+      'birthdate': birthdate?.toIso8601String(),
     };
   }
 
@@ -53,8 +53,8 @@ class UserProfileModel {
       email: json['email'] as String,
       phone: json['phone'] as String,
       address: json['address'] as String,
-      dateOfBirth: json['dateOfBirth'] != null
-          ? DateTime.parse(json['dateOfBirth'] as String)
+      birthdate: json['birthdate'] != null
+          ? DateTime.parse(json['birthdate'] as String)
           : null,
     );
   }
@@ -67,7 +67,7 @@ class UserProfileModel {
       email: '',
       phone: '',
       address: '',
-      dateOfBirth: null,
+      birthdate: null,
     );
   }
 }

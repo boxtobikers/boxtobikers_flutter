@@ -109,6 +109,9 @@ class UserSession {
     String? firstName,
     String? lastName,
     String? email,
+    String? phone,
+    String? address,
+    DateTime? birthdate,
   }) {
     final now = DateTime.now();
     return UserSession(
@@ -118,8 +121,9 @@ class UserSession {
         firstName: firstName ?? 'Visiteur',
         lastName: lastName ?? 'Anonyme',
         email: email ?? '',
-        phone: '',
-        address: '',
+        phone: phone ?? '',
+        address: address ?? '',
+        birthdate: birthdate,
       ),
       supabaseUserId: null, // Pas de session Supabase active
       supabaseToken: null,  // Pas de token

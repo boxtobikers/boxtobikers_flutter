@@ -1,8 +1,11 @@
 import 'package:boxtobikers/core/app/app_router.dart';
+import 'package:boxtobikers/core/app/helpers/app_session.helpers.dart';
+import 'package:boxtobikers/core/auth/providers/app_auth.provider.dart';
 import 'package:boxtobikers/features/profil/business/models/user_profile.model.dart';
 import 'package:boxtobikers/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 class ProfilPages extends StatefulWidget {
   const ProfilPages({super.key});
@@ -25,34 +28,29 @@ class _ProfilPagesState extends State<ProfilPages> {
   DateTime? _selectedDate;
   bool _isEditing = false;
 
-  // Données de profil en dur (pour la démo)
-  late UserProfileModel _userProfile;
-
   @override
   void initState() {
     super.initState();
 
-    // Initialisation du profil avec des données de test
-    _userProfile = UserProfileModel(
-      firstName: 'Jean',
-      lastName: 'Dupont',
-      email: 'jean.dupont@example.com',
-      phone: '+33 6 12 34 56 78',
-      address: '123 Avenue des Champs-Élysées, 75008 Paris',
-      dateOfBirth: DateTime(1990, 5, 15),
-    );
+    // Récupérer le profil depuis le AuthProvider
+    final authProvider = context.read<AppAuthProvider>();
+    final userSession = authProvider.currentSession;
+    final userProfile = userSession?.profile;
 
-    _selectedDate = _userProfile.dateOfBirth;
+    // Si pas de profil (ne devrait pas arriver), utiliser un profil par défaut
+    final profile = userProfile ?? UserProfileModel.createVisitor();
 
-    // Initialisation des controllers avec les données du profil
-    _firstNameController = TextEditingController(text: _userProfile.firstName);
-    _lastNameController = TextEditingController(text: _userProfile.lastName);
-    _emailController = TextEditingController(text: _userProfile.email);
-    _phoneController = TextEditingController(text: _userProfile.phone);
-    _addressController = TextEditingController(text: _userProfile.address);
+    _selectedDate = profile.birthdate;
+
+    // Initialisation des controllers avec les données du profil réel
+    _firstNameController = TextEditingController(text: profile.firstName);
+    _lastNameController = TextEditingController(text: profile.lastName);
+    _emailController = TextEditingController(text: profile.email);
+    _phoneController = TextEditingController(text: profile.phone);
+    _addressController = TextEditingController(text: profile.address);
     _dateOfBirthController = TextEditingController(
-      text: _userProfile.dateOfBirth != null
-          ? DateFormat('dd/MM/yyyy').format(_userProfile.dateOfBirth!)
+      text: profile.birthdate != null
+          ? DateFormat('dd/MM/yyyy').format(profile.birthdate!)
           : '',
     );
   }
@@ -69,55 +67,82 @@ class _ProfilPagesState extends State<ProfilPages> {
   }
 
   void _toggleEdit() {
+    // Récupérer les valeurs actuelles depuis le provider
+    final authProvider = context.read<AppAuthProvider>();
+    final currentProfile = authProvider.currentSession?.profile;
+
     setState(() {
       _isEditing = !_isEditing;
-      if (!_isEditing) {
+      if (!_isEditing && currentProfile != null) {
         // Annuler les modifications - restaurer les valeurs originales
-        _firstNameController.text = _userProfile.firstName;
-        _lastNameController.text = _userProfile.lastName;
-        _emailController.text = _userProfile.email;
-        _phoneController.text = _userProfile.phone;
-        _addressController.text = _userProfile.address;
-        _selectedDate = _userProfile.dateOfBirth;
-        _dateOfBirthController.text = _userProfile.dateOfBirth != null
-            ? DateFormat('dd/MM/yyyy').format(_userProfile.dateOfBirth!)
+        _firstNameController.text = currentProfile.firstName;
+        _lastNameController.text = currentProfile.lastName;
+        _emailController.text = currentProfile.email;
+        _phoneController.text = currentProfile.phone;
+        _addressController.text = currentProfile.address;
+        _selectedDate = currentProfile.birthdate;
+        _dateOfBirthController.text = currentProfile.birthdate != null
+            ? DateFormat('dd/MM/yyyy').format(currentProfile.birthdate!)
             : '';
       }
     });
   }
 
-  void _saveProfile() {
+  Future<void> _saveProfile() async {
     if (_formKey.currentState!.validate()) {
+      final authProvider = context.read<AppAuthProvider>();
+      final currentSession = authProvider.currentSession;
+
+      if (currentSession == null) {
+        // Ne devrait pas arriver, mais on gère quand même
+        return;
+      }
+
+      // Créer le nouveau profil avec les données modifiées
+      final updatedProfile = UserProfileModel(
+        firstName: _firstNameController.text,
+        lastName: _lastNameController.text,
+        email: _emailController.text,
+        phone: _phoneController.text,
+        address: _addressController.text,
+        birthdate: _selectedDate,
+      );
+
+      // Créer une nouvelle session avec le profil mis à jour
+      final updatedSession = currentSession.copyWith(
+        profile: updatedProfile,
+        email: _emailController.text,
+      );
+
+      // Sauvegarder la session mise à jour
+      // Le AuthProvider se chargera de notifier les listeners
+      // et le SessionService sauvegardera dans SharedPreferences
+      await authProvider.updateSession(updatedSession);
+
       setState(() {
-        _userProfile = UserProfileModel(
-          firstName: _firstNameController.text,
-          lastName: _lastNameController.text,
-          email: _emailController.text,
-          phone: _phoneController.text,
-          address: _addressController.text,
-          dateOfBirth: _selectedDate,
-        );
         _isEditing = false;
       });
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Row(
-            children: [
-              const Icon(Icons.check_circle),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Text(S.of(context).profilSaveSuccess),
-              ),
-            ],
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Row(
+              children: [
+                const Icon(Icons.check_circle),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Text(S.of(context).profilSaveSuccess),
+                ),
+              ],
+            ),
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            duration: const Duration(seconds: 3),
           ),
-          behavior: SnackBarBehavior.floating,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-          duration: const Duration(seconds: 3),
-        ),
-      );
+        );
+      }
     }
   }
 
@@ -526,16 +551,23 @@ class _ProfilPagesState extends State<ProfilPages> {
                           ),
                         ],
                       ),
-                      child: CircleAvatar(
-                        radius: avatarRadius,
-                        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-                        child: Text(
-                          '${_userProfile.firstName[0]}${_userProfile.lastName[0]}'.toUpperCase(),
-                          style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                            color: Theme.of(context).colorScheme.onPrimaryContainer,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
+                      child: Consumer<AppAuthProvider>(
+                        builder: (context, authProvider, _) {
+                          final profile = authProvider.currentSession?.profile;
+                          final initials = AppSessionHelpers.getInitials(profile);
+
+                          return CircleAvatar(
+                            radius: avatarRadius,
+                            backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+                            child: Text(
+                              initials,
+                              style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                                color: Theme.of(context).colorScheme.onPrimaryContainer,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ),
                     // Badge de modification - AU PREMIER PLAN

@@ -106,7 +106,7 @@ Dans n'importe quel widget :
 
 ```dart
 import 'package:provider/provider.dart';
-import 'package:boxtobikers/core/auth/auth.dart';
+import 'package:boxtobikers/core/auth/auth.index.dart';
 
 // Dans le build
 final authProvider = Provider.of<AuthProvider>(context);
@@ -139,7 +139,7 @@ Drawer(
 ### Test 3 : Protéger une page
 
 ```dart
-import 'package:boxtobikers/core/auth/auth.dart';
+import 'package:boxtobikers/core/auth/auth.index.dart';
 
 // Dans AppRouter
 settings: (context) => AuthGuard(
@@ -210,7 +210,7 @@ WHERE email = 'admin@example.com';
 
 ```dart
 import 'package:provider/provider.dart';
-import 'package:boxtobikers/core/auth/auth.dart';
+import 'package:boxtobikers/core/auth/auth.index.dart';
 
 class HomePage extends StatelessWidget {
   @override

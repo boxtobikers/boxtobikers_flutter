@@ -1,4 +1,4 @@
-import 'package:boxtobikers/core/auth/auth.dart';
+import 'package:boxtobikers/core/auth/auth.index.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -31,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
 
     setState(() => _isLoading = true);
 
-    final authProvider = Provider.of<AuthProvider>(context, listen: false);
+    final authProvider = Provider.of<AppAuthProvider>(context, listen: false);
 
     final success = await authProvider.signInWithEmail(
       email: _emailController.text.trim(),
@@ -68,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
       appBar: AppBar(
         title: const Text('Connexion'),
       ),
-      body: Consumer<AuthProvider>(
+      body: Consumer<AppAuthProvider>(
         builder: (context, authProvider, child) {
           return SingleChildScrollView(
             padding: const EdgeInsets.all(24.0),
