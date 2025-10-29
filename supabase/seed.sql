@@ -117,7 +117,7 @@ insert into public.profiles (
   'Anonyme',
   'visitor@boxtobikers.local',
   '',
-  '1 Rue de La Lune 24000 La LUNE',
+  '1 place de La LUNE 24000 LA LUNE',            -- Adresse par défaut
   '1970-01-01'::date,                             -- Date de naissance par défaut
   now()
 )
@@ -125,6 +125,7 @@ on conflict (id) do update set
   role_id = (select id from public.roles where name = 'VISITOR' limit 1),
   first_name = 'Visiteur',
   last_name = 'Anonyme',
+  address = '1 place de La LUNE 24000 LA LUNE',
   birthdate = '1970-01-01'::date;
 
 -- =============================================
