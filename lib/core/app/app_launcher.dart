@@ -6,35 +6,33 @@ import 'package:boxtobikers/core/auth/repositories/app_auth.repository.dart';
 import 'package:boxtobikers/core/auth/services/app_session.service.dart';
 import 'package:boxtobikers/core/http/http_config.dart';
 import 'package:boxtobikers/core/http/http_service.dart';
+import 'package:boxtobikers/core/services/local_storage.service.dart';
+import 'package:boxtobikers/features/history/business/providers/destinations.provider.dart';
+import 'package:boxtobikers/features/history/data/repositories/destination.repository.dart';
 import 'package:boxtobikers/features/settings/business/services/settings_service.dart';
 import 'package:flutter/foundation.dart';
 
 /// Classe responsable de l'initialisation de l'application
-/// Principe SOLID : Single Responsibility - gère uniquement le lancement de l'app
-/// Principe DRY : centralise la logique de démarrage
 class AppLauncher {
   static AppStateProvider? _appStateProvider;
   static AppAuthProvider? _authProvider;
+  static DestinationsProvider? _destinationsProvider;
 
   /// Initialise l'application au démarrage ou au réveil
-  ///
-  /// Cette méthode est appelée :
-  /// 1. Au démarrage de l'application (première fois ou après redémarrage)
-  /// 2. Au réveil de l'application (retour depuis le background)
-  ///
   /// Comportement :
   /// - Au DÉMARRAGE : charge les préférences du device ou celles sauvegardées
   /// - Au RÉVEIL : conserve les préférences utilisateur (pas d'écrasement)
   /// - Les modifications de l'utilisateur persistent jusqu'au redémarrage complet
   static Future<Map<String, dynamic>> initialize() async {
-    // Si déjà initialisé, retourne les instances existantes (réveil)
     if (_appStateProvider != null &&
         _authProvider != null &&
+        _destinationsProvider != null &&
         _appStateProvider!.isInitialized) {
       debugPrint('🔄 AppLauncher: Application en réveil - conservation des préférences');
       return {
         'appStateProvider': _appStateProvider!,
         'authProvider': _authProvider!,
+        'destinationsProvider': _destinationsProvider!,
       };
     }
 
@@ -71,9 +69,31 @@ class AppLauncher {
     _appStateProvider = AppStateProvider(settingsService);
     debugPrint('✅ AppLauncher: Provider d\'état créé');
 
+    // 8. Initialiser le service de stockage local
+    final localStorageService = await LocalStorageService.create();
+    debugPrint('✅ AppLauncher: Service de stockage local initialisé');
+
+    // 9. Créer le repository des destinations
+    final destinationRepository = DestinationRepository();
+    debugPrint('✅ AppLauncher: Repository des destinations créé');
+
+    // 10. Créer le provider des destinations
+    _destinationsProvider = DestinationsProvider(
+      repository: destinationRepository,
+      storageService: localStorageService,
+    );
+    debugPrint('✅ AppLauncher: Provider des destinations créé');
+
+    // 11. Initialiser les destinations (charge depuis le cache)
+    final session = _authProvider!.currentSession;
+    final userId = session != null ? (session.supabaseUserId ?? session.id) : null;
+    await _destinationsProvider!.initialize(userId: userId);
+    debugPrint('✅ AppLauncher: Destinations initialisées');
+
     return {
       'appStateProvider': _appStateProvider!,
       'authProvider': _authProvider!,
+      'destinationsProvider': _destinationsProvider!,
     };
   }
 
@@ -82,6 +102,9 @@ class AppLauncher {
 
   /// Récupère le provider d'authentification (doit être appelé après initialize)
   static AppAuthProvider? get authProvider => _authProvider;
+
+  /// Récupère le provider des destinations (doit être appelé après initialize)
+  static DestinationsProvider? get destinationsProvider => _destinationsProvider;
 
   /// Réinitialise complètement l'application (simule un redémarrage)
   static Future<void> reset() async {
@@ -95,6 +118,12 @@ class AppLauncher {
       await _authProvider!.signOut();
       _authProvider = null;
       debugPrint('🔄 AppLauncher: AuthProvider réinitialisé');
+    }
+
+    if (_destinationsProvider != null) {
+      await _destinationsProvider!.reset();
+      _destinationsProvider = null;
+      debugPrint('🔄 AppLauncher: DestinationsProvider réinitialisé');
     }
 
     debugPrint('🔄 AppLauncher: Application réinitialisée');

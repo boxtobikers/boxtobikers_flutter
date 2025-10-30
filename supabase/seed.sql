@@ -196,3 +196,17 @@ VALUES
 ('b7ff67e8-3f3e-4677-8be7-9096441d0d4a', 'f1840ea5-f322-423f-8daf-46550238b1dc', 'TUESDAY', '08:00:00', '18:00:00', 'false', '2025-10-25 13:10:54.905277+00')
 ON conflict(id) do nothing;
 
+-- =============================================
+-- 6. Destinations Users de test (optionnel)
+-- =============================================
+-- Note: La contrainte d'unicité (user_id, destination_id) garantit qu'un utilisateur
+-- ne peut avoir qu'un seul ride par destination
+INSERT INTO public.rides (user_id, destination_id, status)
+VALUES
+  ('00000000-0000-0000-0000-000000000000'::uuid, '7a445e92-44b2-4331-82c2-a390e359853e', 'COMPLETED'),
+  ('00000000-0000-0000-0000-000000000000'::uuid, 'f1840ea5-f322-423f-8daf-46550238b1dc', 'CANCELLED'),
+  ('00000000-0000-0000-0000-000000000000'::uuid, 'e69e3558-2c90-4d37-8300-09e7d6c35142', 'PENDING')
+ON CONFLICT (user_id, destination_id) DO UPDATE SET
+  status = EXCLUDED.status,
+  created_at = now();
+

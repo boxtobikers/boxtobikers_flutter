@@ -101,5 +101,37 @@ class DestinationRepository {
       return 0;
     }
   }
+
+  /// Récupère les destinations d'un utilisateur via la table rides
+  ///
+  /// [userId] L'identifiant de l'utilisateur
+  /// Retourne une liste de destinations ou null en cas d'erreur
+  Future<List<Destination>?> getDestinationsByUserId(String userId) async {
+    try {
+      debugPrint('🔍 DestinationRepository: Récupération des destinations pour userId: $userId');
+
+      final response = await _supabaseService.client
+          .from('rides')
+          .select('destination_id, destinations(*)')
+          .eq('user_id', userId)
+          .order('created_at', ascending: false);
+
+      debugPrint('🔍 DestinationRepository: Réponse brute: $response');
+
+      final destinations = (response as List<dynamic>)
+          .map((json) {
+            final destinationData = json['destinations'] as Map<String, dynamic>;
+            return Destination.fromJson(destinationData);
+          })
+          .toList();
+
+      debugPrint('✅ ${destinations.length} destinations récupérées pour l\'utilisateur $userId');
+      return destinations;
+    } catch (e, stackTrace) {
+      debugPrint('❌ Erreur lors de la récupération des destinations de l\'utilisateur: $e');
+      debugPrint('Stack trace: $stackTrace');
+      return null;
+    }
+  }
 }
 

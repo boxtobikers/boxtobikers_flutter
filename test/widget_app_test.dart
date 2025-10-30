@@ -10,6 +10,9 @@ import 'package:boxtobikers/core/app/providers/app_state.provider.dart';
 import 'package:boxtobikers/core/auth/providers/app_auth.provider.dart';
 import 'package:boxtobikers/core/auth/repositories/app_auth.repository.dart';
 import 'package:boxtobikers/core/auth/services/app_session.service.dart';
+import 'package:boxtobikers/core/services/local_storage.service.dart';
+import 'package:boxtobikers/features/history/business/providers/destinations.provider.dart';
+import 'package:boxtobikers/features/history/data/repositories/destination.repository.dart';
 import 'package:boxtobikers/features/settings/business/services/settings_service.dart';
 import 'package:boxtobikers/main.dart';
 import 'package:flutter/material.dart';
@@ -47,6 +50,21 @@ void main() {
     // Initialiser sans contexte pour les tests
     await appStateProvider.initializeForTesting();
 
+    // Créer le LocalStorageService pour les tests
+    final localStorageService = await LocalStorageService.createForTesting();
+
+    // Créer le DestinationRepository
+    final destinationRepository = DestinationRepository();
+
+    // Créer le DestinationsProvider
+    final destinationsProvider = DestinationsProvider(
+      repository: destinationRepository,
+      storageService: localStorageService,
+    );
+
+    // Initialiser le DestinationsProvider (sans userId pour les tests)
+    await destinationsProvider.initialize();
+
     // Note: On n'initialise pas authProvider.initialize() dans les tests
     // car cela nécessite une connexion Supabase active
 
@@ -54,6 +72,7 @@ void main() {
     await tester.pumpWidget(MyApp(
       appStateProvider: appStateProvider,
       authProvider: authProvider,
+      destinationsProvider: destinationsProvider,
     ));
 
     // Attendre que l'initialisation se termine

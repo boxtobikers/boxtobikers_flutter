@@ -192,6 +192,9 @@ class AppAuthProvider extends ChangeNotifier {
       await _createAnonymousSession();
 
       debugPrint('✅ AuthProvider: Déconnexion réussie');
+
+      // Notifier les listeners pour qu'ils effacent leurs données utilisateur
+      notifyListeners();
     } catch (e) {
       debugPrint('❌ AuthProvider: Erreur lors de la déconnexion: $e');
       _setError('Erreur lors de la déconnexion: $e');

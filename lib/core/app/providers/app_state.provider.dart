@@ -4,11 +4,6 @@ import 'package:boxtobikers/features/settings/business/services/settings_service
 import 'package:flutter/material.dart';
 
 /// Provider pour gérer l'état global de l'application
-/// Principe SOLID :
-/// - Single Responsibility : gère l'état des préférences utilisateur
-/// - Open/Closed : extensible sans modification
-/// - Liskov Substitution : hérite de ChangeNotifier
-/// - Interface Segregation : expose uniquement les méthodes nécessaires
 /// - Dependency Inversion : dépend de l'abstraction SettingsService
 class AppStateProvider extends ChangeNotifier {
   final SettingsService _settingsService;
@@ -89,9 +84,7 @@ class AppStateProvider extends ChangeNotifier {
   }
 
   // ============ Initialisation ============
-
   /// Initialise l'état de l'application depuis le device
-  /// Principe DRY : centralise toute la logique d'initialisation
   Future<void> initializeFromDevice() async {
     // 1. Récupérer la locale du device depuis le système (sans utiliser context)
     final deviceLocale = WidgetsBinding.instance.platformDispatcher.locale;

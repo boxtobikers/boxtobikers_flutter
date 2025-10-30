@@ -5,6 +5,8 @@ import 'package:boxtobikers/core/app/utils/app_constants.utils.dart';
 import 'package:boxtobikers/core/auth/providers/app_auth.provider.dart';
 import 'package:boxtobikers/core/config/env_config.dart';
 import 'package:boxtobikers/core/services/supabase_service.dart';
+import 'package:boxtobikers/features/history/business/providers/destinations.provider.dart';
+import 'package:boxtobikers/features/history/ui/widgets/destinations_sync.widget.dart';
 import 'package:boxtobikers/features/home/ui/pages/home.pages.dart';
 import 'package:boxtobikers/generated/l10n.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
@@ -42,17 +44,20 @@ void main() async {
   runApp(MyApp(
     appStateProvider: providers['appStateProvider'],
     authProvider: providers['authProvider'],
+    destinationsProvider: providers['destinationsProvider'],
   ));
 }
 
 class MyApp extends StatelessWidget {
   final AppStateProvider appStateProvider;
   final AppAuthProvider authProvider;
+  final DestinationsProvider destinationsProvider;
 
   const MyApp({
     super.key,
     required this.appStateProvider,
     required this.authProvider,
+    required this.destinationsProvider,
   });
 
   @override
@@ -61,6 +66,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider.value(value: authProvider),
         ChangeNotifierProvider.value(value: appStateProvider),
+        ChangeNotifierProvider.value(value: destinationsProvider),
       ],
       child: Consumer<AppStateProvider>(
         builder: (context, appState, child) {
@@ -71,7 +77,8 @@ class MyApp extends StatelessWidget {
             });
           }
 
-          return MaterialApp(
+          return DestinationsSyncWidget(
+            child: MaterialApp(
             localizationsDelegates: const [
               S.delegate,
               GlobalMaterialLocalizations.delegate,
@@ -112,6 +119,7 @@ class MyApp extends StatelessWidget {
             routes: AppRouter.getRoutes(context),
             home: Builder(
               builder: (context) => HomePages(title: S.of(context).homeTitle),
+            ),
             ),
           );
         },

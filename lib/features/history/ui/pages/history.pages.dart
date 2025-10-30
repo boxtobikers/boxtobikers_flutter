@@ -1,7 +1,8 @@
-import 'package:boxtobikers/features/history/data/models/destination.model.dart';
-import 'package:boxtobikers/features/history/data/repositories/destination.repository.dart';
+import 'package:boxtobikers/core/auth/providers/app_auth.provider.dart';
+import 'package:boxtobikers/features/history/business/providers/destinations.provider.dart';
 import 'package:boxtobikers/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HistoryPages extends StatefulWidget {
   const HistoryPages({super.key});
@@ -11,34 +12,30 @@ class HistoryPages extends StatefulWidget {
 }
 
 class _HistoryPagesState extends State<HistoryPages> {
-  final DestinationRepository _destinationRepository = DestinationRepository();
-  List<Destination>? _destinations;
-  bool _isLoading = true;
-  String? _errorMessage;
-
   @override
   void initState() {
     super.initState();
-    _loadDestinations();
+    // Différer le chargement après la construction complète du widget
+    Future.microtask(() {
+      _refreshDestinations();
+    });
   }
 
-  /// Charge les destinations depuis Supabase
-  Future<void> _loadDestinations() async {
-    setState(() {
-      _isLoading = true;
-      _errorMessage = null;
-    });
+  /// Rafraîchit les destinations de l'utilisateur connecté
+  Future<void> _refreshDestinations() async {
+    final authProvider = context.read<AppAuthProvider>();
+    final destinationsProvider = context.read<DestinationsProvider>();
 
-    final destinations = await _destinationRepository.getDestinations(limit: 10);
+    final session = authProvider.currentSession;
+    if (session == null) return;
 
-    setState(() {
-      _isLoading = false;
-      if (destinations != null) {
-        _destinations = destinations;
-      } else {
-        _errorMessage = 'Erreur lors du chargement des destinations';
-      }
-    });
+    // Pour les VISITOR, utiliser session.id (profileId)
+    // Pour les utilisateurs authentifiés, utiliser supabaseUserId
+    final userId = session.supabaseUserId ?? session.id;
+
+    if (userId.isNotEmpty) {
+      await destinationsProvider.refreshFromSupabase(userId);
+    }
   }
 
   @override
@@ -95,77 +92,115 @@ class _HistoryPagesState extends State<HistoryPages> {
             const SizedBox(width: 16),
             // Zone de contenu scrollable
             Expanded(
-              child: _isLoading
-                  ? const Center(child: CircularProgressIndicator())
-                  : _errorMessage != null
-                      ? Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                _errorMessage!,
-                                style: TextStyle(color: Theme.of(context).colorScheme.error),
-                              ),
-                              const SizedBox(height: 16),
-                              ElevatedButton(
-                                onPressed: _loadDestinations,
-                                child: Text(l10n.commonRetry),
-                              ),
-                            ],
+              child: Consumer<DestinationsProvider>(
+                builder: (context, destinationsProvider, child) {
+                  if (destinationsProvider.isLoading) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+
+                  if (destinationsProvider.errorMessage != null) {
+                    return Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            destinationsProvider.errorMessage!,
+                            style: TextStyle(color: Theme.of(context).colorScheme.error),
                           ),
-                        )
-                      : _destinations == null || _destinations!.isEmpty
-                          ? const Center(child: Text('Aucune destination trouvée'))
-                          : ListView.builder(
-                              padding: const EdgeInsets.all(16.0),
-                              itemCount: _destinations!.length,
-                              itemBuilder: (context, index) {
-                                final destination = _destinations![index];
-                                return Card(
-                                  margin: const EdgeInsets.only(bottom: 12.0),
-                                  child: ListTile(
-                                    leading: CircleAvatar(
-                                      backgroundColor: destination.status == 'OPEN'
-                                          ? Theme.of(context).colorScheme.primaryContainer
-                                          : Theme.of(context).colorScheme.errorContainer,
-                                      child: Icon(
-                                        destination.type == 'BUSINESS'
-                                            ? Icons.business
-                                            : Icons.home,
-                                        color: destination.status == 'OPEN'
-                                            ? Theme.of(context).colorScheme.onPrimaryContainer
-                                            : Theme.of(context).colorScheme.onErrorContainer,
-                                      ),
-                                    ),
-                                    title: Text(
-                                      destination.name,
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    subtitle: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        const SizedBox(height: 4),
-                                        if (destination.address != null)
-                                          Text('📍 ${destination.address}'),
-                                        Text('${destination.typeLabel} • ${destination.statusLabel}'),
-                                        Text('🔒 ${destination.lockerCount} casiers disponibles'),
-                                      ],
-                                    ),
-                                    isThreeLine: true,
-                                    trailing: Icon(
-                                      Icons.arrow_forward_ios,
-                                      size: 16,
-                                      color: Theme.of(context).colorScheme.onSurfaceVariant,
-                                    ),
-                                    onTap: () {
-                                      // TODO: Navigation vers les détails de la destination
-                                    },
-                                  ),
-                                );
-                              },
+                          const SizedBox(height: 16),
+                          ElevatedButton(
+                            onPressed: _refreshDestinations,
+                            child: Text(l10n.commonRetry),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
+
+                  final destinations = destinationsProvider.destinations;
+
+                  if (destinations.isEmpty) {
+                    return Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.history,
+                            size: 64,
+                            color: Theme.of(context).colorScheme.onSurfaceVariant,
+                          ),
+                          const SizedBox(height: 16),
+                          Text(
+                            'Aucune destination dans votre historique',
+                            style: Theme.of(context).textTheme.titleMedium,
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            'Vos destinations visitées apparaîtront ici',
+                            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                              color: Theme.of(context).colorScheme.onSurfaceVariant,
                             ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
+
+                  return RefreshIndicator(
+                    onRefresh: _refreshDestinations,
+                    child: ListView.builder(
+                      padding: const EdgeInsets.all(16.0),
+                      itemCount: destinations.length,
+                      itemBuilder: (context, index) {
+                        final destination = destinations[index];
+                        return Card(
+                          margin: const EdgeInsets.only(bottom: 12.0),
+                          child: ListTile(
+                            leading: CircleAvatar(
+                              backgroundColor: destination.status == 'OPEN'
+                                  ? Theme.of(context).colorScheme.primaryContainer
+                                  : Theme.of(context).colorScheme.errorContainer,
+                              child: Icon(
+                                destination.type == 'BUSINESS'
+                                    ? Icons.business
+                                    : Icons.home,
+                                color: destination.status == 'OPEN'
+                                    ? Theme.of(context).colorScheme.onPrimaryContainer
+                                    : Theme.of(context).colorScheme.onErrorContainer,
+                              ),
+                            ),
+                            title: Text(
+                              destination.name,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            subtitle: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const SizedBox(height: 4),
+                                if (destination.address != null)
+                                  Text('📍 ${destination.address}'),
+                                Text('${destination.typeLabel} • ${destination.statusLabel}'),
+                                Text('🔒 ${destination.lockerCount} casiers disponibles'),
+                              ],
+                            ),
+                            isThreeLine: true,
+                            trailing: Icon(
+                              Icons.arrow_forward_ios,
+                              size: 16,
+                              color: Theme.of(context).colorScheme.onSurfaceVariant,
+                            ),
+                            onTap: () {
+                              // TODO: Navigation vers les détails de la destination
+                            },
+                          ),
+                        );
+                      },
+                    ),
+                  );
+                },
+              ),
             ),
           ],
         ),
