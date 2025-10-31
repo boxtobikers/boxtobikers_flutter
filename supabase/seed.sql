@@ -156,19 +156,21 @@ INSERT INTO public.destinations (
   image_url,
   created_at
 ) VALUES
+  -- DESTINATION VISITOR : Également ajoutée en PRODUCTION via migration 20251031100000
+  -- UUID spécial = ffffffff-ffff-ffff-ffff-ffffffffffff pour isolation complète des données VISITOR
+  ('ffffffff-ffff-ffff-ffff-ffffffffffff', 'Lunar Bike Station', 'BUSINESS', 'Station de vélos lunaires - Premier garage à vélos sur la Lune ! Équipement anti-gravité inclus', '1 Place de La Lune, Mare Tranquillitatis, The Moon', '0.6875', '23.4333', 'OPEN', '42', null, '2025-10-25 13:10:54.905277+00'),
   ('16c18bb2-8a7b-4758-a908-54d9a7e22e95', 'Camargue', 'PRIVATE', 'Ferme équestre en pleine Camargue', '13460 Saintes-Maries-de-la-Mer, France', '43.4516', '4.4298', 'OPEN', '3', null, '2025-10-25 17:18:29.831059+00'),
   ('1bf2197f-f124-4bfc-847c-ba354a14cd0d', 'Île de Ré', 'BUSINESS', 'Hôtel de charme en bord de mer', 'Le Bois-Plage-en-Ré, 17580, France', '46.1806', '-1.3954', 'OPEN', '3', null, '2025-10-25 17:18:29.831059+00'),
   ('243bd25b-b41b-41c1-aeaa-d2884659c7de', 'Tour Eiffel', 'BUSINESS', 'Café souvenir près de la Tour Eiffel', 'Champ de Mars, 5 Avenue Anatole France, 75007 Paris', '48.8584', '2.2945', 'OPEN', '8', null, '2025-10-25 17:18:29.831059+00'),
   ('2c80818d-d7f7-4789-99a6-d6e925b77eed', 'Lac Léman', 'BUSINESS', 'Restaurant panoramique au bord du lac Léman', '74500 Évian-les-Bains, France', '46.4011', '6.5899', 'OPEN', '5', null, '2025-10-25 17:18:29.831059+00'),
-  ('2cdfe6ae-55e4-4170-a451-3ce362fb925f', 'Louvre Museum', 'BUSINESS', 'Boutique d’art et librairie du musée du Louvre', 'Rue de Rivoli, 75001 Paris', '48.8606', '2.3376', 'OPEN', '6', null, '2025-10-25 17:18:29.831059+00'),
+  ('2cdfe6ae-55e4-4170-a451-3ce362fb925f', 'Louvre Museum', 'BUSINESS', 'Boutique d''art et librairie du musée du Louvre', 'Rue de Rivoli, 75001 Paris', '48.8606', '2.3376', 'OPEN', '6', null, '2025-10-25 17:18:29.831059+00'),
   ('3261f9f4-b4bb-4120-9e8c-25c9e58dd18d', 'Pont du Gard', 'BUSINESS', 'Aire de repos et boutique artisanale', '400 Route du Pont du Gard, 30210 Vers-Pont-du-Gard', '43.9475', '4.535', 'OPEN', '3', null, '2025-10-25 17:18:29.831059+00'),
   ('3c00e7df-bf46-488c-82ff-a7f4dbf6e9df', 'Parc du Marquenterre', 'BUSINESS', 'Observatoire ornithologique et café bio', '80120 Saint-Quentin-en-Tourmont, France', '50.2371', '1.6164', 'OPEN', '2', null, '2025-10-25 17:18:29.831059+00'),
   ('3e617778-9c74-459c-a2e5-94707d6f8c63', 'Stade de France', 'PRIVATE', 'Espace VIP du Stade de France', '93216 Saint-Denis, France', '48.9244', '2.3601', 'OPEN', '10', null, '2025-10-25 17:18:29.831059+00'),
   ('48d145a0-17fa-4fdb-87f6-47c53a4c2a21', 'Basilique Notre-Dame de la Garde', 'BUSINESS', 'Boutique de souvenirs', 'Rue Fort du Sanctuaire, 13281 Marseille', '43.2841', '5.3718', 'OPEN', '4', null, '2025-10-25 17:18:29.831059+00'),
   ('540c49ad-1de1-460a-bd79-47646cfa2f03', 'Château de Versailles', 'PRIVATE', 'Résidence privée à proximité du château', 'Place d’Armes, 78000 Versailles', '48.8049', '2.1204', 'CLOSED', '2', null, '2025-10-25 17:18:29.831059+00'),
   ('5ef71cc6-5be9-4455-9773-00b69f5524cf', 'Promenade des Anglais', 'BUSINESS', 'Bar lounge en bord de mer', 'Promenade des Anglais, Nice', '43.6954', '7.265', 'OPEN', '6', null, '2025-10-25 17:18:29.831059+00'),
-  ('7a445e92-44b2-4331-82c2-a390e359853e', 'Bike Garage', 'BUSINESS', 'Bike repair & parts', '5 Rue Oberkampf, Paris', '48.865', '2.37', 'OPEN', '3', null, '2025-10-25 13:10:54.905277+00'),
-  ('87e1a532-f777-4f49-aad9-b585e8b26e6d', 'Puy de Dôme', 'PRIVATE', 'Maison d’hôtes avec vue sur le volcan', '63130 Royat, France', '45.772', '2.9644', 'OPEN', '2', null, '2025-10-25 17:18:29.831059+00'),
+  ('87e1a532-f777-4f49-aad9-b585e8b26e6d', 'Puy de Dôme', 'PRIVATE', 'Maison d''hôtes avec vue sur le volcan', '63130 Royat, France', '45.772', '2.9644', 'OPEN', '2', null, '2025-10-25 17:18:29.831059+00'),
   ('8f466aac-b475-426d-81fd-d81b1d1e1fd6', 'Place du Capitole', 'BUSINESS', 'Café historique au cœur de Toulouse', 'Place du Capitole, 31000 Toulouse', '43.6043', '1.4437', 'OPEN', '5', null, '2025-10-25 17:18:29.831059+00'),
   ('942df1b1-c0c3-4db7-b08f-d705f8d21fd4', 'Alice Home', 'PRIVATE', 'Friendly host offering lockers', '77 Rue St-Honoré, Paris', '48.862', '2.341', 'OPEN', '2', null, '2025-10-25 13:10:54.905277+00'),
   ('9fefea3b-d21c-4c52-8331-bd76dc7b1a0d', 'Mont Blanc', 'PRIVATE', 'Chalet de montagne proche du Mont Blanc', '74400 Chamonix-Mont-Blanc', '45.8326', '6.8652', 'CLOSED', '1', null, '2025-10-25 17:18:29.831059+00'),
@@ -186,24 +188,35 @@ INSERT INTO public.destinations (
 ON conflict (id) do nothing;
 
 -- =============================================
--- 5. Horaires d'ouverture de test (optionnel)
+-- 5. Horaires d'ouverture de test
 -- =============================================
+-- IMPORTANT: La destination VISITOR (Lunar Bike Station) a les mêmes horaires qu'en PRODUCTION (migration 20251031100000)
 INSERT INTO public.opening_hours (id, destination_id, weekday, open_time, close_time, is_closed, created_at)
 VALUES
-('1b3404c8-63e8-4471-9f22-17aa614d1253', '7a445e92-44b2-4331-82c2-a390e359853e', 'MONDAY', '08:00:00', '18:00:00', 'false', '2025-10-25 13:10:54.905277+00'),
-('4f8fd9dc-c28c-4a5e-83c7-250afd452baf', 'f1840ea5-f322-423f-8daf-46550238b1dc', 'MONDAY', '08:00:00', '18:00:00', 'false', '2025-10-25 13:10:54.905277+00'),
-('726784eb-672b-4bab-a11f-b097afee3d44', '7a445e92-44b2-4331-82c2-a390e359853e', 'TUESDAY', '08:00:00', '18:00:00', 'false', '2025-10-25 13:10:54.905277+00'),
-('b7ff67e8-3f3e-4677-8be7-9096441d0d4a', 'f1840ea5-f322-423f-8daf-46550238b1dc', 'TUESDAY', '08:00:00', '18:00:00', 'false', '2025-10-25 13:10:54.905277+00')
+-- Lunar Bike Station (VISITOR) - 24h/24, 7j/7 (la Lune ne dort jamais !)
+('1b3404c8-63e8-4471-9f22-17aa614d1253', 'ffffffff-ffff-ffff-ffff-ffffffffffff', 'MONDAY', '00:00:00', '23:59:59', false, '2025-10-25 13:10:54.905277+00'),
+('726784eb-672b-4bab-a11f-b097afee3d44', 'ffffffff-ffff-ffff-ffff-ffffffffffff', 'TUESDAY', '00:00:00', '23:59:59', false, '2025-10-25 13:10:54.905277+00'),
+(gen_random_uuid(), 'ffffffff-ffff-ffff-ffff-ffffffffffff', 'WEDNESDAY', '00:00:00', '23:59:59', false, '2025-10-25 13:10:54.905277+00'),
+(gen_random_uuid(), 'ffffffff-ffff-ffff-ffff-ffffffffffff', 'THURSDAY', '00:00:00', '23:59:59', false, '2025-10-25 13:10:54.905277+00'),
+(gen_random_uuid(), 'ffffffff-ffff-ffff-ffff-ffffffffffff', 'FRIDAY', '00:00:00', '23:59:59', false, '2025-10-25 13:10:54.905277+00'),
+(gen_random_uuid(), 'ffffffff-ffff-ffff-ffff-ffffffffffff', 'SATURDAY', '00:00:00', '23:59:59', false, '2025-10-25 13:10:54.905277+00'),
+(gen_random_uuid(), 'ffffffff-ffff-ffff-ffff-ffffffffffff', 'SUNDAY', '00:00:00', '23:59:59', false, '2025-10-25 13:10:54.905277+00'),
+-- Green Coffee - Quelques jours (données de test supplémentaires pour le local)
+('4f8fd9dc-c28c-4a5e-83c7-250afd452baf', 'f1840ea5-f322-423f-8daf-46550238b1dc', 'MONDAY', '08:00:00', '18:00:00', false, '2025-10-25 13:10:54.905277+00'),
+('b7ff67e8-3f3e-4677-8be7-9096441d0d4a', 'f1840ea5-f322-423f-8daf-46550238b1dc', 'TUESDAY', '08:00:00', '18:00:00', false, '2025-10-25 13:10:54.905277+00')
 ON conflict(id) do nothing;
 
 -- =============================================
--- 6. Destinations Users de test (optionnel)
+-- 6. Rides de test pour le profil VISITOR
 -- =============================================
--- Note: La contrainte d'unicité (user_id, destination_id) garantit qu'un utilisateur
--- ne peut avoir qu'un seul ride par destination
+-- IMPORTANT: Le ride vers la Lunar Bike Station est également en PRODUCTION (migration 20251031100000)
+-- Note: La contrainte d''unicité (user_id, destination_id) garantit qu''un utilisateur
+-- ne peut avoir qu''un seul ride par destination
 INSERT INTO public.rides (user_id, destination_id, status)
 VALUES
-  ('00000000-0000-0000-0000-000000000000'::uuid, '7a445e92-44b2-4331-82c2-a390e359853e', 'COMPLETED'),
+  -- Ride VISITOR vers la Lune (également en production)
+  ('00000000-0000-0000-0000-000000000000'::uuid, 'ffffffff-ffff-ffff-ffff-ffffffffffff', 'COMPLETED'),
+  -- Rides supplémentaires pour tests en local uniquement
   ('00000000-0000-0000-0000-000000000000'::uuid, 'f1840ea5-f322-423f-8daf-46550238b1dc', 'CANCELLED'),
   ('00000000-0000-0000-0000-000000000000'::uuid, 'e69e3558-2c90-4d37-8300-09e7d6c35142', 'PENDING')
 ON CONFLICT (user_id, destination_id) DO UPDATE SET

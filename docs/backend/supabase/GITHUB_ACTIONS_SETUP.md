@@ -135,27 +135,73 @@ make db-dump           # Créer un backup
 
 ## Dépannage
 
-### Erreur : "Project ref not found"
-- Vérifiez que `SUPABASE_PROJECT_ID` est correct
-- Le format doit être comme `abcdefghijklmnop` (sans espaces)
+### ❌ Job "deploy" failed
 
-### Erreur : "Authentication failed"
-- Vérifiez que `SUPABASE_ACCESS_TOKEN` est valide
-- Générez un nouveau token si nécessaire
+**Causes possibles et solutions :**
 
-### Erreur : "Database password incorrect"
-- Vérifiez `SUPABASE_DB_PASSWORD`
-- Vous pouvez le réinitialiser dans Settings > Database
+#### 1. Erreur : "Project ref not found"
+- ✅ Vérifiez que `SUPABASE_PROJECT_ID` est correct dans GitHub Secrets
+- ✅ Le format doit être comme `abcdefghijklmnop` (sans espaces, sans tirets)
+- ✅ Trouvez-le dans l'URL : `https://app.supabase.com/project/VOTRE_ID`
 
-### Les migrations ne se lancent pas automatiquement
-- Vérifiez que le fichier workflow est dans `.github/workflows/`
-- Vérifiez que vous pushez sur `main` ou `master`
-- Vérifiez que les modifications touchent `supabase/migrations/**`
+#### 2. Erreur : "Authentication failed" ou "Invalid access token"
+- ✅ Vérifiez que `SUPABASE_ACCESS_TOKEN` est valide
+- ✅ Le token doit commencer par `sbp_`
+- ✅ Générez un nouveau token sur https://app.supabase.com/account/tokens
+- ✅ Mettez à jour le secret GitHub immédiatement après
 
-### Migration échoue en production
-- Testez d'abord localement avec `make db-reset`
-- Vérifiez les logs dans l'onglet Actions
-- Les migrations sont idempotentes (utilisez `IF NOT EXISTS`, etc.)
+#### 3. Erreur : "Database password incorrect" ou "Connection refused"
+- ✅ Vérifiez `SUPABASE_DB_PASSWORD` dans GitHub Secrets
+- ✅ Le mot de passe est celui défini lors de la création du projet
+- ✅ Vous pouvez le réinitialiser dans Settings > Database > Database Password
+- ⚠️ Après réinitialisation, mettez à jour le secret GitHub
+
+#### 4. Erreur : "supabase link" échoue
+- ✅ Le workflow a été corrigé pour passer `--password $SUPABASE_DB_PASSWORD`
+- ✅ Vérifiez que les 3 secrets sont bien définis
+- ✅ Relancez le workflow après correction
+
+#### 5. Les migrations ne se lancent pas automatiquement
+- ✅ Vérifiez que le fichier workflow est dans `.github/workflows/deploy_supabase.yml`
+- ✅ Vérifiez que vous pushez sur `main` ou `master`
+- ✅ Vérifiez que les modifications touchent `supabase/migrations/**`
+- ✅ Le workflow peut être lancé manuellement via l'onglet Actions
+
+#### 6. Migration échoue en production mais fonctionne en local
+- ✅ Testez d'abord localement avec `make db-reset`
+- ✅ Vérifiez les logs complets dans l'onglet Actions
+- ✅ Les migrations doivent être idempotentes : utilisez `IF NOT EXISTS`, `DROP IF EXISTS`, etc.
+- ✅ Vérifiez qu'il n'y a pas de conflit de noms de migration (pas de doublons)
+- ✅ Assurez-vous que les migrations sont dans l'ordre chronologique
+
+#### 7. Comment voir les logs détaillés ?
+1. Allez dans l'onglet `Actions` de votre repository
+2. Cliquez sur le workflow qui a échoué
+3. Cliquez sur le job `deploy`
+4. Dépliez chaque étape pour voir les détails
+5. Cherchez les messages d'erreur en rouge
+
+#### 8. Vérifier que les secrets sont bien configurés
+```bash
+# Dans l'onglet Actions, ajoutez une étape temporaire de debug :
+- name: Debug secrets (TEMPORARY - REMOVE AFTER)
+  run: |
+    echo "Project ID length: ${#SUPABASE_PROJECT_ID}"
+    echo "Token length: ${#SUPABASE_ACCESS_TOKEN}"
+    echo "Password length: ${#SUPABASE_DB_PASSWORD}"
+```
+⚠️ **Ne loggez JAMAIS les valeurs réelles des secrets !**
+
+### 🔄 Workflow de correction
+
+Si votre job échoue :
+
+1. **Vérifiez les logs** : Identifiez l'étape qui échoue
+2. **Corrigez le problème** : Secrets, migration, etc.
+3. **Relancez** : 
+   - Via l'onglet Actions > Re-run failed jobs
+   - Ou poussez un nouveau commit avec `git commit --allow-empty -m "chore: trigger workflow"`
+4. **Testez en local** : Toujours tester avec `make db-reset` avant de pusher
 
 ## Sécurité
 
@@ -165,9 +211,22 @@ make db-dump           # Créer un backup
 - Ne partagez pas vos tokens d'accès
 - Régénérez les tokens si compromis
 
+## 🆘 Dépannage approfondi
+
+Pour un guide de dépannage complet avec toutes les erreurs courantes et leurs solutions, consultez :
+
+👉 **[TROUBLESHOOTING_GITHUB_ACTIONS.md](./TROUBLESHOOTING_GITHUB_ACTIONS.md)**
+
+Ce guide contient :
+- ✅ Checklist rapide avant de relancer
+- 🔍 Diagnostic des 8 erreurs les plus fréquentes
+- 📊 Comment lire les logs GitHub Actions
+- 🚀 Script de validation automatique : `make db-validate`
+
 ## Ressources
 
 - [Documentation Supabase CLI](https://supabase.com/docs/guides/cli)
 - [Documentation GitHub Actions](https://docs.github.com/en/actions)
 - [Documentation migrations Supabase](https://supabase.com/docs/guides/cli/local-development#database-migrations)
+- [Guide de dépannage complet](./TROUBLESHOOTING_GITHUB_ACTIONS.md)
 

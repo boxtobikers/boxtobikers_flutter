@@ -95,15 +95,76 @@ Toutes les fonctions `SECURITY DEFINER` doivent avoir `SET search_path = ''` pou
 - `opening_hours` : Horaires d'ouverture des destinations
 - `roles` : Rôles disponibles dans l'application
 
+## ⚠️ Migrations vs Seed : Données de test
+
+**Règle importante :** Les données de test (destinations, rides, ratings de test) doivent être dans `seed.sql`, PAS dans les migrations.
+
+### Pourquoi ?
+
+1. **Ordre d'exécution** : Les migrations s'exécutent AVANT le seed
+   - Si vous créez une migration qui insère des rides, mais que les destinations sont dans le seed, la migration échouera (foreign key violation)
+
+2. **Les migrations sont pour la production** : 
+   - Les migrations sont appliquées automatiquement en production via GitHub Actions
+   - Le seed.sql n'est exécuté QUE en développement local (via `make db-reset`)
+
+3. **Données de test ≠ Schéma** :
+   - Migrations → Structure de la base (tables, colonnes, contraintes, fonctions, politiques RLS)
+   - Seed → Données de test pour le développement local
+
+### Exemple : Rides VISITOR
+
+❌ **Mauvais** : Créer une migration `20251031000000_add_visitor_test_rides.sql`
+```sql
+-- ❌ Échouera car les destinations n'existent pas encore
+INSERT INTO public.rides (user_id, destination_id, status) VALUES ...
+```
+
+✅ **Bon** : Ajouter les rides dans `supabase/seed.sql`
+```sql
+-- ✅ Fonctionne car les destinations sont aussi dans seed.sql
+INSERT INTO public.rides (user_id, destination_id, status) VALUES ...
+ON CONFLICT (user_id, destination_id) DO UPDATE SET ...
+```
+
+### Et en production ?
+
+Si vous avez besoin de données initiales en production (par exemple, un profil VISITOR), vous avez deux options :
+
+1. **Option A (Recommandée)** : Créer une migration complète avec TOUT (destinations + rides)
+   ```sql
+   -- 1. Insérer les destinations
+   INSERT INTO public.destinations (...) VALUES (...);
+   
+   -- 2. Insérer les rides (maintenant les destinations existent)
+   INSERT INTO public.rides (...) VALUES (...);
+   ```
+
+2. **Option B** : Exécuter manuellement le seed en production (via Supabase Dashboard → SQL Editor)
+
 ## Appliquer les migrations
 
+### En local
 ```bash
 # Réinitialiser la base de données (applique toutes les migrations + seed)
 supabase db reset
+# ou via Makefile
+make db-reset
 
 # Appliquer uniquement les nouvelles migrations
 supabase db push
+# ou via Makefile
+make db-push
 ```
+
+### En production (GitHub Actions)
+
+Les migrations sont déployées automatiquement via GitHub Actions quand vous pushez sur `main`.
+
+**🚨 Si le déploiement échoue :**
+1. Consultez : `GITHUB_ACTIONS_QUICK_FIX.md` à la racine du projet
+2. Guide complet : `docs/backend/supabase/TROUBLESHOOTING_GITHUB_ACTIONS.md`
+3. Testez localement AVANT de pusher : `make db-validate`
 
 ## Vérifier les migrations appliquées
 

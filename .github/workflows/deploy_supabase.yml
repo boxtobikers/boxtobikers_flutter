@@ -27,22 +27,32 @@ jobs:
         with:
           version: latest
 
+      - name: Verify Supabase CLI installation
+        run: |
+          supabase --version
+
       - name: Link to Supabase project
         run: |
-          supabase link --project-ref $SUPABASE_PROJECT_ID
+          supabase link --project-ref $SUPABASE_PROJECT_ID --password $SUPABASE_DB_PASSWORD
+
+      - name: Check migration status
+        run: |
+          supabase migration list
 
       - name: Run migrations
         run: |
-          supabase db push
+          supabase db push --password $SUPABASE_DB_PASSWORD
 
       - name: Notification on success
         if: success()
         run: |
           echo "✅ Migrations deployed successfully to Supabase!"
+          echo "Project: $SUPABASE_PROJECT_ID"
 
       - name: Notification on failure
         if: failure()
         run: |
           echo "❌ Failed to deploy migrations to Supabase"
+          echo "Please check the logs above for details"
           exit 1
 
