@@ -12,32 +12,38 @@ Les migrations sont appliquées dans l'ordre chronologique basé sur leur timest
 
 ### Migrations de sécurité RLS (30 octobre 2025)
 
-Ces migrations corrigent les politiques RLS pour respecter le principe : **chaque utilisateur ne peut accéder QU'À ses propres données**.
+⚠️ **MIGRATION MUTUALISÉE** : Toutes les migrations du 30 octobre ont été fusionnées en une seule pour simplifier le déploiement.
 
-4. **20251030000000_add_unique_constraint_rides.sql** 
+4. **20251030000000_security_and_visitor_improvements.sql** ⚠️ **IMPORTANTE**
+   
+   Cette migration mutualisée contient 6 parties :
+   
+   **Partie 1 : Contrainte d'unicité sur rides**
    - Ajoute une contrainte d'unicité sur `(user_id, destination_id)` dans `rides`
    - Empêche les doublons : un utilisateur = un seul ride par destination
-
-5. **20251030000001_add_visitor_rides_policy.sql** ⚠️ **IMPORTANT**
-   - Crée la fonction `public.get_current_user_id()` utilisée par toutes les politiques RLS
-   - Remplace les politiques RLS de la table `rides`
-   - Permet aux sessions anonymes (VISITOR) d'accéder à leurs rides
-
-6. **20251030000002_fix_ratings_rls_policy.sql**
-   - Corrige les politiques RLS de la table `ratings`
+   
+   **Partie 2 : Fonction `get_current_user_id()`**
+   - Crée la fonction utilisée par toutes les politiques RLS
+   - Retourne `auth.uid()` pour les utilisateurs authentifiés
+   - Retourne l'UUID VISITOR pour les sessions anonymes
+   
+   **Partie 3 : Politiques RLS pour rides**
+   - Remplace toutes les politiques de la table `rides`
+   - Permet à chaque utilisateur (VISITOR inclus) d'accéder uniquement à ses rides
+   
+   **Partie 4 : Politiques RLS pour ratings**
+   - Remplace toutes les politiques de la table `ratings`
    - Supprime la politique trop permissive "Everyone can read ratings"
    - Chaque utilisateur ne voit que ses propres ratings
-
-7. **20251030000003_fix_profiles_rls_policy.sql**
-   - Corrige les politiques RLS de la table `profiles`
+   
+   **Partie 5 : Politiques RLS pour profiles**
+   - Remplace toutes les politiques de la table `profiles`
    - Chaque utilisateur ne peut accéder qu'à son propre profil
-   - VISITOR accède uniquement au profil VISITOR
-
-8. **20251030000004_fix_handle_new_user_search_path.sql** ⚠️ **SÉCURITÉ**
-   - Corrige le `search_path` de toutes les fonctions `SECURITY DEFINER`
-   - Ajoute `SET search_path = ''` pour éviter les attaques par injection de schéma
+   
+   **Partie 6 : Sécurisation des fonctions SECURITY DEFINER**
+   - Ajoute `SET search_path = ''` à toutes les fonctions `SECURITY DEFINER`
    - Fonctions corrigées : `get_user_role`, `handle_new_user`, `is_user_admin`, `get_current_user_id`
-   - Résout le warning Supabase Linter
+   - Résout le warning Supabase Linter et protège contre les attaques par injection de schéma
 
 ## Fonction centrale : `get_current_user_id()`
 
